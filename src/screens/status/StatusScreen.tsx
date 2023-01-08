@@ -4,10 +4,8 @@ import styles from '../../styles/screens/MapStyles';
 
 function StatusScreen() {
     return (
-      <View style = {styles.container}>
-        <Text>
-          스테이터스
-        </Text>
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <Text>스테이터스</Text>
       </View>
     );
 };

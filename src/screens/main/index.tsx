@@ -34,7 +34,7 @@ function MainScreen() {
           headerShown: false,
           tabBarIcon: () => (
             <Icon 
-              name = 'status'
+              name = 'calendar'
               size = {30} 
               color = 'black'
             />
@@ -48,7 +48,7 @@ function MainScreen() {
           headerShown: false,
           tabBarIcon: () => (
             <Icon 
-              name = 'bookmark'
+              name = 'search'
               size = {30}
               color = 'black'
             />

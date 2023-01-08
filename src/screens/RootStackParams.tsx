@@ -1,4 +1,5 @@
 export type RootStackParamList = {
+    Main: undefined;
     Register: undefined;
     Map: undefined;
     MapList: undefined;
