@@ -1,6 +1,8 @@
 # reactNative-repo
 
+
 1. 시작
+npm install
 npm start
 
 2. Android 세팅

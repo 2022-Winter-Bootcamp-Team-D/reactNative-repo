@@ -8,7 +8,16 @@
  * @format
  */
 
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 import React, {useEffect, type PropsWithChildren} from 'react';
+import {RootStackParamList} from './src/screens/RootStackParams';
+import MapScreen from './src/screens/map/MapScreen'
+import StatusScreen from './src/screens/status/StatusScreen';
+import SearchScreen from './src/screens/status/StatusScreen';
+
+  const Stack = createStackNavigator<RootStackParamList>();
+
 import {
   SafeAreaView,
   ScrollView,
@@ -86,9 +95,13 @@ function App() {
   }, []);
 
   return (
-    <Text>
-      안녕하세요
-    </Text>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Map" component={MapScreen} options={{headerShown: false,}}/>
+        <Stack.Screen name="Status" component={StatusScreen} options={{headerShown: false,}}/>
+        <Stack.Screen name="Search" component={SearchScreen} options={{headerShown: false,}}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
