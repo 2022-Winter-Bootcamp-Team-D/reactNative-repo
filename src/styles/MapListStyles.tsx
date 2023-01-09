@@ -61,6 +61,21 @@ const mapListStyles = StyleSheet.create ({
         marginLeft: 40,
     },
 
+    reservationButton: {
+        width: '80%',
+        marginLeft: '10%',
+        padding: 8,
+        borderRadius: 8,
+        backgroundColor: '#f1db1abb',
+        
+    },
+
+    reservationText: {
+        textAlign: 'center',
+        color: 'black',
+        fontFamily: 'BMHANNA',
+        fontSize: 17,
+    }
     
 });
 

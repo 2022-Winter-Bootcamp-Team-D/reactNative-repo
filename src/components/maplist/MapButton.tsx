@@ -6,7 +6,6 @@ import {RootStackParamList} from '../../screens/RootStackParams';
 
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Map'>;
 
-
 import mapStyles from '../../styles/MapStyles';
 
 function MapButton() {
