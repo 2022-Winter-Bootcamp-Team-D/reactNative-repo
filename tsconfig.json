@@ -6,6 +6,7 @@
 
     /* Completeness */
     "skipLibCheck": true,
-    "moduleResolution": "node",                                 /* Skip type checking all .d.ts files. */
+    "moduleResolution": "node",        
+    "noImplicitAny": false                         /* Skip type checking all .d.ts files. */
   }
 }

@@ -4,15 +4,40 @@ const mapListStyles = StyleSheet.create ({
     arrayList: {
         marginTop: 20,
         marginBottom: 10,
-        marginLeft: 320,
+        marginLeft: 315,
         color: 'black',
         fontFamily: 'BMHANNAAir',
         fontSize: 15,
         position: 'relative',
     },
 
+    waitingText:{
+        marginTop: 5,
+        marginLeft: 40,
+        color: 'black',
+        fontFamily: 'BMHANNAAir',
+        fontSize: 15,
+    },
+
+    storeDetailText:{
+        marginTop: 15,
+        marginLeft: 40,
+        marginBottom: 5,
+        color: 'black',
+        fontFamily: 'BMHANNAAir',
+        fontSize: 15,
+    },
+
+    storeDistanceText:{
+        marginTop: 5,
+        marginLeft: 40,
+        color: 'black',
+        fontFamily: 'BMHANNAAir',
+        fontSize: 15,
+    },
+
     makeList: {
-        marginTop: 20,
+        marginTop: 30,
         marginLeft: 30,
         flexDirection: 'row',
     },
@@ -30,8 +55,13 @@ const mapListStyles = StyleSheet.create ({
         width: '90%',
         height: 3,
         backgroundColor: 'gray'
-    }
+    },
 
+    hideDetail: {
+        marginLeft: 40,
+    },
+
+    
 });
 
 export default mapListStyles;

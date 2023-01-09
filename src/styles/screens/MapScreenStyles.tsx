@@ -15,10 +15,10 @@ const mapScreenStyles = StyleSheet.create ({
   },
 
   positionDetail: {
-      marginTop: 21,
-      color: 'black',
-      fontFamily: 'BMHANNAAir',
-      fontSize: 20,
+    marginTop: 21,
+    color: 'black',
+    fontFamily: 'BMHANNAAir',
+    fontSize: 20,
   },
 
   mapListButton:{

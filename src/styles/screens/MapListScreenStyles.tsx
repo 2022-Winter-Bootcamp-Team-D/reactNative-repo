@@ -24,7 +24,6 @@ const mapListScreenStyles = StyleSheet.create ({
 
   listContainer: {
     marginTop: 10,
-    position: 'relative'
   },
 
   mapListButton:{
