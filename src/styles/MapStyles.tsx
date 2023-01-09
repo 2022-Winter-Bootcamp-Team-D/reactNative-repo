@@ -5,32 +5,43 @@ const mapStyles = StyleSheet.create ({
         marginTop: 10,
         textAlign: 'center',
         color: 'black',
-        fontFamily: 'BMJUA_otf',
-        fontSize: 20,
+        fontFamily: 'BMJUA',
+        fontSize: 25,
         
     },
 
-    myposition: {
-        marginTop: 10,
+    positionContainer: {
+        flexDirection: 'row'
+    },
+
+    myPosition: {
+        marginTop: 20,
         marginLeft: 30,
-        width: 40,
         color: 'black',
-        fontFamily: 'BMJUA_otf',
+        fontFamily: 'BMHANNA',
         fontSize: 20,
     },
 
-    mapview: {
-    marginTop: 10,
-    width: 100,
-    height: 300,
-    borderColor: 'black'
+    positionDetail: {
+        marginTop: 20,
+        marginLeft: 10,
+        color: 'black',
+        fontFamily: 'BMHANNAAir',
+        fontSize: 20,
+    },
+
+    mapView: {
+        marginTop: 10,
+        width: 100,
+        height: 300,
+        borderColor: 'black'
     },
 
     storeInformation: {
-    marginTop: 10,
-    width: 100,
-    height: 300,
-    borderColor: 'black'
+        marginTop: 10,
+        width: 100,
+        height: 300,
+        borderColor: 'black'
     },
 
 });

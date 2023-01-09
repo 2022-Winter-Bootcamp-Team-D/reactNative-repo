@@ -4,9 +4,9 @@ import mapStyles from '../../styles/MapStyles';
 
 function MapTitle() {
     return (
-    <Text style={mapStyles.maptitle}>
-        내 주변 매장
-    </Text>
+        <Text style={mapStyles.maptitle}>
+            내 주변 매장
+        </Text>
     );
 };
 

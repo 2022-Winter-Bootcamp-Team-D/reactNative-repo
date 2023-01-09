@@ -1,12 +1,17 @@
 import React from "react";
-import {Text} from 'react-native';
+import {View, Text} from 'react-native';
 import mapStyles from '../../styles/MapStyles';
 
 function MyPosition() {
     return (
-    <Text style={mapStyles.storeInformation}>
-        내 위치 대한민국 대한민국
-    </Text>
+        <View style={mapStyles.positionContainer}>
+            <Text style={mapStyles.myPosition}>
+                내 위치
+            </Text>
+            <Text style={mapStyles.positionDetail}>
+                대한민국 서울시
+            </Text>
+        </View>
     );
 };
 
