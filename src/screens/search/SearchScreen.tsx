@@ -1,6 +1,6 @@
 import React from "react";
 import {View, Text} from 'react-native';
-import styles from '../../styles/screens/MapStyles';
+import styles from '../../styles/screens/MapScreenStyles';
 
 function SearchScreen() {
     return (

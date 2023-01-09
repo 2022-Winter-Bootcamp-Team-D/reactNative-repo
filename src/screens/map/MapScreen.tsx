@@ -1,11 +1,20 @@
 import React from "react";
 import {View, Text} from 'react-native';
-import styles from '../../styles/screens/MapStyles';
+import MapTitle from "../../components/map/MapTitle";
+import MyPosition from "../../components/map/MyPosition";
+import mapScreenStyles from '../../styles/screens/MapScreenStyles';
 
 function MapScreen() {
     return (
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Text>맵</Text>
+      <View style={mapScreenStyles.container}>
+        <View>
+          <MapTitle/>
+        </View>
+        <View>
+          <MyPosition/>
+        </View>
+        <View style={mapScreenStyles.container}/>
+
       </View>
     );
 };
