@@ -6,8 +6,7 @@ const mapStyles = StyleSheet.create ({
         textAlign: 'center',
         color: 'black',
         fontFamily: 'BMJUA',
-        fontSize: 25,
-        
+        fontSize: 25
     },
 
     positionContainer: {
@@ -32,9 +31,17 @@ const mapStyles = StyleSheet.create ({
 
     mapView: {
         marginTop: 10,
-        width: 100,
-        height: 300,
-        borderColor: 'black'
+        marginLeft: 10,
+        width: '95%',
+        height: 500,
+        color: 'white',
+        borderColor: 'black',
+        borderWidth: 3,
+    },
+
+    image: {
+        width: '100%',
+        height: '100%'
     },
 
     storeInformation: {

@@ -12,7 +12,7 @@ function MapScreen() {
           <MapTitle/>
           <MyPosition/>
           <MapView/>
-          <StoreInformation/>
+          {/* <StoreInformation/> */}
       </View>
     );
 };
