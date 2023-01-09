@@ -41,6 +41,7 @@ import {
 
 import messaging from '@react-native-firebase/messaging';
 import ReservationScreen from './src/screens/reservation/ReservationScreen';
+import MapListScreen from './src/screens/maplist/MapListScreen';
 
 const Section: React.FC<
   PropsWithChildren<{
@@ -102,9 +103,11 @@ function App() {
       <Stack.Navigator>
         <Stack.Screen name="Register" component={RegisterScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="Map" component={MapScreen} options={{headerShown: false,}}/>
+        <Stack.Screen name="MapList" component={MapListScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="Status" component={StatusScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="Search" component={SearchScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="Reservation" component={ReservationScreen} options={{headerShown: false,}}/>
+
         <Stack.Screen name="Main" component={MainScreen} options={{headerShown: false,}}/>
       </Stack.Navigator>
     </NavigationContainer>

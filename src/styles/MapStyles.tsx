@@ -134,6 +134,22 @@ const mapStyles = StyleSheet.create ({
         fontSize: 15,
     },
 
+    mapListButton:{
+        marginTop: 540,
+        marginLeft: 280,
+        backgroundColor: '#db7405af',
+        padding: 10,
+        borderRadius: 5,
+        position: 'absolute'
+    },
+    
+    buttonText:{
+        textAlign: 'center',
+        color: 'black',
+        fontFamily: 'BMHANNAAir',
+        fontSize: 17,
+    },
+
 });
 
 export default mapStyles;
