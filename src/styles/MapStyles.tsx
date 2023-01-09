@@ -37,11 +37,24 @@ const mapStyles = StyleSheet.create ({
         color: 'white',
         borderColor: 'black',
         borderWidth: 3,
+        position: 'relative'
     },
 
     image: {
         width: '100%',
         height: '100%'
+    },
+
+    activateIcon:{
+        marginTop: 300,
+        marginLeft: 100,
+        position: 'absolute'
+    },
+
+    unactivateIcon:{
+        marginTop: 200,
+        marginLeft: 300,
+        position: 'absolute'
     },
 
     storeInformation: {
