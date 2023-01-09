@@ -4,7 +4,7 @@ import ActivatedMark from "../../components/map/ActivatedMark";
 import MapTitle from "../../components/map/MapTitle";
 import MapView from "../../components/map/MapView";
 import MyPosition from "../../components/map/MyPosition";
-import StoreInformation from "../../components/map/MapListButton";
+import MapListButton from "../../components/map/MapListButton";
 import UnActivatedMark from "../../components/map/UnActivatedMark";
 import mapScreenStyles from '../../styles/screens/MapScreenStyles';
 
@@ -12,11 +12,15 @@ function MapScreen() {
     return (
       <View style={mapScreenStyles.container}>
           <MapTitle/>
-          <MyPosition/>
+          <View style={mapScreenStyles.myPosition}>
+            <MyPosition/>
+          </View>
           <MapView/>
           <ActivatedMark/>
           <UnActivatedMark/>
-          <StoreInformation/>
+          <View style={mapScreenStyles.mapListButton}>
+            <MapListButton/>
+          </View>
       </View>
     );
 };

@@ -1,5 +1,4 @@
-import {StyleSheet, Platform} from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import {StyleSheet} from 'react-native';
 
 const mapStyles = StyleSheet.create ({
     maptitle: {
@@ -15,15 +14,13 @@ const mapStyles = StyleSheet.create ({
     },
 
     myPosition: {
-        marginTop: 20,
-        marginLeft: 30,
         color: 'black',
         fontFamily: 'BMHANNA',
         fontSize: 20,
     },
 
     positionDetail: {
-        marginTop: 21,
+        marginTop: 2,
         marginLeft: 10,
         color: 'black',
         fontFamily: 'BMHANNAAir',
@@ -80,7 +77,7 @@ const mapStyles = StyleSheet.create ({
 
     storeDetailText:{
         marginTop: 5,
-        marginLeft: 10,
+        marginLeft: 60,
         color: 'black',
         fontFamily: 'BMHANNAAir',
         fontSize: 15,
@@ -88,7 +85,7 @@ const mapStyles = StyleSheet.create ({
 
     storeDistanceText:{
         marginTop: 5,
-        marginLeft: 120,
+        marginLeft: 80,
         color: 'black',
         fontFamily: 'BMHANNAAir',
         fontSize: 15,
@@ -135,12 +132,9 @@ const mapStyles = StyleSheet.create ({
     },
 
     mapListButton:{
-        marginTop: 540,
-        marginLeft: 280,
         backgroundColor: '#db7405af',
         padding: 10,
         borderRadius: 5,
-        position: 'absolute'
     },
     
     buttonText:{

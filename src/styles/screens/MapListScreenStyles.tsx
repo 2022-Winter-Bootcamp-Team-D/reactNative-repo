@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-const mapScreenStyles = StyleSheet.create ({
+const mapListScreenStyles = StyleSheet.create ({
   container: {
     height: 1000,
     backgroundColor: 'white'
@@ -12,6 +12,7 @@ const mapScreenStyles = StyleSheet.create ({
     color: 'black',
     fontFamily: 'BMHANNA',
     fontSize: 20,
+    position: 'relative',
   },
 
   positionDetail: {
@@ -21,9 +22,15 @@ const mapScreenStyles = StyleSheet.create ({
       fontSize: 20,
   },
 
+  listContainer: {
+    marginTop: 10,
+    position: 'relative'
+  },
+
   mapListButton:{
-    marginTop: 50,
+    marginTop: -80,
     marginLeft: 290,
+    marginRight: 10,
     position: 'absolute',
     left: 0,
     top: 0,
@@ -31,4 +38,4 @@ const mapScreenStyles = StyleSheet.create ({
 
 });
 
-export default mapScreenStyles;
+export default mapListScreenStyles;
