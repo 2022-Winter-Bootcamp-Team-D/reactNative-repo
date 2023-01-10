@@ -5,13 +5,8 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../screens/RootStackParams';
 import messaging from '@react-native-firebase/messaging';
 import RegisterStyles from '../../styles/RegisterStyles';
-import RegisterScreenStyles from "../../styles/screens/RegisterScreenStyles";
 
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
-
-
-function RegisterButton() {
-    const navigation = useNavigation<ResgisterScreenProp>();
 
     async function onAppBootstrap() {
         // Register the device with FCM
@@ -21,16 +16,21 @@ function RegisterButton() {
         const token = await messaging().getToken();
 
         // Save the token
-        await postToApi('/users/1234/tokens', { token });
-
+        // await postToApi('/users/1234/tokens', { token });
+        console.log('[token]' + token)
+        return (token)
     }
 
+function RegisterButton() {
+
+    const navigation = useNavigation<ResgisterScreenProp>();
+    
     return (
         <View >
             <TouchableOpacity
                     style={RegisterStyles.registerButton}
                     onPress={() => {
-                        onAppBootstrap
+                        onAppBootstrap()
                         navigation.navigate('Main')
                     }}
                 >

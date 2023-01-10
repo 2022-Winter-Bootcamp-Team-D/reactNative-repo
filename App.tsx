@@ -76,18 +76,18 @@ function App() {
   return unsubscribe;
   }, []);
 
-  const getFcmToken = async () => {
-    const fcmToken = await messaging().getToken();
-    console.log('[FCM Token] ', fcmToken);
-  };
+  // const getFcmToken = async () => {
+  //   const fcmToken = await messaging().getToken();
+  //   console.log('[FCM Token] ', fcmToken);
+  // };
 
-  useEffect(() => {
-    getFcmToken();
-    const unsubscribe = messaging().onMessage(async remoteMessage => {
-      console.log('[Remote Message] ', JSON.stringify(remoteMessage));
-    });
-    return unsubscribe;
-  }, []);
+  // useEffect(() => {
+  //   getFcmToken();
+  //   const unsubscribe = messaging().onMessage(async remoteMessage => {
+  //     console.log('[Remote Message] ', JSON.stringify(remoteMessage));
+  //   });
+  //   return unsubscribe;
+  // }, []);
 
   return (
     <NavigationContainer>
