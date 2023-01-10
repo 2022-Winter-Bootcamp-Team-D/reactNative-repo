@@ -21,23 +21,23 @@ function ReservationPeople() {
             </Text>
             <View style={ReservationScreenStyles.people}>
                 <TouchableOpacity
-                    style={RegisterStyles.inquiryButton}
+                    style={ReservationStyles.calculationButton}
                     onPress={() => { }}
                 >
-                    <Text style={RegisterStyles.registerButtonText}>
-                        +
+                    <Text style={ReservationStyles.calculationText}>
+                        -
                     </Text>
                 </TouchableOpacity>
-                <View style={RegisterStyles.registerButtonText}>
-                    <Text style={RegisterStyles.registerButtonText}>
+                <View style={ReservationStyles.peopleInputBox}>
+                    <Text style={ReservationStyles.peopleText}>
                         2명
                     </Text>
                 </View>
                 <TouchableOpacity
-                    style={RegisterStyles.inquiryButton}
+                    style={ReservationStyles.calculationButton}
                     onPress={() => { }}
                 >
-                    <Text style={RegisterStyles.registerButtonText}>
+                    <Text style={ReservationStyles.calculationText}>
                         +
                     </Text>
                 </TouchableOpacity>

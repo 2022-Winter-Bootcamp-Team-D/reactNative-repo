@@ -1,7 +1,6 @@
 import React from "react";
-import {View, Image, Text} from 'react-native';
+import {View, Text} from 'react-native';
 import { TextInput } from "react-native-gesture-handler";
-import RegisterStyles from '../../styles/RegisterStyles';
 import ReservationStyles from "../../styles/ReservationStyles";
 import ReservationScreenStyles from "../../styles/screens/ReservationScreenStyles";
 
