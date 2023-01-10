@@ -13,7 +13,6 @@ import {createStackNavigator} from '@react-navigation/stack';
 import React, {useEffect, type PropsWithChildren} from 'react';
 import {RootStackParamList} from './src/screens/RootStackParams';
 import MapListScreen from './src/screens/maplist/MapListScreen';
-import InquiryScreen from './src/screens/inquiry/InquiryScreen';
 import MainScreen from './src/screens/main';
 import MapScreen from './src/screens/map/MapScreen'
 import ReservationScreen from './src/screens/reservation/ReservationScreen';
@@ -23,16 +22,7 @@ import RegisterScreen from './src/screens/register/RegisterScreen';
 
   const Stack = createStackNavigator<RootStackParamList>();
 
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  Alert
-} from 'react-native';
+import {StyleSheet, Text, useColorScheme, View, Alert} from 'react-native';
 
 import {
   Colors,
@@ -103,7 +93,6 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Register" component={RegisterScreen} options={{headerShown: false,}}/>
-        <Stack.Screen name="Inquiry" component={InquiryScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="Map" component={MapScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="MapList" component={MapListScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="Status" component={StatusScreen} options={{headerShown: false,}}/>
