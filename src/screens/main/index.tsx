@@ -14,7 +14,7 @@ function MainScreen() {
   return (
     <BottomTab.Navigator>
       <BottomTab.Screen 
-        name = 'Map'
+        name = '지도'
         component = {MapScreen} 
         options = {{
           headerShown: false,
@@ -28,7 +28,7 @@ function MainScreen() {
         }}
       />
       <BottomTab.Screen 
-        name = 'Status' 
+        name = '웨이팅' 
         component = {StatusScreen} 
         options = {{
           headerShown: false,
@@ -42,7 +42,7 @@ function MainScreen() {
         }}
       />
       <BottomTab.Screen 
-        name = 'Search'
+        name = '검색'
         component = {SearchScreen} 
         options = {{
           headerShown: false,

@@ -15,7 +15,6 @@ import CollapesibleView from "../../components/maplist/CollapsibleView";
 
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'MapList'>;
 
-
 function MapListScreen() {
     const navigation = useNavigation<ResgisterScreenProp>();
 

@@ -132,7 +132,7 @@ const mapStyles = StyleSheet.create ({
     },
 
     mapListButton:{
-        backgroundColor: '#db7405af',
+        backgroundColor: '#FAAB78',
         padding: 10,
         borderRadius: 5,
     },

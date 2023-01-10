@@ -66,7 +66,7 @@ const mapListStyles = StyleSheet.create ({
         marginLeft: '10%',
         padding: 8,
         borderRadius: 8,
-        backgroundColor: '#f1db1abb',
+        backgroundColor: '#FFD495',
         
     },
 
