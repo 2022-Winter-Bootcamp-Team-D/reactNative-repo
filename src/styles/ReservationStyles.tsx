@@ -11,6 +11,22 @@ const ReservationStyles = StyleSheet.create ({
     borderRadius: 10
   },
 
+  peopleTitle:{
+    marginTop: 10,
+    marginLeft: 20,
+    color: 'black',
+    fontFamily: 'BMJUA',
+    fontSize: 25
+  },
+
+  PasswordInput:{
+    marginLeft: 20,
+    marginRight: 40,
+    marginBottom: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: 'black',
+  },
+
 });
 
 export default ReservationStyles;

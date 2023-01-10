@@ -6,6 +6,19 @@ const ReservationScreenStyles = StyleSheet.create ({
     backgroundColor: 'white'
   },
 
+  reservationPeople: {
+    marginTop: 10,
+  },
+
+  people: {
+    alignSelf: 'center',
+    flexDirection: 'row'
+  },
+
+  PasswordInput: {
+    marginTop: 10,
+  },
+
 });
 
 export default ReservationScreenStyles;

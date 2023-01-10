@@ -4,6 +4,8 @@ import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../screens/RootStackParams';
 import RegisterStyles from '../../styles/RegisterStyles';
+import ReservationScreenStyles from "../../styles/screens/ReservationScreenStyles";
+import ReservationStyles from "../../styles/ReservationStyles";
 
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Reservation'>;
 
@@ -13,11 +15,11 @@ function ReservationPeople() {
     const navigation = useNavigation<ResgisterScreenProp>();
 
     return (
-        <View style={RegisterStyles.registerButtonText}>
-            <Text style={RegisterStyles.registerButtonText}>
+        <View style={ReservationScreenStyles.reservationPeople}>
+            <Text style={ReservationStyles.peopleTitle}>
                 인원 입력
             </Text>
-            <View style={RegisterStyles.registerButtonText}>
+            <View style={ReservationScreenStyles.people}>
                 <TouchableOpacity
                     style={RegisterStyles.inquiryButton}
                     onPress={() => { }}
