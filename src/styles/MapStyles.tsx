@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 
 const mapStyles = StyleSheet.create ({
     maptitle: {
-        marginTop: 10,
+        marginTop: 20,
         textAlign: 'center',
         color: 'black',
         fontFamily: 'BMJUA',
@@ -132,6 +132,7 @@ const mapStyles = StyleSheet.create ({
     },
 
     mapListButton:{
+        marginTop: 5,
         backgroundColor: '#FAAB78',
         padding: 10,
         borderRadius: 5,
