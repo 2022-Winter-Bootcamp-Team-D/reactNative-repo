@@ -18,7 +18,53 @@ const RegisterStyles = StyleSheet.create ({
     color: 'black',
     fontFamily: 'BMJUA',
     fontSize: 35
-  }
+  },
+
+  RegisterInput:{
+    marginTop: 10,
+    marginLeft: 60,
+    marginRight: 60,
+    borderBottomWidth: 1,
+    borderBottomColor: 'black',
+  },
+
+  registerButton: {
+    marginTop: 10,
+    marginLeft: 60,
+    marginRight: 60,
+    height: 40,
+    borderWidth: 1,
+    borderRadius: 12,
+    borderColor: 'black',
+    backgroundColor: '#FFE600'
+  },
+
+  registerButtonText: {
+    marginTop: '4%',
+    textAlign: 'center',
+    color: 'black',
+    fontFamily: 'BMHANNA',
+    fontSize: 15
+  },
+
+  inquiryButton: {
+    marginTop: 10,
+    marginLeft: 60,
+    marginRight: 60,
+    height: 40,
+    borderWidth: 1,
+    borderRadius: 12,
+    borderColor: 'black',
+    backgroundColor: '#ECECEC',
+  },
+
+  inquiryButtonText: {
+    marginTop: '4%',
+    textAlign: 'center',
+    color: 'black',
+    fontFamily: 'BMHANNA',
+    fontSize: 15
+  },
 
 });
 

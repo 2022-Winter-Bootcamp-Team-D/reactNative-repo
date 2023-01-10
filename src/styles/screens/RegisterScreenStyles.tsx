@@ -10,6 +10,11 @@ const RegisterScreenStyles = StyleSheet.create ({
     marginTop: '30%',
   },
   
+  registerButton:{
+    marginTop: 20,
+  }
+
+
 });
 
 export default RegisterScreenStyles;
