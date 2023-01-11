@@ -10,7 +10,7 @@ import InquiryButton from "../../components/register/InquiryButton";
 function RegisterScreen() {
 
     return (
-        <View style={RegisterStyles.container}>
+        <View style={RegisterScreenStyles.container}>
             <Logo/>
             <RegisterInput/>
             <View style={RegisterScreenStyles.registerButton}>

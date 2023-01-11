@@ -24,14 +24,14 @@ import RegisterScreen from './src/screens/register/RegisterScreen';
   const Stack = createStackNavigator<RootStackParamList>();
 
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
+  SafeAreaView, //컨테이너
+  ScrollView,   //스크롤
+  StatusBar,    //
+  StyleSheet,   //스타일지정
   Text,
-  useColorScheme,
-  View,
-  Alert
+  useColorScheme, //
+  View,         //<div>와 같은 개념, 특정한 상황 제외하고 항상 쓰임
+  Alert         //알림창 경고창
 } from 'react-native';
 
 import {
@@ -75,6 +75,7 @@ const Section: React.FC<
   );
 };
 
+//지우면 안돼!!!
 messaging().setBackgroundMessageHandler(async remoteMessage => {
   console.log('[Background Remote Message]', remoteMessage);
 });
@@ -100,10 +101,11 @@ function App() {
   //   return unsubscribe;
   // }, []);
 
+  //내가 이동하고자 하는 화면 이름과 컴포넌트 작성
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Register" component={RegisterScreen} options={{headerShown: false,}}/>
+      <Stack.Navigator> 
+        <Stack.Screen name="Register" component={RegisterScreen} options={{headerShown: false,}}/> 
         <Stack.Screen name="Inquiry" component={InquiryScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="Map" component={MapScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="MapList" component={MapListScreen} options={{headerShown: false,}}/>
