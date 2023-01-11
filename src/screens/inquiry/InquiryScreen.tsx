@@ -17,15 +17,15 @@ function InquiryScreen() {
         <View style={InquiryScreenStyles.container}>
             <Logo/>
             <InquiryInput/>
-                <TouchableOpacity
+            <TouchableOpacity
                 style={InquiryStyles.inquiryButton}
                 onPress={() => navigation.navigate('Status')}
-                >
-                    <Text style={InquiryStyles.inquiryButtonText}>
-                        대기 현황 조회
-                    </Text>
-                </TouchableOpacity>
-            </View>
+            >
+                <Text style={InquiryStyles.inquiryButtonText}>
+                    대기 현황 조회
+                </Text>
+            </TouchableOpacity>
+        </View>
     );
 };
 
