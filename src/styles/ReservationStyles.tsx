@@ -90,6 +90,10 @@ const reservationStyles = StyleSheet.create ({
     fontSize: 40
   },
 
+  passwordContainer: {
+    flexDirection: 'row'
+  },
+
   PasswordInput:{
     marginLeft: 20,
     marginRight: 40,
