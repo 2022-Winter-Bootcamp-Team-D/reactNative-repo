@@ -1,32 +1,24 @@
 import React from "react";
-import {View, TouchableOpacity, Text} from 'react-native';
-import {Collapse,CollapseHeader, CollapseBody} from 'accordion-collapse-react-native';
-import {useNavigation} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackParamList} from '../../screens/RootStackParams';
-import ListTitle from "../maplist/ListTitle";
-import ListDetail from "../maplist/ListDetail";
-import mapListScreenStyles from "../../styles/screens/MapListScreenStyles";
-import mapListStyles from "../../styles/MapListStyles";
-import ReservationStyles from "../../styles/ReservationStyles";
+import {View, Text} from 'react-native';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import mapListStyles from '../../styles/MapListStyles';
+import mapStyles from "../../styles/MapStyles";
+import reservationStyles from "../../styles/ReservationStyles";
 
-type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Map'>;
-
-function StoreTitle() {
-    const navigation = useNavigation<ResgisterScreenProp>();
-
-    return(
-        <View style={ReservationStyles.storeTitle}>
-            <Collapse>
-                <CollapseHeader>
-                    <ListTitle/>
-                </CollapseHeader>
-                <CollapseBody>
-                    <ListDetail/>
-                </CollapseBody>
-            </Collapse>
+function ListTitle() {
+    return (
+        <View style={mapListStyles.listTitle}>
+            <Text style={reservationStyles.storeNameText}>
+                트리아농
+            </Text>
+            <Text style={reservationStyles.waitingText}>
+                대기 3팀
+            </Text>
+            <Text style={reservationStyles.storeDistanceText}>
+                528m
+            </Text>
         </View>
     );
 };
 
-export default StoreTitle;
+export default ListTitle;

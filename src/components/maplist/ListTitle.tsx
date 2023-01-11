@@ -6,7 +6,7 @@ import mapStyles from "../../styles/MapStyles";
 
 function ListTitle() {
     return (
-        <View style={mapListStyles.makeList}>
+        <View style={mapListStyles.listTitle}>
             <Text style={mapListStyles.number}>
                 1
             </Text>

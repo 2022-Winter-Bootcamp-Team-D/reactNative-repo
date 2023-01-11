@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 
-const ReservationStyles = StyleSheet.create ({
-  storeTitle: {
+const reservationStyles = StyleSheet.create ({
+  selectedStore: {
     height: '13%',
     marginTop: 20,
     marginLeft: 10,
@@ -9,6 +9,39 @@ const ReservationStyles = StyleSheet.create ({
     alignContent:'center',
     borderWidth: 3,
     borderRadius: 10
+  },
+
+  storeNameText:{
+    marginLeft: -10,
+    color: 'black',
+    fontFamily: 'BMHANNA',
+    fontSize: 23,
+  },
+
+  waitingText:{
+    marginTop: 5,
+    marginLeft: 80,
+    color: 'black',
+    fontFamily: 'BMHANNAAir',
+    fontSize: 15,
+  },
+
+  storeDistanceText:{
+    marginTop: 5,
+    marginLeft: 100,
+    color: 'black',
+    fontFamily: 'BMHANNAAir',
+    fontSize: 15,
+  },
+  
+  storeDetail: {
+    marginTop: 10,
+    marginLeft: 10,
+    marginBottom: 5,
+    padding: 8,
+    color: 'black',
+    fontFamily: 'BMHANNAAir',
+    fontSize: 17,
   },
 
   peopleTitle:{ 
@@ -67,4 +100,4 @@ const ReservationStyles = StyleSheet.create ({
 
 });
 
-export default ReservationStyles;
+export default reservationStyles;
