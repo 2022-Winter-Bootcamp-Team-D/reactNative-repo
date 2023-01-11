@@ -10,11 +10,22 @@ const ReservationStyles = StyleSheet.create ({
     },
 
     searchBar: {
-        marginLeft: 10,
+        marginTop: 10,
+        marginLeft: 20,
         width: '90%',
         height: '5%',
         borderRadius: 8,
-        backgroundColor: '#ECECEC'
+        backgroundColor: '#ECECEC',
+        flexDirection: 'row'
+    },
+
+    searchIcon: {
+        marginTop: '3.5%',
+        marginLeft: 20,
+    },
+
+    searchSection: {
+        marginLeft: 10,
     },
 
 });

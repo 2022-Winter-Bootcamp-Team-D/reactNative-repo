@@ -43,6 +43,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import messaging from '@react-native-firebase/messaging';
+import SearchResultScreen from './src/screens/search/SearchResultScreen';
 
 const Section: React.FC<
   PropsWithChildren<{
@@ -108,6 +109,7 @@ function App() {
         <Stack.Screen name="MapList" component={MapListScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="Status" component={StatusScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="Search" component={SearchScreen} options={{headerShown: false,}}/>
+        <Stack.Screen name="SearchResult" component={SearchResultScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="Reservation" component={ReservationScreen} options={{headerShown: false,}}/>
 
         <Stack.Screen name="Main" component={MainScreen} options={{headerShown: false,}}/>

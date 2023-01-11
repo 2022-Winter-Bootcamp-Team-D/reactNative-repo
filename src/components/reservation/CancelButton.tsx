@@ -7,7 +7,6 @@ import RegisterStyles from '../../styles/RegisterStyles';
 
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Reservation'>;
 
-
 function CancelButton() {
 
     const navigation = useNavigation<ResgisterScreenProp>();
