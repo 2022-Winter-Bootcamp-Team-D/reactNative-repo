@@ -1,11 +1,20 @@
 import React from "react";
 import {View, Text} from 'react-native';
 import styles from '../../styles/screens/MapScreenStyles';
+import StatusTitle from '../../components/status/StatusTitle';
+//import StatusList from '../../components/status/StatusList';
+//import StatusReceipt from '../../components/status/StatusReceipt';
+//import StatusDelayButton from '../../components/status/StatusDelayButton';
+//import StatusCancelButton from '../../components/status/StatusCancelButton';
 
 function StatusScreen() {
     return (
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Text>대기 현황</Text>
+        <StatusTitle/>
+        {/* <StatusList/>
+        <StatusReceipt/>
+        <Stat usDelayButton/>
+        <StatusCancelButton/> */}
       </View>
     );
 };

@@ -10,7 +10,7 @@ const mapStyles = StyleSheet.create ({
     },
 
     positionContainer: {
-        flexDirection: 'row'
+        flexDirection: 'row'  
     },
 
     myPosition: {
