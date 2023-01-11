@@ -1,13 +1,16 @@
 import React from "react";
 import {View, Text} from 'react-native';
-import styles from '../../styles/screens/MapScreenStyles';
+import SearchScreenStyles from "../../styles/screens/SearchScreenStyles";
+import SearchStyles from "../../styles/SearchStyles";
 
 function SearchScreen() {
-    return (
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Text>서치</Text>
-      </View>
-    );
+  return (
+    <View style={SearchScreenStyles.container}>
+      <Text style={SearchStyles.searchTitle}>
+        검색
+      </Text>
+    </View>
+  );
 };
 
 export default SearchScreen;
