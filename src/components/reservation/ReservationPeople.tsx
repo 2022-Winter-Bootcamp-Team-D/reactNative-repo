@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState } from "react";
 import {View, TouchableOpacity, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -11,7 +11,7 @@ type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Reservation'
 
 
 function ReservationPeople() {
-
+    const [counter, setcount] = useState(0);
     const navigation = useNavigation<ResgisterScreenProp>();
 
     return (
@@ -22,7 +22,7 @@ function ReservationPeople() {
             <View style={ReservationScreenStyles.people}>
                 <TouchableOpacity
                     style={ReservationStyles.calculationButton}
-                    onPress={() => { }}
+                    onPress={() => {setcount(counter - 1)}}
                 >
                     <Text style={ReservationStyles.calculationText}>
                         -
@@ -30,12 +30,12 @@ function ReservationPeople() {
                 </TouchableOpacity>
                 <View style={ReservationStyles.peopleInputBox}>
                     <Text style={ReservationStyles.peopleText}>
-                        2명
+                        {counter}
                     </Text>
                 </View>
                 <TouchableOpacity
                     style={ReservationStyles.calculationButton}
-                    onPress={() => { }}
+                    onPress={() => {setcount(counter + 1)}}
                 >
                     <Text style={ReservationStyles.calculationText}>
                         +
