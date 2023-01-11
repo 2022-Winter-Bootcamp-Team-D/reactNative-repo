@@ -12,8 +12,11 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import React, {useEffect, type PropsWithChildren} from 'react';
 import {RootStackParamList} from './src/screens/RootStackParams';
+import MapListScreen from './src/screens/maplist/MapListScreen';
+import InquiryScreen from './src/screens/inquiry/InquiryScreen';
 import MainScreen from './src/screens/main';
 import MapScreen from './src/screens/map/MapScreen'
+import ReservationScreen from './src/screens/reservation/ReservationScreen';
 import StatusScreen from './src/screens/status/StatusScreen';
 import SearchScreen from './src/screens/status/StatusScreen';
 import RegisterScreen from './src/screens/register/RegisterScreen';
@@ -21,14 +24,14 @@ import RegisterScreen from './src/screens/register/RegisterScreen';
   const Stack = createStackNavigator<RootStackParamList>();
 
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
+  SafeAreaView, //컨테이너
+  ScrollView,   //스크롤
+  StatusBar,    //
+  StyleSheet,   //스타일지정
   Text,
-  useColorScheme,
-  View,
-  Alert
+  useColorScheme, //
+  View,         //<div>와 같은 개념, 특정한 상황 제외하고 항상 쓰임
+  Alert         //알림창 경고창
 } from 'react-native';
 
 import {
@@ -40,8 +43,6 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import messaging from '@react-native-firebase/messaging';
-import ReservationScreen from './src/screens/reservation/ReservationScreen';
-import MapListScreen from './src/screens/maplist/MapListScreen';
 
 const Section: React.FC<
   PropsWithChildren<{
@@ -73,6 +74,7 @@ const Section: React.FC<
   );
 };
 
+//지우면 안돼!!!
 messaging().setBackgroundMessageHandler(async remoteMessage => {
   console.log('[Background Remote Message]', remoteMessage);
 });
@@ -98,10 +100,12 @@ function App() {
     return unsubscribe;
   }, []);
 
+  //내가 이동하고자 하는 화면 이름과 컴포넌트 작성
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Register" component={RegisterScreen} options={{headerShown: false,}}/>
+      <Stack.Navigator> 
+        <Stack.Screen name="Register" component={RegisterScreen} options={{headerShown: false,}}/> 
+        <Stack.Screen name="Inquiry" component={InquiryScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="Map" component={MapScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="MapList" component={MapListScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="Status" component={StatusScreen} options={{headerShown: false,}}/>
