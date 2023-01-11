@@ -1,12 +1,24 @@
 import React from "react";
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
+import ReservationTitle from "../../components/reservation/ReservationTitle";
+import ReservationPeople from "../../components/reservation/ReservationPeople";
+import PasswordInput from "../../components/reservation/PasswordInput";
+import ReservationButton from "../../components/reservation/ReservationButton";
+import CancelButton from "../../components/reservation/CancelButton";
+import ReservationScreenStyles from "../../styles/screens/ReservationScreenStyles";
+import SelectedStore from "../../components/reservation/SelectedStore";
 
 function ReservationScreen() {
-    return (
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Text>예약 화면</Text>
-      </View>
-    );
+  return (
+    <View style={ReservationScreenStyles.container}>
+      <ReservationTitle/>
+      <SelectedStore/>
+      <ReservationPeople/>
+      <PasswordInput/>
+      <ReservationButton/>
+      <CancelButton/>
+    </View>
+  );
 };
 
 export default ReservationScreen;

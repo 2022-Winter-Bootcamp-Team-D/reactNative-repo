@@ -7,4 +7,5 @@ export type RootStackParamList = {
     Inquiry: undefined;
     Status: undefined;
     Search: undefined;
+    SearchResult: undefined;
 };

@@ -43,6 +43,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import messaging from '@react-native-firebase/messaging';
+import SearchResultScreen from './src/screens/search/SearchResultScreen';
 
 const Section: React.FC<
   PropsWithChildren<{
@@ -87,18 +88,18 @@ function App() {
   return unsubscribe;
   }, []);
 
-  const getFcmToken = async () => {
-    const fcmToken = await messaging().getToken();
-    console.log('[FCM Token] ', fcmToken);
-  };
+  // const getFcmToken = async () => {
+  //   const fcmToken = await messaging().getToken();
+  //   console.log('[FCM Token] ', fcmToken);
+  // };
 
-  useEffect(() => {
-    getFcmToken();
-    const unsubscribe = messaging().onMessage(async remoteMessage => {
-      console.log('[Remote Message] ', JSON.stringify(remoteMessage));
-    });
-    return unsubscribe;
-  }, []);
+  // useEffect(() => {
+  //   getFcmToken();
+  //   const unsubscribe = messaging().onMessage(async remoteMessage => {
+  //     console.log('[Remote Message] ', JSON.stringify(remoteMessage));
+  //   });
+  //   return unsubscribe;
+  // }, []);
 
   //내가 이동하고자 하는 화면 이름과 컴포넌트 작성
   return (
@@ -110,6 +111,7 @@ function App() {
         <Stack.Screen name="MapList" component={MapListScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="Status" component={StatusScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="Search" component={SearchScreen} options={{headerShown: false,}}/>
+        <Stack.Screen name="SearchResult" component={SearchResultScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="Reservation" component={ReservationScreen} options={{headerShown: false,}}/>
 
         <Stack.Screen name="Main" component={MainScreen} options={{headerShown: false,}}/>

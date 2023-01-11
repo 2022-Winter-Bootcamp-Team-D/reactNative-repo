@@ -11,32 +11,8 @@ const mapListStyles = StyleSheet.create ({
         position: 'relative',
     },
 
-    waitingText:{
-        marginTop: 5,
-        marginLeft: 40,
-        color: 'black',
-        fontFamily: 'BMHANNAAir',
-        fontSize: 15,
-    },
 
-    storeDetailText:{
-        marginTop: 15,
-        marginLeft: 40,
-        marginBottom: 5,
-        color: 'black',
-        fontFamily: 'BMHANNAAir',
-        fontSize: 15,
-    },
-
-    storeDistanceText:{
-        marginTop: 5,
-        marginLeft: 40,
-        color: 'black',
-        fontFamily: 'BMHANNAAir',
-        fontSize: 15,
-    },
-
-    makeList: {
+    listTitle: {
         marginTop: 30,
         marginLeft: 30,
         flexDirection: 'row',
@@ -47,6 +23,32 @@ const mapListStyles = StyleSheet.create ({
         color: 'black',
         fontFamily: 'BMHANNA',
         fontSize: 23,
+    },
+
+    waitingText:{
+        marginTop: 5,
+        marginLeft: 40,
+        color: 'black',
+        fontFamily: 'BMHANNAAir',
+        fontSize: 15,
+    },
+
+    storeDetailText:{
+        marginTop: 10,
+        marginLeft: 20,
+        marginBottom: 5,
+        padding: 8,
+        color: 'black',
+        fontFamily: 'BMHANNAAir',
+        fontSize: 17,
+    },
+
+    storeDistanceText:{
+        marginTop: 5,
+        marginLeft: 40,
+        color: 'black',
+        fontFamily: 'BMHANNAAir',
+        fontSize: 15,
     },
 
     verticalLine: {
@@ -67,7 +69,6 @@ const mapListStyles = StyleSheet.create ({
         padding: 8,
         borderRadius: 8,
         backgroundColor: '#FFD495',
-        
     },
 
     reservationText: {

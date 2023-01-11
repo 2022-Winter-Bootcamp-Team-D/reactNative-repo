@@ -3,29 +3,20 @@ import {View, Text} from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import mapListStyles from '../../styles/MapListStyles';
 import mapStyles from "../../styles/MapStyles";
+import reservationStyles from "../../styles/ReservationStyles";
 
 function ListTitle() {
     return (
         <View style={mapListStyles.listTitle}>
-            <Text style={mapListStyles.number}>
-                1
-            </Text>
-            <Text style={mapStyles.storeNameText}>
+            <Text style={reservationStyles.storeNameText}>
                 트리아농
             </Text>
-            <Text style={mapListStyles.waitingText}>
+            <Text style={reservationStyles.waitingText}>
                 대기 3팀
             </Text>
-            <Text style={mapListStyles.storeDistanceText}>
+            <Text style={reservationStyles.storeDistanceText}>
                 528m
             </Text>
-            <View style={mapListStyles.hideDetail}>
-                <FontAwesomeIcon 
-                    name = 'chevron-down'
-                    size = {20} 
-                    color = 'gray'
-                />
-            </View>
         </View>
     );
 };
