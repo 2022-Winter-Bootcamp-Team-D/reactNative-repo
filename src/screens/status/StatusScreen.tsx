@@ -9,7 +9,7 @@ import StatusDelayButton from '../../components/status/StatusDelayButton';
 
 function StatusScreen() {
     return (
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <View style={{flex: 1}}>
         <StatusTitle/>
         {/* <StatusList/>
         <StatusReceipt/> */}
