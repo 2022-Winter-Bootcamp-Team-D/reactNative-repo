@@ -10,9 +10,9 @@ const statusStyles = StyleSheet.create ({
 
     delayButton: {
         marginTop: 10,
-        marginLeft: 60,
-        marginRight: 60,
-        height: 40,
+        width: 100,
+        height: 50,
+        marginLeft: 12,
         borderWidth: 1,
         borderRadius: 12,
         borderColor: 'black',
@@ -24,14 +24,14 @@ const statusStyles = StyleSheet.create ({
         textAlign: 'center',
         color: 'black',
         fontFamily: 'BMHANNA',
-        fontSize: 15
+        fontSize: 18
     },
 
     cancelButton: {
         marginTop: 10,
-        marginLeft: 60,
-        marginRight: 60,
-        height: 40,
+        width: 100,
+        height: 50,
+        marginLeft: 185,
         borderWidth: 1,
         borderRadius: 12,
         borderColor: 'black',
@@ -43,7 +43,11 @@ const statusStyles = StyleSheet.create ({
         textAlign: 'center',
         color: 'black',
         fontFamily: 'BMHANNA',
-        fontSize: 15
+        fontSize: 18
+    },
+
+    ButtonContainer: {
+        flexDirection: 'row'
     }
 });
 

@@ -16,7 +16,6 @@ function StatusDelayButton() {
             <TouchableOpacity
                     style={statusStyles.delayButton}
                         onPress={() => {
-                            navigation.navigate('Status')
                         }}
                 >
                     <Text style={statusStyles.delayButtonText}>

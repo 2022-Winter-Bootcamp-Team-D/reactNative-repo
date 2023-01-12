@@ -21,7 +21,7 @@ function ListContent() {
                     03
                 </Text>
             </View>
-            <Text style={StatusListStyles.listContentText1}>
+            <Text style={StatusListStyles.listContentMessage}>
                     고객님의 차례가 다가오고 있습니다.
                     {"\n"}
                     지금 매장으로 오셔서 대기하여 주세요.
