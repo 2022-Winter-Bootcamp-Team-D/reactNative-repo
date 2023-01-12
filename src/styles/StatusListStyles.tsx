@@ -54,7 +54,9 @@ const StatusListStyles = StyleSheet.create ({
         fontFamily: 'BMHANNA',
         marginTop: 20,
         marginBottom: 30
-    }
+    },
+
+
 });
 
 export default StatusListStyles;
