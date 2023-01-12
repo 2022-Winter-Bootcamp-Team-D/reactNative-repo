@@ -9,6 +9,7 @@ import ReceiptContent from "../../components/status/ReceiptContent";
 import ReceiptList from "../../components/status/ReceiptList";
 import StatusCancelButton from "../../components/status/StatusCancelButton";
 import StatusStyles from "../../styles/StatusStyles";
+import HomeButton from "../../components/status/HomeButton";
 
 
 function StatusScreen() {

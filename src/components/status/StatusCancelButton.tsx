@@ -15,7 +15,7 @@ function StatusCancelButton() {
         <View >
             <TouchableOpacity
                     style={statusStyles.cancelButton}
-                    onPress={() => navigation.navigate('Main')}
+                    onPress={() => navigation.navigate('Register')}
                 >
                     <Text style={statusStyles.cancelButtonText}>
                         대기 취소

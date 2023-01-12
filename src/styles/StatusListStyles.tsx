@@ -2,6 +2,17 @@ import {StyleSheet} from 'react-native';
 
 const StatusListStyles = StyleSheet.create ({
 
+    HomeButton: {
+        marginLeft: 20,
+    },
+
+    StatusTitleText: {
+        marginLeft: 110,
+        color: 'black',
+        fontFamily: 'BMJUA',
+        fontSize: 25,
+    },
+
     listTitle: {
         marginTop: 10,
         marginLeft: 10,

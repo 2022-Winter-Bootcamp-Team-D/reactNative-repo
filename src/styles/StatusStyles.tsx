@@ -6,6 +6,8 @@ const statusStyles = StyleSheet.create ({
         width: '100%',
         height: '10%',
         backgroundColor: '#FCD265',
+        flexDirection: 'row',
+        alignItems: 'center'
     },
 
     delayButton: {
