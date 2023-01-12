@@ -4,7 +4,7 @@ import styles from '../../styles/screens/MapScreenStyles';
 import StatusTitle from '../../components/status/StatusTitle';
 //import StatusList from '../../components/status/StatusList';
 //import StatusReceipt from '../../components/status/StatusReceipt';
-//import StatusDelayButton from '../../components/status/StatusDelayButton';
+import StatusDelayButton from '../../components/status/StatusDelayButton';
 //import StatusCancelButton from '../../components/status/StatusCancelButton';
 
 function StatusScreen() {
@@ -12,9 +12,9 @@ function StatusScreen() {
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <StatusTitle/>
         {/* <StatusList/>
-        <StatusReceipt/>
-        <Stat usDelayButton/>
-        <StatusCancelButton/> */}
+        <StatusReceipt/> */}
+        <StatusDelayButton/>
+        {/* <StatusCancelButton/> */}
       </View>
     );
 };
