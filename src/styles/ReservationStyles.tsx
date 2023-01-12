@@ -12,7 +12,7 @@ const reservationStyles = StyleSheet.create ({
   },
 
   storeNameText:{
-    marginLeft: -10,
+    marginLeft: -10, 
     color: 'black',
     fontFamily: 'BMHANNA',
     fontSize: 23,

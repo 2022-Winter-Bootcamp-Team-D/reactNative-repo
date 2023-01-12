@@ -1,5 +1,5 @@
 export type MainBottomTabParamList = {
     Map: undefined;
-    Status: undefined;
+    Inquiry: undefined;
     Search: undefined;
 };
