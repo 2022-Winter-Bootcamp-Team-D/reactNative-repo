@@ -1,6 +1,13 @@
 import {StyleSheet} from 'react-native';
 
-const StatusStyles = StyleSheet.create ({
+const statusStyles = StyleSheet.create ({
+
+    statusTitle: {
+        width: '100%',
+        height: '9%',
+        backgroundColor: '#FCD265'
+    },
+
     delayButton: {
         marginTop: 10,
         marginLeft: 60,
@@ -9,11 +16,11 @@ const StatusStyles = StyleSheet.create ({
         borderWidth: 1,
         borderRadius: 12,
         borderColor: 'black',
-        backgroundColor: '#D2A3F6'
+        backgroundColor: '#D2A3F6',
+        justifyContent: 'center'
     },
 
     delayButtonText: {
-        marginTop: '4%',
         textAlign: 'center',
         color: 'black',
         fontFamily: 'BMHANNA',
@@ -28,11 +35,11 @@ const StatusStyles = StyleSheet.create ({
         borderWidth: 1,
         borderRadius: 12,
         borderColor: 'black',
-        backgroundColor: '#F48D8D'
+        backgroundColor: '#F48D8D',
+        justifyContent: 'center'
     },
 
     cancelButtonText: {
-        marginTop: '4%',
         textAlign: 'center',
         color: 'black',
         fontFamily: 'BMHANNA',
@@ -40,4 +47,4 @@ const StatusStyles = StyleSheet.create ({
     }
 });
 
-export default StatusStyles;
+export default statusStyles;
