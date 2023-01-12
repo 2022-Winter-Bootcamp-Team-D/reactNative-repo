@@ -6,16 +6,16 @@ import StatusList from '../../components/status/StatusList';
 import ReceiptTitle from '../../components/status/ReceiptTitle';
 import StatusDelayButton from "../../components/status/StatusDelayButton";
 import ReceiptContent from "../../components/status/ReceiptContent";
+import ReceiptList from "../../components/status/ReceiptList";
 
 
 function StatusScreen() {
     return (
-      <View style={{flex: 1}}>
+      <View>
         <StatusTitle/>
         <StatusList/>
-        <ReceiptTitle/>
-        <ReceiptContent/>
-        <StatusDelayButton/>
+        <ReceiptList/>
+        {/* <StatusDelayButton/> */}
         {/* <StatusCancelButton/> */}
       </View>
     );

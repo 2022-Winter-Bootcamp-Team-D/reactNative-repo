@@ -4,8 +4,8 @@ const statusStyles = StyleSheet.create ({
 
     statusTitle: {
         width: '100%',
-        height: '9%',
-        backgroundColor: '#FCD265'
+        height: '11%',
+        backgroundColor: '#FCD265',
     },
 
     delayButton: {

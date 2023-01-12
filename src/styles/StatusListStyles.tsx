@@ -3,10 +3,10 @@ import {StyleSheet} from 'react-native';
 const StatusListStyles = StyleSheet.create ({
 
     listTitle: {
-        height: '10%',
         marginTop: 20,
         marginLeft: 10,
         marginRight: 10,
+        padding: 15,
         backgroundColor: '#FFF9BF',
         borderWidth: 1,
         alignContent:'center',
@@ -16,13 +16,10 @@ const StatusListStyles = StyleSheet.create ({
     listTitleText: {
         color: 'black',
         fontFamily: 'BMHANNA',
-        marginLeft: 10,
         fontSize: 17,
-        
     },
 
     listContent: {
-        height: '57%',
         marginLeft: 10,
         marginRight: 10,
         backgroundColor: '#FFF9BF',
@@ -49,30 +46,41 @@ const StatusListStyles = StyleSheet.create ({
     },
 
     listContentText1: {
+        marginTop: 20,
+        marginBottom: 20,
         fontSize: 20,
         textAlign: 'center',
         fontFamily: 'BMHANNA',
-        marginTop: 20,
-        marginBottom: 30
+        
     },
 
     ReceiptContent: {
-        height: '30%',
         marginLeft: 10,
         marginRight: 10,
         backgroundColor: '#FFF9BF',
         borderWidth: 1,
-        alignContent:'center',
-        //justifyContent: 'center',
+        padding: 10
     },
 
-    ReceiptContentText: {
+    ReceiptContentTitle: {
+        marginTop: 10,
+        marginLeft: 10,
         color: 'black',
         fontFamily: 'BMHANNAAir',
-        marginLeft: 10,
         fontSize: 17,
     },
 
+    ReceiptContentText: {
+        marginTop: 10,
+        marginLeft: 50,
+        color: 'black',
+        fontFamily: 'BMHANNA',
+        fontSize: 17,
+    },
+
+    ReceiptContainer: {
+        flexDirection: 'row'
+    }
 });
 
 export default StatusListStyles;
