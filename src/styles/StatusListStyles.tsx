@@ -56,6 +56,22 @@ const StatusListStyles = StyleSheet.create ({
         marginBottom: 30
     },
 
+    ReceiptContent: {
+        height: '30%',
+        marginLeft: 10,
+        marginRight: 10,
+        backgroundColor: '#FFF9BF',
+        borderWidth: 1,
+        alignContent:'center',
+        //justifyContent: 'center',
+    },
+
+    ReceiptContentText: {
+        color: 'black',
+        fontFamily: 'BMHANNAAir',
+        marginLeft: 10,
+        fontSize: 17,
+    },
 
 });
 

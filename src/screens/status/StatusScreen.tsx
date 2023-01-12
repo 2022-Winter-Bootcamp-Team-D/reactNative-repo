@@ -3,16 +3,18 @@ import {View, Text} from 'react-native';
 import styles from '../../styles/screens/MapScreenStyles';
 import StatusTitle from '../../components/status/StatusTitle';
 import StatusList from '../../components/status/StatusList';
-import StatusReceipt from '../../components/status/StatusReceipt';
-import StatusDelayButton from '../../components/status/StatusDelayButton';
-//import StatusCancelButton from '../../components/status/StatusCancelButton';
+import ReceiptTitle from '../../components/status/ReceiptTitle';
+import StatusDelayButton from "../../components/status/StatusDelayButton";
+import ReceiptContent from "../../components/status/ReceiptContent";
+
 
 function StatusScreen() {
     return (
       <View style={{flex: 1}}>
         <StatusTitle/>
         <StatusList/>
-        <StatusReceipt/>
+        <ReceiptTitle/>
+        <ReceiptContent/>
         <StatusDelayButton/>
         {/* <StatusCancelButton/> */}
       </View>
