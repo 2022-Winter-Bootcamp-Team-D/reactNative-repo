@@ -1,7 +1,7 @@
 import React from "react";
 import {View, Text} from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import StatusListStyles from'../../styles/StatusStyles'
+import StatusListStyles from'../../styles/StatusListStyles'
 
 function ListTitle() {
     return (
