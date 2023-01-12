@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 const StatusListStyles = StyleSheet.create ({
 
     listTitle: {
-        marginTop: 20,
+        marginTop: 10,
         marginLeft: 10,
         marginRight: 10,
         padding: 15,

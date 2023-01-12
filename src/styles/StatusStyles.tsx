@@ -4,7 +4,7 @@ const statusStyles = StyleSheet.create ({
 
     statusTitle: {
         width: '100%',
-        height: '11%',
+        height: '10%',
         backgroundColor: '#FCD265',
     },
 
