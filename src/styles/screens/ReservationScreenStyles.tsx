@@ -11,7 +11,7 @@ const ReservationScreenStyles = StyleSheet.create ({
   },
 
   people: {
-    alignSelf: 'center',
+    marginTop: 20,
     flexDirection: 'row'
   },
 

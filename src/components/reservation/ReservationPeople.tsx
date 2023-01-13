@@ -16,10 +16,10 @@ function ReservationPeople() {
 
     return (
         <View style={ReservationScreenStyles.reservationPeople}>
-            <Text style={ReservationStyles.peopleTitle}>
-                인원 입력
-            </Text>
             <View style={ReservationScreenStyles.people}>
+                <Text style={ReservationStyles.peopleTitle}>
+                    인원 입력
+                </Text>
                 <TouchableOpacity
                     style={ReservationStyles.calculationButton}
                     onPress={() => {setcount(counter - 1)}}

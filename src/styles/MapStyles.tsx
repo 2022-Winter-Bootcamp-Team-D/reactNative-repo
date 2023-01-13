@@ -126,10 +126,10 @@ const mapStyles = StyleSheet.create ({
 
     mapListButton:{
         marginTop: 5,
-        backgroundColor: '#FAAB78',
+        borderColor: '#ca8f22',
+        backgroundColor: '#f6c942',
         borderBottomWidth: 3,
         borderEndWidth: 3, 
-        borderColor: '#a06238',
         borderRadius: 8,
         padding: 10,
     },
@@ -137,7 +137,7 @@ const mapStyles = StyleSheet.create ({
     buttonText:{
         textAlign: 'center',
         color: 'black',
-        fontFamily: 'BMHANNAAir',
+        fontFamily: 'BMJUA',
         fontSize: 17,
     },
 

@@ -17,7 +17,7 @@ type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
 
         // Save the token
         // await postToApi('/users/1234/tokens', { token });
-        console.log('[token]' + token)
+        console.log('[Token]' + token)
         return (token)
     }
 

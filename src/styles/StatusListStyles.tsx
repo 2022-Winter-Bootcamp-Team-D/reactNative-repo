@@ -2,9 +2,14 @@ import {StyleSheet} from 'react-native';
 
 const StatusListStyles = StyleSheet.create ({
 
+    titleContainer: {
+        marginTop: 40,
+        flexDirection: 'row'
+    },
+
     HomeButton: {
         marginTop: 15,
-        marginLeft: '85%',
+        marginLeft: '33%',
     },
 
     StatusTitleText: {
@@ -85,7 +90,7 @@ const StatusListStyles = StyleSheet.create ({
 
     ReceiptContentText: {
         marginTop: 10,
-        marginLeft: 40,
+        marginLeft: 30,
         color: 'black',
         fontFamily: 'BMJUA',
         textAlign: 'right',

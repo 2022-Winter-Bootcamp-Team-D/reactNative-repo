@@ -1,6 +1,5 @@
 import React from "react";
 import {View} from 'react-native';
-import ReservationTitle from "../../components/reservation/ReservationTitle";
 import ReservationPeople from "../../components/reservation/ReservationPeople";
 import PasswordInput from "../../components/reservation/PasswordInput";
 import ReservationButton from "../../components/reservation/ReservationButton";

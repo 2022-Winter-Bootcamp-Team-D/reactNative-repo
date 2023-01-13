@@ -6,10 +6,12 @@ import HomeButton from "./HomeButton";
 function ListContent() {
     return (
         <View>
-            <HomeButton/>
+            <View style={StatusListStyles.titleContainer}>
                 <Text style={StatusListStyles.listTitle}>
                     대기 신청 완료
                 </Text>
+                <HomeButton/>
+            </View>
             <View style={StatusListStyles.listContainer}>
                 <Text style={StatusListStyles.listContentText}>
                     대기번호
