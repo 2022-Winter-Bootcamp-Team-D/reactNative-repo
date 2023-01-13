@@ -14,7 +14,6 @@ const RegisterScreenStyles = StyleSheet.create ({
     marginTop: 20,
   }
 
-
 });
 
 export default RegisterScreenStyles;

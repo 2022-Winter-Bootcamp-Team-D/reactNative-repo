@@ -68,7 +68,10 @@ const mapListStyles = StyleSheet.create ({
         marginLeft: '10%',
         padding: 8,
         borderRadius: 8,
-        backgroundColor: '#FFD495',
+        borderColor: '#ca8f22',
+        backgroundColor: '#f6c942',
+        borderBottomWidth: 3,
+        borderEndWidth: 3, 
     },
 
     reservationText: {

@@ -17,7 +17,7 @@ function HomeButton() {
             <FontAwesomeIcon 
                 name = 'home' 
                 size = {40} 
-                color = '#e76f0d'
+                color = 'black'
             />
         </TouchableOpacity>
     );

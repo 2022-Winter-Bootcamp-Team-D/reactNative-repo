@@ -4,21 +4,20 @@ const statusStyles = StyleSheet.create ({
 
     statusTitle: {
         width: '100%',
-        height: '10%',
-        backgroundColor: '#FCD265',
+        height: '6%',
         flexDirection: 'row',
         alignItems: 'center'
     },
 
     delayButton: {
         marginTop: 10,
-        width: 100,
-        height: 50,
         marginLeft: 12,
-        borderWidth: 1,
+        borderEndWidth: 3,
+        borderBottomWidth: 3,
         borderRadius: 12,
-        borderColor: 'black',
-        backgroundColor: '#D2A3F6',
+        borderColor: 'gray',
+        backgroundColor: '#a9a7a2',
+        padding: 17,
         justifyContent: 'center'
     },
 
@@ -26,18 +25,18 @@ const statusStyles = StyleSheet.create ({
         textAlign: 'center',
         color: 'black',
         fontFamily: 'BMHANNA',
-        fontSize: 18
+        fontSize: 20
     },
 
     cancelButton: {
         marginTop: 10,
-        width: 100,
-        height: 50,
-        marginLeft: 185,
-        borderWidth: 1,
+        marginLeft: 130,
+        borderEndWidth: 3,
+        borderBottomWidth: 3,
         borderRadius: 12,
-        borderColor: 'black',
-        backgroundColor: '#F48D8D',
+        borderColor: '#ca8f22',
+        backgroundColor: '#FFC928',
+        padding: 17,
         justifyContent: 'center'
     },
 

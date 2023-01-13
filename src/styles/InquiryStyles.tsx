@@ -22,35 +22,17 @@ const InquiryStyles = StyleSheet.create ({
       borderBottomWidth: 1,
       borderBottomColor: 'black',
     },
-  
-    registerButton: {
-      marginTop: 10,
-      marginLeft: 60,
-      marginRight: 60,
-      height: 40,
-      borderWidth: 1,
-      borderRadius: 12,
-      borderColor: 'black',
-      backgroundColor: '#FFE600'
-    },
-  
-    registerButtonText: {
-      marginTop: '4%',
-      textAlign: 'center',
-      color: 'black',
-      fontFamily: 'BMHANNA',
-      fontSize: 15
-    },
-  
+
     inquiryButton: {
-      marginTop: 40,
+      marginTop: 50,
       marginLeft: 60,
       marginRight: 60,
-      height: 40,
-      borderWidth: 1,
+      borderEndWidth: 3,
+      borderBottomWidth: 3,
       borderRadius: 12,
-      borderColor: 'black',
-      backgroundColor: '#FFE600',
+      borderColor: '#ca8f22',
+      backgroundColor: '#FFC928',
+      padding: 12,
       justifyContent: 'center'
     },
   
@@ -59,7 +41,7 @@ const InquiryStyles = StyleSheet.create ({
       textAlign: 'center',
       color: 'black',
       fontFamily: 'BMHANNA',
-      fontSize: 15
+      fontSize: 20
     },
 });
 

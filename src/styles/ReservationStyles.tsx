@@ -2,42 +2,39 @@ import {StyleSheet} from 'react-native';
 
 const reservationStyles = StyleSheet.create ({
   selectedStore: {
-    height: '13%',
-    marginTop: 20,
-    marginLeft: 10,
-    marginRight: 10,
+    marginTop: 60,
+    marginLeft: 20,
+    marginRight: 20,
     alignContent:'center',
     borderWidth: 3,
-    borderRadius: 10
+    borderRadius: 10,
+    padding: 10
   },
 
   storeNameText:{
-    marginLeft: -10, 
+    marginLeft: -20, 
     color: 'black',
-    fontFamily: 'BMHANNA',
+    fontFamily: 'BMJUA',
     fontSize: 23,
   },
 
   waitingText:{
-    marginTop: 5,
-    marginLeft: 80,
+    marginLeft: 60,
     color: 'black',
-    fontFamily: 'BMHANNAAir',
-    fontSize: 15,
+    fontFamily: 'BMJUA',
+    fontSize: 20,
   },
 
   storeDistanceText:{
-    marginTop: 5,
-    marginLeft: 100,
+    marginLeft: 80,
     color: 'black',
-    fontFamily: 'BMHANNAAir',
-    fontSize: 15,
+    fontFamily: 'BMJUA',
+    fontSize: 20,
   },
   
   storeDetail: {
     marginTop: 10,
-    marginLeft: 10,
-    marginBottom: 5,
+    marginBottom: 10,
     padding: 8,
     color: 'black',
     fontFamily: 'BMHANNAAir',
@@ -45,37 +42,38 @@ const reservationStyles = StyleSheet.create ({
   },
 
   peopleTitle:{ 
-    marginTop: 10,
-    marginLeft: 20,
+    marginTop: 15,
+    marginLeft: 30,
+    marginRight: 60,
     color: 'black',
     fontFamily: 'BMJUA',
     fontSize: 25
   },
 
   calculationButton:{
-    width: 60,
-    height: 60,
-    marginTop: 10,
-    marginLeft: 30,
-    marginRight: 30,
+    width: 40,
+    height: 40,
+    marginLeft: 20,
+    marginRight: 20,
     alignSelf: 'center',
-    backgroundColor: '#FFF9BF',
+    backgroundColor: '#f6c942',
     borderWidth: 2,
     borderColor: 'black',
-    borderRadius: 8
+    borderRadius: 8,
+    justifyContent: 'center'
   },
 
   calculationText:{
-    marginTop: 10,
-    marginLeft: 18,
+    margin: 5,
+    textAlign: 'center',
     color: 'black',
     fontFamily: 'BMJUA',
-    fontSize: 40
+    fontSize: 30
   },
 
   peopleInputBox: {
-    width: 100,
-    height: 100,
+    width: 60,
+    height: 60,
     alignSelf: 'center',
     borderWidth: 2,
     borderColor: 'black',
@@ -83,11 +81,11 @@ const reservationStyles = StyleSheet.create ({
   },
 
   peopleText:{
-    marginTop: '30%',
+    marginTop: '25%',
     textAlign: 'center',
     color: 'black',
     fontFamily: 'BMJUA',
-    fontSize: 40
+    fontSize: 30
   },
 
   passwordContainer: {
@@ -95,7 +93,7 @@ const reservationStyles = StyleSheet.create ({
   },
 
   PasswordInput:{
-    marginLeft: 20,
+    marginLeft: 30,
     marginRight: 40,
     marginBottom: 20,
     borderBottomWidth: 1,

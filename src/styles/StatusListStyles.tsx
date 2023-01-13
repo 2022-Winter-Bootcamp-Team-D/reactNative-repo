@@ -2,8 +2,14 @@ import {StyleSheet} from 'react-native';
 
 const StatusListStyles = StyleSheet.create ({
 
+    titleContainer: {
+        marginTop: 40,
+        flexDirection: 'row'
+    },
+
     HomeButton: {
-        marginLeft: 20,
+        marginTop: 15,
+        marginLeft: '33%',
     },
 
     StatusTitleText: {
@@ -14,84 +20,83 @@ const StatusListStyles = StyleSheet.create ({
     },
 
     listTitle: {
-        marginTop: 10,
-        marginLeft: 10,
-        marginRight: 10,
-        padding: 15,
-        backgroundColor: '#FFF9BF',
-        borderWidth: 1,
-        alignContent:'center',
-        justifyContent: 'center',
-    },
-
-    listTitleText: {
+        marginTop: 20,
+        marginLeft: 20,
+        marginBottom: 20,
         color: 'black',
         fontFamily: 'BMHANNA',
-        fontSize: 17,
+        fontSize: 35,
     },
 
-    listContent: {
+    listContainer: {
+        marginTop: 20,
         marginLeft: 10,
         marginRight: 10,
-        backgroundColor: '#FFF9BF',
-        borderWidth: 1,
+        backgroundColor: '#FCD265',
+        borderColor: 'black',
+        borderEndWidth: 3,
+        borderBottomWidth: 3,
         alignContent:'center',
-        //justifyContent: 'center',
+        borderRadius: 8,
+        flexDirection: 'row',
+        padding: 15
     },
 
     listContentText: {
+        marginTop: 10,
+        marginLeft: 20,
         color: 'black',
-        fontFamily: 'BMHANNAAir',
-        marginTop: 20,
-        marginLeft: 10,
-        fontSize: 25,
-        textAlign: 'center'
+        fontFamily: 'BMHANNA',
+        fontSize: 20,
     },
 
     listContentTextNumber: {
+        marginLeft: 160,
         color: 'black',
-        fontFamily: 'BMHANNA',
-        marginLeft: 10,
+        fontFamily: 'BMJUA',
         fontSize: 35,
         textAlign: 'center'
     },
 
     listContentMessage: {
         marginTop: 20,
+        marginLeft: 20,
         marginBottom: 20,
         fontSize: 20,
-        textAlign: 'center',
+        color: 'black',
         fontFamily: 'BMHANNA',
         
     },
 
-    ReceiptContent: {
+    ReceiptContainer: {
+        marginTop: 40,
         marginLeft: 10,
         marginRight: 10,
-        backgroundColor: '#FFF9BF',
-        borderWidth: 1,
-        padding: 10
+        marginBottom: 40,
+        backgroundColor: 'white',
+        borderWidth: 2,
+        padding: 40,
+        borderRadius: 8,
+        flexDirection: 'row'
     },
 
     ReceiptContentTitle: {
         marginTop: 10,
-        marginLeft: 10,
+        marginLeft: -15,
         color: 'black',
-        fontFamily: 'BMHANNAAir',
-        fontSize: 17,
+        fontFamily: 'BMHANNA',
+        fontSize: 20,
     },
 
     ReceiptContentText: {
         marginTop: 10,
-        marginLeft: 50,
+        marginLeft: 30,
         color: 'black',
-        fontFamily: 'BMHANNA',
-        fontSize: 17,
+        fontFamily: 'BMJUA',
+        textAlign: 'right',
+        fontSize: 20,
     },
 
-    ReceiptContainer: {
-        flexDirection: 'row'
-    }
 });
 
 export default StatusListStyles;

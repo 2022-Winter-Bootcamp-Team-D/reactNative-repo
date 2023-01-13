@@ -18,7 +18,7 @@ function StatusCancelButton() {
                     onPress={() => navigation.navigate('Register')}
                 >
                     <Text style={statusStyles.cancelButtonText}>
-                        대기 취소
+                        대기 취소하기
                     </Text>
                 </TouchableOpacity>
         </View>

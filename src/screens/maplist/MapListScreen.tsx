@@ -19,8 +19,7 @@ function MapListScreen() {
     const navigation = useNavigation<ResgisterScreenProp>();
 
     return (
-        <ScrollView stickyHeaderIndices={[3]} style={mapListScreenStyles.container}>
-            <MapTitle/>
+        <ScrollView stickyHeaderIndices={[2]} style={mapListScreenStyles.container}>
             <View style={mapListScreenStyles.myPosition}>
                 <MyPosition/>
             </View>
