@@ -12,11 +12,12 @@ const statusStyles = StyleSheet.create ({
     delayButton: {
         marginTop: 10,
         marginLeft: 12,
-        borderWidth: 1,
+        borderEndWidth: 3,
+        borderBottomWidth: 3,
         borderRadius: 12,
-        borderColor: 'black',
+        borderColor: 'gray',
         backgroundColor: '#a9a7a2',
-        padding: 20,
+        padding: 17,
         justifyContent: 'center'
     },
 
@@ -29,12 +30,13 @@ const statusStyles = StyleSheet.create ({
 
     cancelButton: {
         marginTop: 10,
-        marginLeft: 120,
-        borderWidth: 1,
+        marginLeft: 130,
+        borderEndWidth: 3,
+        borderBottomWidth: 3,
         borderRadius: 12,
-        borderColor: 'black',
-        backgroundColor: '#FCD265',
-        padding: 20,
+        borderColor: '#ca8f22',
+        backgroundColor: '#FFC928',
+        padding: 17,
         justifyContent: 'center'
     },
 

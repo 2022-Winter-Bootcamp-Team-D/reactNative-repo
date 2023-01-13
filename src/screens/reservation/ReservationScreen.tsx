@@ -11,7 +11,6 @@ import SelectedStore from "../../components/reservation/SelectedStore";
 function ReservationScreen() {
   return (
     <View style={ReservationScreenStyles.container}>
-      <ReservationTitle/>
       <SelectedStore/>
       <ReservationPeople/>
       <PasswordInput/>

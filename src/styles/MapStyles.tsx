@@ -1,13 +1,6 @@
 import {StyleSheet} from 'react-native';
 
 const mapStyles = StyleSheet.create ({
-    maptitle: {
-        marginTop: 20,
-        textAlign: 'center',
-        color: 'black',
-        fontFamily: 'BMJUA',
-        fontSize: 25
-    },
 
     positionContainer: {
         flexDirection: 'row'  
@@ -134,8 +127,11 @@ const mapStyles = StyleSheet.create ({
     mapListButton:{
         marginTop: 5,
         backgroundColor: '#FAAB78',
+        borderBottomWidth: 3,
+        borderEndWidth: 3, 
+        borderColor: '#a06238',
+        borderRadius: 8,
         padding: 10,
-        borderRadius: 5,
     },
     
     buttonText:{

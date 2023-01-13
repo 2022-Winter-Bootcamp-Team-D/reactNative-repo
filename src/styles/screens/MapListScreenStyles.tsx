@@ -7,7 +7,7 @@ const mapListScreenStyles = StyleSheet.create ({
   },
 
   myPosition: {
-    marginTop: 20,
+    marginTop: 40,
     marginLeft: 30,
     color: 'black',
     fontFamily: 'BMHANNA',
