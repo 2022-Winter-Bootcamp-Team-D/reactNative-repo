@@ -5,6 +5,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../screens/RootStackParams';
 import messaging from '@react-native-firebase/messaging';
 import RegisterStyles from '../../styles/RegisterStyles';
+import AsyncStorage from '@react-native-community/async-storage';
 
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
 
@@ -16,7 +17,10 @@ type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
         const token = await messaging().getToken();
 
         // Save the token
-        // await postToApi('/users/1234/tokens', { token });
+        AsyncStorage.setItem('token', token, () => { // 'token'의 변수로 토큰값 저장
+            console.log('token저장')
+        });
+
         console.log('[Token]' + token)
         return (token)
     }
