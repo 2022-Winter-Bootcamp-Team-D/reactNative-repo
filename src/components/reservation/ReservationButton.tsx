@@ -31,7 +31,7 @@ function ReservationButton() {
                     }}
                 >
                     <Text style={RegisterStyles.registerButtonText}>
-                        웨이팅 시작 할께요!
+                        웨이팅 시작할게요!
                     </Text>
                 </TouchableOpacity>
         </View>

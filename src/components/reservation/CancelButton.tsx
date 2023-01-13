@@ -20,7 +20,7 @@ function CancelButton() {
                 }}
             >
                 <Text style={RegisterStyles.registerButtonText}>
-                    좀 더 고민해 볼께요!
+                    좀 더 고민해 볼게요!
                 </Text>
             </TouchableOpacity>
         </View>
