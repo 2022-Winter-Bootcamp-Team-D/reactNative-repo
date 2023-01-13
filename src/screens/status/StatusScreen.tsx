@@ -10,12 +10,12 @@ import ReceiptList from "../../components/status/ReceiptList";
 import StatusCancelButton from "../../components/status/StatusCancelButton";
 import StatusStyles from "../../styles/StatusStyles";
 import HomeButton from "../../components/status/HomeButton";
+import ReservationScreenStyles from "../../styles/screens/ReservationScreenStyles";
 
 
 function StatusScreen() {
     return (
-      <View>
-        <StatusTitle/>
+      <View style={ReservationScreenStyles.container}>
         <StatusList/>
         <ReceiptList/>
           <View style={StatusStyles.ButtonContainer}>

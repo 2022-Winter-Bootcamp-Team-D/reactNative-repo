@@ -7,7 +7,6 @@ function ReceiptList() {
 
     return(
         <View>
-            <ReceiptTitle/>
             <ReceiptContent/>
         </View>
     );

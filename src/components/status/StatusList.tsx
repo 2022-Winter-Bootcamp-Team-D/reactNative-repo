@@ -7,7 +7,6 @@ function StatusList() {
 
     return(
         <View>
-            <ListTitle/>
             <ListContent/>
         </View>
     );

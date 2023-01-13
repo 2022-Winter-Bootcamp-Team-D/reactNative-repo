@@ -1,31 +1,26 @@
 import React from "react";
 import {View, Text} from 'react-native';
 import StatusListStyles from'../../styles/StatusListStyles'
+import HomeButton from "./HomeButton";
 
 function ListContent() {
     return (
-        <View style={StatusListStyles.listContent}>
-            <View>
+        <View>
+            <HomeButton/>
+                <Text style={StatusListStyles.listTitle}>
+                    대기 신청 완료
+                </Text>
+            <View style={StatusListStyles.listContainer}>
                 <Text style={StatusListStyles.listContentText}>
                     대기번호
                 </Text>
                 <Text style={StatusListStyles.listContentTextNumber}>
-                    0037
-                </Text>
-            </View>
-            <View >
-                <Text style={StatusListStyles.listContentText}>
-                    대기순서
-                </Text>
-                <Text style={StatusListStyles.listContentTextNumber}>
-                    03
+                    37번
                 </Text>
             </View>
             <Text style={StatusListStyles.listContentMessage}>
-                    고객님의 차례가 다가오고 있습니다.
-                    {"\n"}
-                    지금 매장으로 오셔서 대기하여 주세요.
-                </Text>
+                현재 내 앞에 2팀이 있어요
+            </Text>
         </View>
     );
 };
