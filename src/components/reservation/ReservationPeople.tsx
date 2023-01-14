@@ -5,7 +5,13 @@ import ReservationStyles from "../../styles/ReservationStyles";
 
 
 function ReservationPeople() {
-    const [counter, setcount] = useState(0);
+    const [count, setCount] = useState(0);
+
+    function minus() {
+        if (count >= 2) {
+            setCount(count - 1)
+        }
+    }
 
     return (
         <View style={ReservationScreenStyles.reservationPeople}>
@@ -15,7 +21,8 @@ function ReservationPeople() {
                 </Text>
                 <TouchableOpacity
                     style={ReservationStyles.calculationButton}
-                    onPress={() => {setcount(counter - 1)}}
+                    onPress={() => {
+                        minus()}}
                 >
                     <Text style={ReservationStyles.calculationText}>
                         -
@@ -23,12 +30,12 @@ function ReservationPeople() {
                 </TouchableOpacity>
                 <View style={ReservationStyles.peopleInputBox}>
                     <Text style={ReservationStyles.peopleText}>
-                        {counter}
+                        {count}
                     </Text>
                 </View>
                 <TouchableOpacity
                     style={ReservationStyles.calculationButton}
-                    onPress={() => {setcount(counter + 1)}}
+                    onPress={() => {setCount(count + 1)}}
                 >
                     <Text style={ReservationStyles.calculationText}>
                         +
