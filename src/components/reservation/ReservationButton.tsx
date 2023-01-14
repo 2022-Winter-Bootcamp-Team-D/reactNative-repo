@@ -6,6 +6,7 @@ import {RootStackParamList} from '../../screens/RootStackParams';
 import RegisterStyles from '../../styles/RegisterStyles';
 import AsyncStorage from '@react-native-community/async-storage';
 import axios from "axios";
+import API from "../../services/API";
 
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Reservation'>;
 
@@ -25,15 +26,20 @@ function ReservationButton() {
     const data = {
         store_id: 1,
         name: "혜린",
-        phoneNum: "01068935274",
+        phoneNum: "01068935276",
         people: 3,
         password: 5678,
         token: "token",
         withCredentials:true
     }
 
-    async function postName() {
-        axios.post('http://3.34.68.226:8000/api/v1/waiting/', data)
+    async function postReservationData() {
+
+        try {
+            const response = await API.post(
+                'waiting/',
+                data
+            )
           .then(function (response) {
             console.log(response.data);
             navigation.navigate('Status')
@@ -41,15 +47,18 @@ function ReservationButton() {
           .catch(function (error) {
             console.log(error);
           });
+        } catch (error) {
+            console.log(error);
+        }
     };
-
+    
     return (
         <View >
             <TouchableOpacity
                     style={RegisterStyles.registerButton}
                     onPress={() => {
                         getFCMToken()
-                        postName()
+                        postReservationData()
                     }}
                 >
                     <Text style={RegisterStyles.registerButtonText}>
