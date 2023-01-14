@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {View} from 'react-native';
 import ReservationPeople from "../../components/reservation/ReservationPeople";
 import PasswordInput from "../../components/reservation/PasswordInput";
@@ -8,12 +8,17 @@ import ReservationScreenStyles from "../../styles/screens/ReservationScreenStyle
 import SelectedStore from "../../components/reservation/SelectedStore";
 
 function ReservationScreen() {
+  const [password, setPassword] = useState('');
+
   return (
     <View style={ReservationScreenStyles.container}>
       <SelectedStore/>
       <ReservationPeople/>
-      <PasswordInput/>
-      <ReservationButton/>
+      <PasswordInput
+        setPassword={setPassword}
+      />
+      <ReservationButton
+        password={password}/>
       <CancelButton/>
     </View>
   );

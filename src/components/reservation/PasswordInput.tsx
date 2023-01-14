@@ -4,29 +4,11 @@ import ReservationStyles from "../../styles/ReservationStyles";
 import ReservationScreenStyles from "../../styles/screens/ReservationScreenStyles";
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
-function PasswordInput() {
-    const [password, setPassword] = useState('');
-    const [isRevealPwd, setIsRevealPwd] = useState(false);
+interface Props {
+    setPassword: React.Dispatch<React.SetStateAction<string>>;
+}
 
-    function hidePwdIcon() {
-        return(
-            <FontAwesomeIcon 
-                    name = 'eye-slash' 
-                    size = {30} 
-                    color = 'black'
-            />
-        )
-    };
-
-    function showPwdIcon() {
-        return(
-            <FontAwesomeIcon 
-                    name = 'eye' 
-                    size = {30} 
-                    color = 'black'
-            />
-        )
-    };
+function PasswordInput({setPassword}:Props) {
 
     return (
         <View style={ReservationScreenStyles.PasswordInput}>
@@ -37,23 +19,14 @@ function PasswordInput() {
             {/* <View style={ReservationStyles.passwordContainer}> */}
                 <TextInput
                     style={ReservationStyles.PasswordInput}
-                    name="password"
                     placeholder="웨이팅에 사용하실 비밀번호를 입력해주세요."
                     autoCapitalize="none"
                     autoCorrect={false}
                     textContentType="newPassword"
                     secureTextEntry
-                    type={isRevealPwd ? "text" : "password"}
-                    value={password}
-                    // enablesReturnKeyAutomatically
                     maxLength={4}
-                    onChangeText={text => setPassword(text)}
+                    onChangeText={password => setPassword(password)}
                 />
-                {/* <Image
-                    title={isRevealPwd ? "Hide password" : "Show password"}
-                    src={isRevealPwd ? hidePwdIcon : showPwdIcon}
-                    onClick={() => setIsRevealPwd(prevState => !prevState)}
-                /> */}
             </View>
         </View>
     );  

@@ -10,8 +10,7 @@ import API from "../../services/API";
 
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Reservation'>;
 
-function ReservationButton() {
-
+function ReservationButton(password) {
     const navigation = useNavigation<ResgisterScreenProp>();
 
     async function getFCMToken() {
@@ -19,14 +18,13 @@ function ReservationButton() {
         AsyncStorage.getItem('token', (err, result) => { // 'token'에 담긴 아이디 불러오기
             console.log(result); // result에 담김 //불러온거 출력
         return(result);
-
         });
     }
     
     const data = {
         store_id: 1,
         name: "혜린",
-        phoneNum: "01068935279",
+        phoneNum: "01068935283",
         people: 3,
         password: 5678,
         token: "token",
@@ -34,7 +32,6 @@ function ReservationButton() {
     }
 
     async function postReservationData() {
-
         try {
             const response = await API.post(
                 '/waiting/',
@@ -51,6 +48,10 @@ function ReservationButton() {
             console.log(error);
         }
     };
+
+    function userPassword(){
+        console.log(password)
+    }
     
     return (
         <View >
@@ -59,6 +60,7 @@ function ReservationButton() {
                     onPress={() => {
                         getFCMToken()
                         postReservationData()
+                        userPassword()
                     }}
                 >
                     <Text style={RegisterStyles.registerButtonText}>

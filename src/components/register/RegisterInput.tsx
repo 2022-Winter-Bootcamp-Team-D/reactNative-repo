@@ -6,7 +6,7 @@ import RegisterStyles from '../../styles/RegisterStyles';
 interface Props {
     setName: React.Dispatch<React.SetStateAction<string>>;
     setPhoneNum: React.Dispatch<React.SetStateAction<string>>;
-  }
+}
 
 function RegisterInput({setName, setPhoneNum}:Props) {
 
