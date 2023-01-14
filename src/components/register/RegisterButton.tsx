@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import {View, TouchableOpacity, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -10,23 +10,25 @@ import AsyncStorage from '@react-native-community/async-storage';
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
 
 function RegisterButton() {
-
     const navigation = useNavigation<ResgisterScreenProp>();
-    
+
     async function onAppBootstrap() {
         // Register the device with FCM
         await messaging().registerDeviceForRemoteMessages();
-      
         // Get the token
         const token = await messaging().getToken();
-
         // Save the token
         AsyncStorage.setItem('token', token, () => { // 'token'의 변수로 토큰값 저장
             console.log('token저장')
         });
-
         console.log('[Token]' + token)
         return (token)
+    }
+
+    function UserRegister() {
+        const [name, setName] = useState('');
+        const [phoneNum, setPhoneNum] = useState('');
+        console.log(setName, setPhoneNum)
     }
 
     return (
@@ -35,6 +37,7 @@ function RegisterButton() {
                     style={RegisterStyles.registerButton}
                     onPress={() => {
                         onAppBootstrap()
+                        UserRegister()
                         navigation.navigate('Main')
                     }}
                 >
