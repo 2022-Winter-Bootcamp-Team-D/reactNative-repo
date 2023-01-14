@@ -22,11 +22,11 @@ function ReservationButton() {
 
         });
     }
-
+    
     const data = {
         store_id: 1,
         name: "혜린",
-        phoneNum: "01068935276",
+        phoneNum: "01068935279",
         people: 3,
         password: 5678,
         token: "token",
@@ -37,8 +37,8 @@ function ReservationButton() {
 
         try {
             const response = await API.post(
-                'waiting/',
-                data
+                '/waiting/',
+                data,
             )
           .then(function (response) {
             console.log(response.data);

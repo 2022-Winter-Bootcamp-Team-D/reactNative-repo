@@ -7,37 +7,37 @@ import InquiryStyles from "../../styles/InquiryStyles";
 import InquiryScreenStyles from "../../styles/screens/InquiryScreenStyles";
 import Logo from'../../components/inquiry/Logo'
 import InquiryInput from '../../components/inquiry/InquiryInput'
-import axios from "axios";
-import AsyncStorage from "@react-native-community/async-storage";
+import API from "../../services/API";
 
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Inquiry'>;
 
 function InquiryScreen() {
     const navigation = useNavigation<ResgisterScreenProp>();
     
+    // 보류
     const data = {
-        phoneNum: "01068935272",
-	    password: 5678
+        phoneNum: "01012345678",
+	    password: "5678"
     }
-    
-    async function getName() {
-        axios(
-        {
-            url: 'http://3.34.68.226:8000/api/v1/waiting/',
-            method: 'get',
-            data: data,
-            headers: {
-                contentType: 'application/json'
-            }
-        })
+
+    async function postInquiryData() {
+        try {
+            const response = await API.post(
+                '/waiting/list/',
+                data
+            )
           .then(function (response) {
-            console.log(response);
+            console.log(response.data);
             navigation.navigate('Status')
           })
           .catch(function (error) {
-            console.log(error, data);
+            console.log(error);
           });
+        } catch (error) {
+            console.log(error);
+        }
     };
+    
     return (
         <View style={InquiryScreenStyles.container}>
             <Logo/>
@@ -45,7 +45,7 @@ function InquiryScreen() {
             <TouchableOpacity
                 style={InquiryStyles.inquiryButton}
                 onPress={() => {
-                    getName()
+                    postInquiryData()
                 }}
             >
                 <Text style={InquiryStyles.inquiryButtonText}>

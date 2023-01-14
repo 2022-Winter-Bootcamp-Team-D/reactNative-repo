@@ -9,6 +9,10 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
 
+function RegisterButton() {
+
+    const navigation = useNavigation<ResgisterScreenProp>();
+    
     async function onAppBootstrap() {
         // Register the device with FCM
         await messaging().registerDeviceForRemoteMessages();
@@ -25,10 +29,6 @@ type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
         return (token)
     }
 
-function RegisterButton() {
-
-    const navigation = useNavigation<ResgisterScreenProp>();
-    
     return (
         <View >
             <TouchableOpacity
