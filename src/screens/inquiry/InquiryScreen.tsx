@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {View, Text, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -13,11 +13,15 @@ type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Inquiry'>;
 
 function InquiryScreen() {
     const navigation = useNavigation<ResgisterScreenProp>();
+    const [phoneNum, setPhoneNum] = useState('');
+    const [password, setPassword] = useState('');
+
+
+    // error 404
     
-    // 보류
     const data = {
-        phoneNum: "01012345678",
-	    password: "5678"
+        phoneNum: setPhoneNum,
+	    password: setPassword
     }
 
     async function postInquiryData() {
@@ -38,14 +42,23 @@ function InquiryScreen() {
         }
     };
     
+    function userInquiry(){
+        console.log(phoneNum)
+        console.log(password)
+    }
+
     return (
         <View style={InquiryScreenStyles.container}>
             <Logo/>
-            <InquiryInput/>
+            <InquiryInput
+            setPhoneNum={setPhoneNum}
+            setPassword={setPassword}
+            />
             <TouchableOpacity
                 style={InquiryStyles.inquiryButton}
                 onPress={() => {
                     postInquiryData()
+                    userInquiry()
                 }}
             >
                 <Text style={InquiryStyles.inquiryButtonText}>
