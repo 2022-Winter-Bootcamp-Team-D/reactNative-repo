@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {View, TouchableOpacity, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -10,23 +10,25 @@ import API from "../../services/API";
 
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Reservation'>;
 
-function ReservationButton(password) {
+function ReservationButton() {
     const navigation = useNavigation<ResgisterScreenProp>();
+    const [people, setPeople] = useState(0);
+    const [password, setPassword] = useState('');
 
     async function getFCMToken() {
         // 가져오기
-        AsyncStorage.getItem('token', (err, result) => { // 'token'에 담긴 아이디 불러오기
-            console.log(result); // result에 담김 //불러온거 출력
-        return(result);
+        AsyncStorage.getItem('token', (err, result) => {
+            console.log(result);
+            return(result);
         });
     }
     
     const data = {
         store_id: 1,
         name: "혜린",
-        phoneNum: "01068935283",
-        people: 3,
-        password: 5678,
+        phoneNum: "01068935286",
+        people: setPeople,
+        password: setPassword,
         token: "token",
         withCredentials:true
     }
@@ -49,8 +51,9 @@ function ReservationButton(password) {
         }
     };
 
-    function userPassword(){
+    function userReservation(){
         console.log(password)
+        console.log(people)
     }
     
     return (
@@ -60,13 +63,13 @@ function ReservationButton(password) {
                     onPress={() => {
                         getFCMToken()
                         postReservationData()
-                        userPassword()
+                        userReservation()
                     }}
-                >
-                    <Text style={RegisterStyles.registerButtonText}>
-                        웨이팅 시작할게요!
-                    </Text>
-                </TouchableOpacity>
+            >
+                <Text style={RegisterStyles.registerButtonText}>
+                    웨이팅 시작할게요!
+                </Text>
+            </TouchableOpacity>
         </View>
     );  
 };

@@ -9,7 +9,6 @@ import RegisterStyles from "../../styles/RegisterStyles";
 import Logo from "../../components/register/Logo";
 import RegisterInput from "../../components/register/RegisterInput";
 import RegisterScreenStyles from "../../styles/screens/RegisterScreenStyles";
-import RegisterButton from "../../components/register/RegisterButton";
 import InquiryButton from "../../components/register/InquiryButton";
 
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;

@@ -16,9 +16,7 @@ function InquiryScreen() {
     const [phoneNum, setPhoneNum] = useState('');
     const [password, setPassword] = useState('');
 
-
     // error 404
-    
     const data = {
         phoneNum: setPhoneNum,
 	    password: setPassword

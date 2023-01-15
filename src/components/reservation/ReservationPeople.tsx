@@ -3,13 +3,15 @@ import {View, TouchableOpacity, Text} from 'react-native';
 import ReservationScreenStyles from "../../styles/screens/ReservationScreenStyles";
 import ReservationStyles from "../../styles/ReservationStyles";
 
+interface Props {
+    people: number;
+    setPeople: React.Dispatch<React.SetStateAction<number>>;
+}
 
-function ReservationPeople() {
-    const [count, setCount] = useState(0);
-
+function ReservationPeople({people, setPeople}:Props) {
     function minus() {
-        if (count >= 2) {
-            setCount(count - 1)
+        if (people >= 2) {
+            setPeople(people - 1)
         }
     }
 
@@ -30,12 +32,12 @@ function ReservationPeople() {
                 </TouchableOpacity>
                 <View style={ReservationStyles.peopleInputBox}>
                     <Text style={ReservationStyles.peopleText}>
-                        {count}
+                        {people}
                     </Text>
                 </View>
                 <TouchableOpacity
                     style={ReservationStyles.calculationButton}
-                    onPress={() => {setCount(count + 1)}}
+                    onPress={() => {setPeople(people + 1)}}
                 >
                     <Text style={ReservationStyles.calculationText}>
                         +
