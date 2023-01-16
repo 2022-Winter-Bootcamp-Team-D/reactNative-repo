@@ -1,5 +1,5 @@
 export type RootStackParamList = {
-    Main: {name: string, phoneNum: string};
+    Main: undefined;
     Register: undefined;
     Map: undefined;
     MapList: undefined;
@@ -8,4 +8,5 @@ export type RootStackParamList = {
     Status: undefined;
     Search: undefined;
     SearchResult: undefined;
+    Signup: undefined;
 };

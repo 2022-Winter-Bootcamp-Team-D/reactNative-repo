@@ -10,57 +10,50 @@ import Logo from "../../components/register/Logo";
 import RegisterInput from "../../components/register/RegisterInput";
 import RegisterScreenStyles from "../../styles/screens/RegisterScreenStyles";
 import InquiryButton from "../../components/register/SignupButton";
+import SignupInput from "../../components/signup/signupInput";
 
-interface userRegister{
-    name: string, 
-    phoneNum: string
-}
-type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
+
+type SignupScreenProp = StackNavigationProp<RootStackParamList, 'Signup'>;
 
 function RegisterScreen() {
-    const navigation = useNavigation<ResgisterScreenProp>();
+    const navigation = useNavigation<SignupScreenProp>();
     const [name, setName] = useState('');
+    const [id, setId] = useState('');
+    const [password, setPassword] = useState('');
+    const [check, setCheck] = useState('');
     const [phoneNum, setPhoneNum] = useState('');
 
-    async function onAppBootstrap() {
-        // Register the device with FCM
-        await messaging().registerDeviceForRemoteMessages();
-        // Get the token
-        const token = await messaging().getToken();
-        // Save the token
-        AsyncStorage.setItem('token', token, () => { // 'token'의 변수로 토큰값 저장
-        });
-        console.log('[Token]' + token)
-        return (token)
-    }
-
-    function userRegister(){
-        console.log(name)
-        console.log(phoneNum)
+    function userSignup(){
+        console.log("이름: " + name)
+        console.log("아이디: " + id)
+        console.log("비밀번호: " + password)
+        console.log("비밀번호확인: " + check)
+        console.log("전화번호: " + phoneNum)
     }
 
     return (
         <View style={RegisterScreenStyles.mainContainer}>
-            <View style={RegisterScreenStyles.registerContainer}>
+            <View style={RegisterScreenStyles.signupContainer}>
                 <Logo/>
-                <RegisterInput
+                <SignupInput
                     setName={setName}
+                    setId={setId}
+                    setPassword={setPassword}
+                    setCheck={setCheck}
                     setPhoneNum={setPhoneNum}
                 />
                 <View style={RegisterScreenStyles.registerButton}>
                     <TouchableOpacity
                         style={RegisterStyles.registerButton}
                         onPress={() => {
-                            onAppBootstrap()
-                            userRegister()
+                            userSignup()
                             navigation.navigate('Main');
                         }}
                     >
                         <Text style={RegisterStyles.registerButtonText}>
-                            로그인
+                            웨이팅 하러가기
                         </Text>
                     </TouchableOpacity>
-                    <InquiryButton/>
                 </View>
             </View>
         </View>
