@@ -11,9 +11,13 @@ import RegisterInput from "../../components/register/RegisterInput";
 import RegisterScreenStyles from "../../styles/screens/RegisterScreenStyles";
 import InquiryButton from "../../components/register/InquiryButton";
 
+interface userRegister{
+    name: string, 
+    phoneNum: string
+}
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
 
-function RegisterScreen( ) {
+function RegisterScreen() {
     const navigation = useNavigation<ResgisterScreenProp>();
     const [name, setName] = useState('');
     const [phoneNum, setPhoneNum] = useState('');
@@ -48,10 +52,10 @@ function RegisterScreen( ) {
                     onPress={() => {
                         onAppBootstrap()
                         userRegister()
-                        navigation.navigate('Main')
+                        navigation.navigate('Main', {name: name, phoneNum: phoneNum});
                     }}
                 >
-                     <Text style={RegisterStyles.registerButtonText}>
+                    <Text style={RegisterStyles.registerButtonText}>
                         웨이팅 등록
                     </Text>
                 </TouchableOpacity>

@@ -16,6 +16,8 @@ type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Reservation'
 
 function ReservationScreen() {
   const navigation = useNavigation<ResgisterScreenProp>();
+    const [name, setName] = useState('');
+    const [phoneNum, setPhoneNum] = useState('');
     const [people, setPeople] = useState(0);
     const [password, setPassword] = useState('');
 
@@ -29,8 +31,8 @@ function ReservationScreen() {
     
     const data = {
         store_id: 1,
-        name: "혜린",
-        phoneNum: "01068935214",
+        name: name,
+        phoneNum: phoneNum,
         people: people,
         password: password,
         token: "token",

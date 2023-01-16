@@ -3,11 +3,11 @@ import {View, TextInput} from 'react-native';
 import InquiryStyles from "../../styles/InquiryStyles";
 
 interface Props {
-    setPassword: React.Dispatch<React.SetStateAction<string>>;
     setPhoneNum: React.Dispatch<React.SetStateAction<string>>;
+    setPassword: React.Dispatch<React.SetStateAction<string>>;
 }
 
-function InquiryInput({setPassword, setPhoneNum}:Props) {
+function InquiryInput({setPhoneNum, setPassword}:Props) {
 
     return(
         <View>

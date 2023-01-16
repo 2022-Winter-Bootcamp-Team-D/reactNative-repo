@@ -18,8 +18,8 @@ function InquiryScreen() {
 
     // error 404
     const data = {
-        phoneNum: setPhoneNum,
-	    password: setPassword
+        phoneNum: phoneNum,
+	    password: password
     }
 
     async function postInquiryData() {
