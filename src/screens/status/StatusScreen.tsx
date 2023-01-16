@@ -1,15 +1,11 @@
 import React from "react";
 import {Text, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 import {RouteProp, useRoute} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../screens/RootStackParams';
 import StatusDelayButton from "../../components/status/StatusDelayButton";
-import ReceiptContent from "../../components/status/ReceiptContent";
 import StatusCancelButton from "../../components/status/StatusCancelButton";
 import StatusStyles from "../../styles/StatusStyles";
 import ReservationScreenStyles from "../../styles/screens/ReservationScreenStyles";
-import ListContent from "../../components/status/ListContent";
 import StatusListStyles from "../../styles/StatusListStyles";
 import HomeButton from "../../components/status/HomeButton";
 
