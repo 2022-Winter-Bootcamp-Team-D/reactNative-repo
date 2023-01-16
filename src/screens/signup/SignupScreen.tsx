@@ -23,7 +23,7 @@ function RegisterScreen() {
     const [check, setCheck] = useState('');
     const [phoneNum, setPhoneNum] = useState('');
 
-    function userSignup(){
+    function userSignup() {
         console.log("이름: " + name)
         console.log("아이디: " + id)
         console.log("비밀번호: " + password)

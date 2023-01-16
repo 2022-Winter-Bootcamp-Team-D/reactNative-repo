@@ -15,7 +15,7 @@ import AsyncStorage from "@react-native-community/async-storage";
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Reservation'>;
 
 function ReservationScreen() {
-  const navigation = useNavigation<ResgisterScreenProp>();
+    const navigation = useNavigation<ResgisterScreenProp>();
     const [name, setName] = useState('');
     const [phoneNum, setPhoneNum] = useState('');
     const [people, setPeople] = useState(0);
@@ -24,7 +24,7 @@ function ReservationScreen() {
     async function getFCMToken() {
         // 가져오기
         AsyncStorage.getItem('token', (err, result) => {
-            console.log(result);
+            console.log("토큰: " + result);
             return(result);
         });
     }
@@ -32,7 +32,7 @@ function ReservationScreen() {
     const data = {
         store_id: 1,
         name: name,
-        phoneNum: phoneNum,
+        phoneNum: "01033333357",
         people: people,
         password: password,
         token: "token",
@@ -45,9 +45,13 @@ function ReservationScreen() {
                 '/waiting/',
                 data,
             )
+          // .then((response) => response.json())
+          // .then((responseJson) => )
+          
           .then(function (response) {
-            console.log(response.data);
-            navigation.navigate('Status')
+            // console.log(response.data);
+            const myResponse = response.data
+            navigation.navigate('Status', myResponse)
           })
           .catch(function (error) {
             console.log(error);
@@ -58,8 +62,10 @@ function ReservationScreen() {
     };
 
     function userReservation(){
-        console.log("비밀번호:" + password)
-        console.log("예약인원:" + people + "명")
+        console.log("이름: " + name)
+        console.log("전화번호: " + phoneNum)
+        console.log("비밀번호: " + password)
+        console.log("예약인원: " + people + "명")
     }
     
   return (

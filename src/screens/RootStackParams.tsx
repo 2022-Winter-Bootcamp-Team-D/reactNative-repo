@@ -5,7 +5,7 @@ export type RootStackParamList = {
     MapList: undefined;
     Reservation: undefined;
     Inquiry: undefined;
-    Status: undefined;
+    Status: {myResponse: Response};
     Search: undefined;
     SearchResult: undefined;
     Signup: undefined;
