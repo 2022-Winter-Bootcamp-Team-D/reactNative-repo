@@ -14,8 +14,11 @@ import StatusListStyles from "../../styles/StatusListStyles";
 import HomeButton from "../../components/status/HomeButton";
 
 function StatusScreen() {
-    const {params: myResponse} = useRoute();
-    console.log(myResponse);
+    type ScreenRouteProp = RouteProp<RootStackParamList,"Status">;
+    const route = useRoute<ScreenRouteProp>();
+    // const {params: myResponse} = useRoute();
+    // console.log(myResponse);
+    console.log(route.params?.waiting_id);
     
     return (
       <View style={ReservationScreenStyles.container}>
@@ -30,13 +33,28 @@ function StatusScreen() {
                     대기번호
                 </Text>
                 <Text style={StatusListStyles.listContentTextNumber}>
-                  1번
+                    {route.params?.waiting_id}번
                 </Text>
             </View>
             <Text style={StatusListStyles.listContentMessage}>
-                현재 내 앞에 2팀이 있어요
+                현재 내 앞에 {route.params?.waiting_order}팀이 있어요
             </Text>
-        <ReceiptContent/>
+            <View style={StatusListStyles.ReceiptContainer}>
+            <View>
+                <Text style={StatusListStyles.ReceiptContentTitle}>
+                    식당명 {'\n'}{'\n'}
+                    접수 인원 {'\n'}{'\n'}
+                    접수 시간
+                </Text>
+            </View>
+            <View>
+                <Text style={StatusListStyles.ReceiptContentText}>
+                    트리아농 {'\n'}{'\n'}
+                    {route.params?.people}명 {'\n'}{'\n'}
+                    {route.params?.create_at}
+                </Text>
+            </View>
+        </View>
           <View style={StatusStyles.ButtonContainer}>
             <StatusDelayButton/>
             <StatusCancelButton/>

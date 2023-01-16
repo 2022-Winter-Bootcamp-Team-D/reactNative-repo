@@ -30,7 +30,7 @@ function InquiryScreen() {
             )
           .then(function (response) {
             console.log(response.data);
-            navigation.navigate('Status')
+            navigation.navigate('Status', )
           })
           .catch(function (error) {
             console.log(error);

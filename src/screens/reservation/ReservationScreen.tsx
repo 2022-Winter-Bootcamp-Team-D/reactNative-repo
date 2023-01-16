@@ -32,7 +32,7 @@ function ReservationScreen() {
     const data = {
         store_id: 1,
         name: name,
-        phoneNum: "01033333357",
+        phoneNum: "01033333364",
         people: people,
         password: password,
         token: "token",
