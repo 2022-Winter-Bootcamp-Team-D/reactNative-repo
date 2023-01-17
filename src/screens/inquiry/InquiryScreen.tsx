@@ -25,7 +25,7 @@ function InquiryScreen() {
     async function postInquiryData() {
         try {
             const response = await API.post(
-                '/waiting/my/',
+                '/waiting/list/',
                 data
             )
           .then(function (response) {

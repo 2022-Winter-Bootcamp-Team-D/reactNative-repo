@@ -11,10 +11,6 @@ import RegisterInput from "../../components/register/RegisterInput";
 import RegisterScreenStyles from "../../styles/screens/RegisterScreenStyles";
 import InquiryButton from "../../components/register/SignupButton";
 
-interface userRegister{
-    name: string, 
-    phoneNum: string
-}
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
 
 function RegisterScreen() {
