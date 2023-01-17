@@ -59,6 +59,13 @@ function UnActivatedMark() {
                     size = {40} 
                     color = '#909090'
                 />
+                {/* <KakaoMapView 
+                    markerImageName='UnActivatedMark'
+                    width={0}
+                    height={0}
+                    markerList={[]} onChange={function (event: MapNativeEvent): void {
+                        throw new Error("Function not implemented.");
+                    } }                /> */}
                 {/* 모달에서 선택 결과 값을 State로 받아서 화면에 표시 */}
                 <Text style={mapStyles.markText}> 
                     {modalOutput}
