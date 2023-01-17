@@ -17,10 +17,6 @@ function ActivatedMark() {
     
     const navigation = useNavigation<ResgisterScreenProp>();
 
-    const store_name = "트리아농";
-    const waiting_order = "대기 3팀";
-    const store_distance = "528m";
-
     return (
         <TouchableOpacity
             style={mapStyles.activateIcon}
@@ -37,20 +33,20 @@ function ActivatedMark() {
                     <TouchableOpacity
                         style={mapStyles.storeInformation}
                         onPress={() => {
-                            setModalOutput(store_name);
-                            setModalVisible(false);
-                            navigation.navigate('Reservation')
+                        setModalOutput("트리아농");
+                        setModalVisible(false);
+                        navigation.navigate('Reservation')
                         }}
                     >
                         <View style={mapStyles.storeContainer}>
                             <Text style={mapStyles.storeNameText}>
-                                {store_name}
+                                트리아농
                             </Text>
                             <Text style={mapStyles.storeDetailText}>
-                                {waiting_order}
+                                대기 3팀
                             </Text>
                             <Text style={mapStyles.storeDistanceText}>
-                                {store_distance}
+                                528m
                             </Text>
                         </View>
                     </TouchableOpacity>

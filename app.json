@@ -1,9 +1,4 @@
 {
-  "expo": {
-    "slug": "Waiter",
-    "name": "Waiter",
-    "sdkVersion": "47.0.0",
-    "entryPoint": ".vscode/exponentIndex.js"
-  },
-  "name": "Waiter"
+  "name": "Waiter",
+  "displayName": "Waiter"
 }

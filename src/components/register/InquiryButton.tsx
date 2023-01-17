@@ -7,7 +7,9 @@ import RegisterStyles from '../../styles/RegisterStyles';
 
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
 
-function SignupButton() {
+
+function InquiryButton() {
+
     const navigation = useNavigation<ResgisterScreenProp>();
     
     return (
@@ -15,15 +17,15 @@ function SignupButton() {
             <TouchableOpacity
                     style={RegisterStyles.inquiryButton}
                     onPress={() => {
-                        navigation.navigate('Signup')
+                        navigation.navigate('Inquiry')
                     }}
                 >
                     <Text style={RegisterStyles.registerButtonText}>
-                        회원가입
+                        웨이팅 조회
                     </Text>
                 </TouchableOpacity>
         </View>
     );  
 };
 
-export default SignupButton;
+export default InquiryButton;

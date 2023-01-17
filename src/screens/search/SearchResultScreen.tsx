@@ -15,6 +15,30 @@ function SearchResultScreen() {
       <SearchBar/>
       <CollapesibleView/>
       <View style={mapListStyles.verticalLine}/>
+      <CollapesibleView/>
+      <View style={mapListStyles.verticalLine}/>
+      <CollapesibleView/>
+      <View style={mapListStyles.verticalLine}/>
+      <CollapesibleView/>
+      <View style={mapListStyles.verticalLine}/>
+      <CollapesibleView/>
+      <View style={mapListStyles.verticalLine}/>
+      <CollapesibleView/>
+      <View style={mapListStyles.verticalLine}/>
+      <CollapesibleView/>
+      <View style={mapListStyles.verticalLine}/>
+      <CollapesibleView/>
+      <View style={mapListStyles.verticalLine}/>
+      <CollapesibleView/>
+      <View style={mapListStyles.verticalLine}/>
+      <CollapesibleView/>
+      <View style={mapListStyles.verticalLine}/>
+      <CollapesibleView/>
+      <View style={mapListStyles.verticalLine}/>
+      <CollapesibleView/>
+      <View style={mapListStyles.verticalLine}/>
+      <CollapesibleView/>
+      <View style={mapListStyles.verticalLine}/>
     </ScrollView>
   );
 };

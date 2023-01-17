@@ -9,7 +9,7 @@ function Logo() {
             <Image
                 style={InquiryStyles.logoImage}
                 source={require('../../../assets/images/LogoImage.png')}
-                resizeMode='cover'
+                resizeMode='cover'  // 이미지를 비율 유지하면서 넣어주는 css일종 
             />
             <Text style={InquiryStyles.logoText}>
                 Waiter

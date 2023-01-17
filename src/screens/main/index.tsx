@@ -5,6 +5,7 @@ import {MainBottomTabParamList} from './MainBottomTabParams';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import MapScreen from '../map/MapScreen';
+import StatusScreen from '../status/StatusScreen';
 import SearchScreen from '../search/SearchScreen';
 import InquiryScreen from '../inquiry/InquiryScreen';
 
