@@ -39,6 +39,7 @@ function ActivatedMark() {
                         onPress={() => {
                             setModalOutput(store_name);
                             setModalVisible(false);
+                            navigation.navigate('Reservation')
                         }}
                     >
                         <View style={mapStyles.storeContainer}>
