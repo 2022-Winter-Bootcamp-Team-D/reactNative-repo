@@ -8,7 +8,6 @@ import RegisterStyles from '../../styles/RegisterStyles';
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
 
 function SignupButton() {
-
     const navigation = useNavigation<ResgisterScreenProp>();
     
     return (

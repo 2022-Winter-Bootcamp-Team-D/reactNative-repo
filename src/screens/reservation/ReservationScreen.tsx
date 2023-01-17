@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {Text, TouchableOpacity, View} from 'react-native';
+import {RouteProp, useRoute} from '@react-navigation/native';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../screens/RootStackParams';
@@ -11,10 +12,14 @@ import SelectedStore from "../../components/reservation/SelectedStore";
 import RegisterStyles from "../../styles/RegisterStyles";
 import API from "../../services/API";
 import AsyncStorage from "@react-native-community/async-storage";
-
-type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Reservation'>;
+import ReservationStyles from "../../styles/SearchStyles";
+import reservationStyles from "../../styles/ReservationStyles";
+import mapListStyles from "../../styles/MapListStyles";
 
 function ReservationScreen() {
+    type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Reservation'>;
+    type ScreenRouteProp = RouteProp<RootStackParamList,'Reservation'>;
+    const route = useRoute<ScreenRouteProp>();
     const navigation = useNavigation<ResgisterScreenProp>();
     const [name, setName] = useState('');
     const [phoneNum, setPhoneNum] = useState('');
@@ -32,7 +37,7 @@ function ReservationScreen() {
     const data = {
         store_id: 1,
         name: name,
-        phoneNum: "01033333364",
+        phoneNum: "01033333378",
         people: people,
         password: password,
         token: "token",
@@ -49,9 +54,8 @@ function ReservationScreen() {
           // .then((responseJson) => )
           
           .then(function (response) {
-            // console.log(response.data);
             const myResponse = response.data
-            navigation.navigate('Status', myResponse)
+            navigation.navigate('Status', {myResponse: myResponse, store_name: route.params?.store_name})
           })
           .catch(function (error) {
             console.log(error);
@@ -60,17 +64,32 @@ function ReservationScreen() {
             console.log(error);
         }
     };
-
+    
     function userReservation(){
         console.log("이름: " + name)
         console.log("전화번호: " + phoneNum)
         console.log("비밀번호: " + password)
         console.log("예약인원: " + people + "명")
-    }
-    
+    };
+
   return (
     <View style={ReservationScreenStyles.container}>
-      <SelectedStore/>
+       <View style={reservationStyles.selectedStore}>
+        <View style={mapListStyles.listTitle}>
+            <Text style={reservationStyles.storeNameText}>
+              {route.params?.store_name}
+            </Text>
+            <Text style={reservationStyles.waitingText}>
+              대기 {route.params?.waiting_order} 팀
+            </Text>
+            <Text style={reservationStyles.storeDistanceText}>
+              {route.params?.store_distance}m
+            </Text>
+          </View>
+          <Text style={reservationStyles.storeDetail}>
+            {route.params?.store_detail}
+          </Text>
+        </View>
       <ReservationPeople
         people={people}
         setPeople={setPeople}
