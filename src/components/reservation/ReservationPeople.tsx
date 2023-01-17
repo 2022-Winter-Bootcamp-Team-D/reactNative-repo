@@ -1,18 +1,19 @@
 import React, {useState } from "react";
 import {View, TouchableOpacity, Text} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackParamList} from '../../screens/RootStackParams';
-import RegisterStyles from '../../styles/RegisterStyles';
 import ReservationScreenStyles from "../../styles/screens/ReservationScreenStyles";
 import ReservationStyles from "../../styles/ReservationStyles";
 
-type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Reservation'>;
+interface Props {
+    people: number;
+    setPeople: React.Dispatch<React.SetStateAction<number>>;
+}
 
-
-function ReservationPeople() {
-    const [counter, setcount] = useState(0);
-    const navigation = useNavigation<ResgisterScreenProp>();
+function ReservationPeople({people, setPeople}:Props) {
+    function minus() {
+        if (people >= 2) {
+            setPeople(people - 1)
+        }
+    }
 
     return (
         <View style={ReservationScreenStyles.reservationPeople}>
@@ -22,7 +23,8 @@ function ReservationPeople() {
                 </Text>
                 <TouchableOpacity
                     style={ReservationStyles.calculationButton}
-                    onPress={() => {setcount(counter - 1)}}
+                    onPress={() => {
+                        minus()}}
                 >
                     <Text style={ReservationStyles.calculationText}>
                         -
@@ -30,12 +32,12 @@ function ReservationPeople() {
                 </TouchableOpacity>
                 <View style={ReservationStyles.peopleInputBox}>
                     <Text style={ReservationStyles.peopleText}>
-                        {counter}
+                        {people}
                     </Text>
                 </View>
                 <TouchableOpacity
                     style={ReservationStyles.calculationButton}
-                    onPress={() => {setcount(counter + 1)}}
+                    onPress={() => {setPeople(people + 1)}}
                 >
                     <Text style={ReservationStyles.calculationText}>
                         +

@@ -3,11 +3,11 @@ import {Text} from 'react-native';
 import mapListStyles from '../../styles/MapListStyles';
 
 function ListDetail() {
+    const store_detail = "제주산 청정 생고기로 만든 추억의 돈까스!";
+
     return (
         <Text style={mapListStyles.storeDetailText}>
-            제주산 청정 생고기로 만든 추억의 돈까스!
-            {"\n"}
-            브레이크 타임: 월~금 오후 3시 ~ 5시 주말 공휴일 휴무
+            {store_detail}
         </Text>
     );
 };

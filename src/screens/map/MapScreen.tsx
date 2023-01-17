@@ -1,7 +1,6 @@
 import React from "react";
 import {View, Text} from 'react-native';
 import ActivatedMark from "../../components/map/ActivatedMark";
-import MapTitle from "../../components/map/MapTitle";
 import MapView from "../../components/map/MapView";
 import MyPosition from "../../components/map/MyPosition";
 import MapListButton from "../../components/map/MapListButton";
@@ -17,7 +16,6 @@ function MapScreen() {
           <View style={mapScreenStyles.myPosition}>
             <MyPosition/>
           </View>
-          
           <MapView/>
           <ActivatedMark/>
           <UnActivatedMark/>
