@@ -3,6 +3,7 @@ import {View, Image, Alert} from 'react-native';
 import mapStyles from '../../styles/MapStyles';
 import NaverMapView, {Circle, Marker, Path, Polyline, Polygon} from "react-native-nmap";
 import geolocation from 'react-native-geolocation-service';
+import a from '../../../assets/images/LogoImage.png'
 
 interface M0 {
     latitude: number;
@@ -36,9 +37,9 @@ function MapView() {
     }, []);
     // ?는 두가지 타입을 한번에, !는 무조건 타입 지정
     const Point = {latitude: myLocation.latitude, longitude: myLocation.longitude}; 
-    const P0 = {latitude: 37.564362, longitude: 126.977011};
-    const P1 = {latitude: 37.565051, longitude: 126.978567};
-    const P2 = {latitude: 37.565383, longitude: 126.976292};
+    const P0 = {latitude: 37.5489, longitude: 127.1717};
+    const P1 = {latitude: 37.5500, longitude: 127.1718};
+    const P2 = {latitude: 37.5480, longitude: 127.1700};
 
     return (
         <View style={mapStyles.mapView}>
@@ -46,16 +47,25 @@ function MapView() {
                          showsMyLocationButton={true}
                          center={{...Point,zoom: 16}} // ... 은 배열을 풀어준다.
                          onTouch={() => console.warn('onTouch')}
-                        //  onCameraChange={e => console.warn('onCameraChange', JSON.stringify(e))}
-                        //  onMapClick={e => console.warn('onMapClick', JSON.stringify(e))}
+                         onCameraChange={(e) => console.warn(e.latitude, e.longitude)}
             >
-                <Marker coordinate={P0} onClick={() => console.warn('onClick! p0')}/>
-                <Marker coordinate={P1} pinColor="blue" onClick={() => console.warn('onClick! p1')}/>
+             {/* onCameraChange?: (event: {
+                latitude: number;
+                longitude: number;
+                zoom: number;
+                contentsRegion: [Coord, Coord, Coord, Coord, Coord];
+                coveringRegion: [Coord, Coord, Coord, Coord, Coord];
+            }) => void; */}
+
+                <Marker coordinate={P0} 
+                // image={Myplace}
+                onClick={() => console.warn('onClick! p0')}/>
+                <Marker coordinate={P1} 
+                    pinColor="blue"
+                    caption={{textSize:8, color: "black"}}
+                    onClick={() => console.warn('onClick! p1')}
+                />
                 <Marker coordinate={P2} pinColor="red" onClick={() => console.warn('onClick! p2')}/>
-                <Path coordinates={[P0, P1]} onClick={() => console.warn('onClick! path')} width={10}/>
-                <Polyline coordinates={[P1, P2]} onClick={() => console.warn('onClick! polyline')}/>
-                {/* <Circle coordinate={P0} color ={"#d6efccdd1"} outlineWidth={10} outlineColor={"#f762624b"} radius={100} onClick={() => console.warn('onClick! circle')}/>
-                <Polygon coordinates={[P0, P1, P2]} color={`rgba(0, 0, 0, 0.5)`} onClick={() => console.warn('onClick! polygon')}/> */}
             </NaverMapView>
         </View>
     ); 

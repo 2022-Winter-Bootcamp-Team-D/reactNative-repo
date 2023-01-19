@@ -19,8 +19,8 @@ function MapScreen() {
           </View>
           
           <MapView/>
-          <ActivatedMark/>
-          <UnActivatedMark/>
+          {/* <ActivatedMark/>
+          <UnActivatedMark/> */}
           
       </View>
     );
