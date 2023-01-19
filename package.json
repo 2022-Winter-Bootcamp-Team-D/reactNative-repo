@@ -19,6 +19,7 @@
     "@react-navigation/native": "^6.1.1",
     "@react-navigation/stack": "^6.3.10",
     "accordion-collapse-react-native": "^1.1.1",
+    "axios": "^1.2.2",
     "fontawesome-5-icons-list": "^1.0.1",
     "i": "^0.3.7",
     "npm": "^9.2.0",
