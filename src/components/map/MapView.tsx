@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Modal from 'react-native-modal';
-import {View, Image, Alert, TouchableOpacity, Text} from 'react-native';
+import {View, Image, Alert, TouchableOpacity, Text, InteractionManager} from 'react-native';
 import mapStyles from '../../styles/MapStyles';
 import NaverMapView, {Circle, Marker, Path, Polyline, Polygon} from "react-native-nmap";
 import {useNavigation} from '@react-navigation/native';
@@ -17,7 +17,7 @@ interface M0 {
     longitude: number;
 }
 
-interface data {
+interface MySite {
     store_id: number,
     store_name : string,
     distance: number,       // 나와의 떨어진 거리
@@ -31,10 +31,9 @@ function MapView() {
     const [modalVisible, setModalVisible] = useState(false);
     //Output을 State로 받아서 화면에 표출하거나 정보 값으로 활용
     const [modalOutput, setModalOutput] = useState<string>("");
-    
     const navigation = useNavigation<ResgisterScreenProp>();
 
-    const data = {
+    const mySite = {
         store_id: 1,
         store_name : "트리아농",
         distance: 528,       // 나와의 떨어진 거리
@@ -43,11 +42,30 @@ function MapView() {
         information : "안녕"
     }
 
+    const markers = [
+        {
+            latitude: 37.5489,
+		    longitude: 127.1710
+        },
+        {
+            latitude: 37.5500,
+		    longitude: 127.1710
+        },
+        {
+            latitude: 37.5480,
+		    longitude: 127.1700
+        },
+        {
+            latitude: 37.5487,
+		    longitude: 127.1720
+        },
+    ]
+
     //현재 위치를 추적합니다.
     useEffect(() => {
         if (geolocation) {
             geolocation.getCurrentPosition(success, error);
-            mapData()
+            mapData;
         }
 
   // 위치추적에 성공했을때 위치 값을 넣어줍니다.
@@ -65,9 +83,9 @@ function MapView() {
             console.log (myLocation)
         }
 
-        async function mapData() {
+        async function mapData(index: number) {
             try {
-                const response = await API.post<data>(
+                const response = await API.post<MySite>(
                     'http://10.0.2.2:8000/api/v1/stores/search/',
                     {
                         latitude: myLocation.latitude, 
@@ -88,13 +106,13 @@ function MapView() {
     }, []);
 
     function modal(){
-        setModalOutput(data.store_name)
+        setModalOutput(mySite.store_name)
         setModalVisible(true)
     }
 
     // ?는 두가지 타입을 한번에, !는 무조건 타입 지정
     const Point = {latitude: myLocation.latitude, longitude: myLocation.longitude}; 
-    const P0 = {latitude: 37.5489, longitude: 127.1717};
+    const P0 = {latitude: markers[1].latitude, longitude: markers[1].longitude};
     const P1 = {latitude: 37.5500, longitude: 127.1718};
     const P2 = {latitude: 37.5480, longitude: 127.1700};
 
@@ -104,18 +122,18 @@ function MapView() {
                         showsMyLocationButton={true}
                         center={{...Point,zoom: 16}} // ... 은 배열을 풀어준다.
                         onCameraChange={(e) => console.log(e.latitude, e.longitude)}
-            >
-                <Marker coordinate={P0} 
-                    onClick={() => modal()}
-                />
-                <Marker coordinate={P1} 
-                    pinColor="blue"
-                    onClick={() => modal()}
-                />
-                <Marker coordinate={P2} 
-                    pinColor="red" 
-                    onClick={() => modal()}
-                />
+            >   
+                <View>
+                    {
+                        markers.map((e) =>
+                            <Marker
+                                coordinate={e} 
+                                onClick={() => modal()}
+                            />
+                        )
+                    }
+                </View>
+                
             </NaverMapView>
             <View>
                 
@@ -132,20 +150,20 @@ function MapView() {
                     <TouchableOpacity
                         style={mapStyles.storeInformation}
                         onPress={() => {
-                        setModalOutput(data.store_name);
+                        setModalOutput(mySite.store_name);
                         setModalVisible(false);
                         navigation.navigate('Reservation')
                         }}
                     >
                         <View style={mapStyles.storeContainer}>
                             <Text style={mapStyles.storeNameText}>
-                                {data.store_name}
+                                {mySite.store_name}
                             </Text>
                             <Text style={mapStyles.storeDetailText}>
-                                대기 {data.waiting}팀
+                                대기 {mySite.waiting}팀
                             </Text>
                             <Text style={mapStyles.storeDistanceText}>
-                                {data.distance}m
+                                {mySite.distance}m
                             </Text>
                         </View>
                     </TouchableOpacity>
