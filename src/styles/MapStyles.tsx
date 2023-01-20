@@ -125,7 +125,7 @@ const mapStyles = StyleSheet.create ({
     },
 
     mapListButton:{
-        marginTop: 5,
+        marginTop: 10,
         marginLeft: '-10%',
         marginRight: '10%',
         borderColor: '#ca8f22',

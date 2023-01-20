@@ -1,7 +1,6 @@
 import React from "react";
 import {View, Text} from 'react-native';
 import ActivatedMark from "../../components/map/ActivatedMark";
-import MapTitle from "../../components/map/MapTitle";
 import MapView from "../../components/map/MapView";
 import MyPosition from "../../components/map/MyPosition";
 import MapListButton from "../../components/map/MapListButton";
@@ -10,19 +9,18 @@ import mapScreenStyles from '../../styles/screens/MapScreenStyles';
 
 function MapScreen() {
     return (
-      <View style={mapScreenStyles.container}>
-          <View style={mapScreenStyles.mapListButton}>
-            <MapListButton/>
-          </View>
-          <View style={mapScreenStyles.myPosition}>
-            <MyPosition/>
-          </View>
+      // <View style={mapScreenStyles.container}>
+      //     <View style={mapScreenStyles.mapListButton}>
+      //       <MapListButton/>
+      //     </View>
+      //     <View style={mapScreenStyles.myPosition}>
+      //       <MyPosition/>
+      //     </View>
           
           <MapView/>
-          {/* <ActivatedMark/>
-          <UnActivatedMark/> */}
-          
-      </View>
+          // {/* <ActivatedMark/>
+          // <UnActivatedMark/> */}
+
     );
 };
 
