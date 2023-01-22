@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Modal from 'react-native-modal';
-import {View, Image, Alert, TouchableOpacity, Text, InteractionManager} from 'react-native';
+import {View, TouchableOpacity, Text} from 'react-native';
 import mapStyles from '../../styles/MapStyles';
-import NaverMapView, {Circle, Marker, Path, Polyline, Polygon} from "react-native-nmap";
+import NaverMapView, {Marker} from "react-native-nmap";
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../screens/RootStackParams';
 import geolocation from 'react-native-geolocation-service';
-import SuccessModal from "./SuceesModal";
-import API from "../../services/API";
-import { ScreenContainer } from "react-native-screens";
 import mapScreenStyles from "../../styles/screens/MapScreenStyles";
+import axios from "axios";
+import API from "../../services/API";
+import MapAPI from "../../services/MapAPI";
 
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Map'>;
 
@@ -72,7 +72,7 @@ function MapView() {
     useEffect(() => {
         if (geolocation) {
             geolocation.getCurrentPosition(success, error);
-            mapData;
+            mapData();
         }
 
   // 위치추적에 성공했을때 위치 값을 넣어줍니다.
@@ -91,8 +91,8 @@ function MapView() {
 
         async function mapData() {
             try {
-                const response = await API.post<MySite>(
-                    'http://10.0.2.2:8000/api/v1/stores/search/',
+                const response = await MapAPI.post<MySite>(
+                    '/stores/search/',
                     {
                         latitude: myLocation.latitude, 
                         longitude: myLocation.longitude
@@ -105,6 +105,7 @@ function MapView() {
               })
               .catch(function (error) {
                 console.log(error);
+                console.log('실패')
               });
             } catch (error) {
                 console.log(error);
