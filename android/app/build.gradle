@@ -252,6 +252,12 @@ android {
 }
 
 dependencies {
+    implementation 'com.android.support:appcompat-v7:27.0.0'
+
+    implementation('com.naver.maps:map-sdk:3.16.1') {
+        exclude group: 'com.android.support'
+    }
+
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
     implementation platform('com.google.firebase:firebase-bom:29.1.0') // 추가 (line:221)

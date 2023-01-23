@@ -90,12 +90,11 @@ const StatusListStyles = StyleSheet.create ({
 
     ReceiptContentText: {
         marginTop: 10,
-        marginLeft: 60,
+        marginLeft: 30,
         color: 'black',
         fontFamily: 'BMJUA',
         textAlign: 'right',
         fontSize: 20,
-        ellipsizeMode: 'header'
     },
 
 });

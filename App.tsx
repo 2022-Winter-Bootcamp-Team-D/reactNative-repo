@@ -12,17 +12,14 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import React, {useEffect, type PropsWithChildren} from 'react';
 import {RootStackParamList} from './src/screens/RootStackParams';
-import RegisterScreen from './src/screens/register/RegisterScreen';
-import SignupScreen from './src/screens/signup/SignupScreen';
-import MainScreen from './src/screens/main';
-import MapScreen from './src/screens/map/MapScreen'
 import MapListScreen from './src/screens/maplist/MapListScreen';
 import InquiryScreen from './src/screens/inquiry/InquiryScreen';
+import MainScreen from './src/screens/main';
+import MapScreen from './src/screens/map/MapScreen'
 import ReservationScreen from './src/screens/reservation/ReservationScreen';
 import StatusScreen from './src/screens/status/StatusScreen';
 import SearchScreen from './src/screens/status/StatusScreen';
-import SearchResultScreen from './src/screens/search/SearchResultScreen';
-
+import RegisterScreen from './src/screens/register/RegisterScreen';
 
   const Stack = createStackNavigator<RootStackParamList>();
 
@@ -46,7 +43,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import messaging from '@react-native-firebase/messaging';
-
+import SearchResultScreen from './src/screens/search/SearchResultScreen';
 
 const Section: React.FC<
   PropsWithChildren<{
@@ -109,7 +106,6 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator> 
         <Stack.Screen name="Register" component={RegisterScreen} options={{headerShown: false,}}/> 
-        <Stack.Screen name="Signup" component={SignupScreen} options={{headerShown: false,}}/> 
         <Stack.Screen name="Inquiry" component={InquiryScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="Map" component={MapScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="MapList" component={MapListScreen} options={{headerShown: false,}}/>
@@ -117,6 +113,7 @@ function App() {
         <Stack.Screen name="Search" component={SearchScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="SearchResult" component={SearchResultScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="Reservation" component={ReservationScreen} options={{headerShown: false,}}/>
+
         <Stack.Screen name="Main" component={MainScreen} options={{headerShown: false,}}/>
       </Stack.Navigator>
     </NavigationContainer>

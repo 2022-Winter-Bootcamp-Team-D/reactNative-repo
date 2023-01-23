@@ -27,7 +27,7 @@ const mapListScreenStyles = StyleSheet.create ({
   },
 
   mapListButton:{
-    marginTop: -85,
+    marginTop: -89,
     marginLeft: 290,
     marginRight: 10,
     position: 'absolute',
