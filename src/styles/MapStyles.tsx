@@ -21,7 +21,7 @@ const mapStyles = StyleSheet.create ({
     },
 
     mapView: {
-        marginTop: '10%',
+        marginTop: 10,
         marginLeft: 10,
         width: '95%',
         height: 500,
@@ -125,9 +125,7 @@ const mapStyles = StyleSheet.create ({
     },
 
     mapListButton:{
-        marginTop: 10,
-        marginLeft: '-10%',
-        marginRight: '10%',
+        marginTop: 5,
         borderColor: '#ca8f22',
         backgroundColor: '#f6c942',
         borderBottomWidth: 3,

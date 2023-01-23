@@ -3,6 +3,8 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import mapStyles from '../../styles/MapStyles';
 
 function MyPosition() {
+    const mySite = "대한민국 서울시";
+    
     return (
         <View style={mapStyles.positionContainer}>
             <Text style={mapStyles.myPosition}>
@@ -10,7 +12,7 @@ function MyPosition() {
             </Text>
             <TouchableOpacity>
                 <Text style={mapStyles.positionDetail}>
-                    대한민국 서울시
+                    {mySite}
                 </Text>
             </TouchableOpacity>
         </View>

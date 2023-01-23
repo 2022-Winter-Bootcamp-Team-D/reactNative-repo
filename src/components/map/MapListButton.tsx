@@ -3,11 +3,9 @@ import {TouchableOpacity, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../screens/RootStackParams';
+import mapStyles from '../../styles/MapStyles';
 
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Map'>;
-
-
-import mapStyles from '../../styles/MapStyles';
 
 function MapListButton() {
     const navigation = useNavigation<ResgisterScreenProp>();
