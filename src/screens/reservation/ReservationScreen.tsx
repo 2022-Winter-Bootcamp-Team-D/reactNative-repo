@@ -9,12 +9,15 @@ import PasswordInput from "../../components/reservation/PasswordInput";
 import CancelButton from "../../components/reservation/CancelButton";
 import ReservationScreenStyles from "../../styles/screens/ReservationScreenStyles";
 import SelectedStore from "../../components/reservation/SelectedStore";
+<<<<<<< HEAD
 import RegisterStyles from "../../styles/RegisterStyles";
 import API from "../../services/API";
 import AsyncStorage from "@react-native-community/async-storage";
 import ReservationStyles from "../../styles/SearchStyles";
 import reservationStyles from "../../styles/ReservationStyles";
 import mapListStyles from "../../styles/MapListStyles";
+=======
+>>>>>>> develop
  
 function ReservationScreen() {
     type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Reservation'>;
