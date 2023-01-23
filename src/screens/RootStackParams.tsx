@@ -1,23 +1,29 @@
+
 export type RootStackParamList = {
     Main: undefined;
     Register: undefined;
     Map: undefined;
-    MapList: {
-        mySite: around
-    };
-    Reservation: undefined;
+    MapList: undefined;
+    Reservation: {
+            store_name: string,
+            waiting_order: Number,
+            store_distance: Number,
+            store_detail: String
+            };
     Inquiry: undefined;
-    Status: undefined;
+    Status: {
+            myResponse: waitingReady,
+            store_name: string
+            };
     Search: undefined;
     SearchResult: undefined;
+    Signup: undefined;
 };
 
-type around = {
-    store_id: number,
-    store_name : string,
-    distance: number,       // 나와의 떨어진 거리
-    waiting: number,        // 현재 웨이팅을 받고 있는지?
-    is_waiting: boolean,
-    information : string
-    my_position: string
+type waitingReady = {
+        create_at: Date,
+        people: number,
+        waiting_id: number,
+        waiting_order: number,
+        store_name: string
 }

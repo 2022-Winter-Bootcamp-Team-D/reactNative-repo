@@ -13,7 +13,7 @@ const ReservationStyles = StyleSheet.create ({
         marginTop: 10,
         marginLeft: 20,
         width: '90%',
-        height: '5%',
+        height: 50,
         borderRadius: 8,
         backgroundColor: '#ECECEC',
         flexDirection: 'row'
