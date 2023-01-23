@@ -6,7 +6,7 @@ import ReservationButton from "../../components/reservation/ReservationButton";
 import CancelButton from "../../components/reservation/CancelButton";
 import ReservationScreenStyles from "../../styles/screens/ReservationScreenStyles";
 import SelectedStore from "../../components/reservation/SelectedStore";
-
+ 
 function ReservationScreen() {
   return (
     <View style={ReservationScreenStyles.container}>
