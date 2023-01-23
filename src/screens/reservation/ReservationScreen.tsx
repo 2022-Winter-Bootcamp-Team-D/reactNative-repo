@@ -15,7 +15,7 @@ import AsyncStorage from "@react-native-community/async-storage";
 import ReservationStyles from "../../styles/SearchStyles";
 import reservationStyles from "../../styles/ReservationStyles";
 import mapListStyles from "../../styles/MapListStyles";
-
+ 
 function ReservationScreen() {
     type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Reservation'>;
     type ScreenRouteProp = RouteProp<RootStackParamList,'Reservation'>;
