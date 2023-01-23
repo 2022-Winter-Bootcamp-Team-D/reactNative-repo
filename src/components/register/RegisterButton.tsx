@@ -18,7 +18,6 @@ type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
 
         // Save the token
         AsyncStorage.setItem('token', token, () => { // 'token'의 변수로 토큰값 저장
-            console.log('token저장')
         });
 
         console.log('[Token]' + token)
