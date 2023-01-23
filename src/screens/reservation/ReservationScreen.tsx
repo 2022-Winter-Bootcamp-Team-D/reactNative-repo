@@ -8,16 +8,11 @@ import ReservationPeople from "../../components/reservation/ReservationPeople";
 import PasswordInput from "../../components/reservation/PasswordInput";
 import CancelButton from "../../components/reservation/CancelButton";
 import ReservationScreenStyles from "../../styles/screens/ReservationScreenStyles";
-import SelectedStore from "../../components/reservation/SelectedStore";
-<<<<<<< HEAD
 import RegisterStyles from "../../styles/RegisterStyles";
 import API from "../../services/API";
 import AsyncStorage from "@react-native-community/async-storage";
-import ReservationStyles from "../../styles/SearchStyles";
 import reservationStyles from "../../styles/ReservationStyles";
 import mapListStyles from "../../styles/MapListStyles";
-=======
->>>>>>> develop
  
 function ReservationScreen() {
     type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Reservation'>;
@@ -53,9 +48,6 @@ function ReservationScreen() {
                 '/waiting/',
                 data,
             )
-          // .then((response) => response.json())
-          // .then((responseJson) => )
-          
           .then(function (response) {
             const myResponse = response.data
             navigation.navigate('Status', {myResponse: myResponse, store_name: route.params?.store_name})
