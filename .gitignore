@@ -31,6 +31,12 @@ local.properties
 *.iml
 *.hprof
 .cxx/
+androidt/native
+android/caches
+android/wrapper
+android/.tmp
+android/daemon
+android/native
 
 # node.js
 #

@@ -3,7 +3,9 @@ export type RootStackParamList = {
     Main: undefined;
     Register: undefined;
     Map: undefined;
-    MapList: undefined;
+    MapList: {
+        mySite: around
+    };
     Reservation: {
             store_name: string,
             waiting_order: Number,
@@ -26,4 +28,14 @@ type waitingReady = {
         waiting_id: number,
         waiting_order: number,
         store_name: string
+};
+
+type around = {
+        store_id: number,
+        store_name : string,
+        distance: number,
+        waiting: number,
+        is_waiting: boolean,
+        information : string,
+        my_position: string
 }

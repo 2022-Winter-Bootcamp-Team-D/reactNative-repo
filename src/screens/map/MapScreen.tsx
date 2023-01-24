@@ -10,16 +10,7 @@ import mapScreenStyles from '../../styles/screens/MapScreenStyles';
 function MapScreen() {
     return (
       <View style={mapScreenStyles.container}>
-          <View style={mapScreenStyles.mapListButton}>
-            <MapListButton/>
-          </View>
-          <View style={mapScreenStyles.myPosition}>
-            <MyPosition/>
-          </View>
-          <MapView/>
-          <ActivatedMark/>
-          <UnActivatedMark/>
-          
+        <MapView/>
       </View>
     );
 };
