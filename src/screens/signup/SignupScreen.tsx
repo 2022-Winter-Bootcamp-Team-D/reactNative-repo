@@ -34,15 +34,15 @@ function RegisterScreen() {
                 password: password
                 },
             )
-          .then(function (response) {
-            if (response.data.ACCESS_TOKEN) {
-                AsyncStorage.setItem('access-token', response.data.ACCESS_TOKEN);
-            }
-            navigation.navigate('Main')
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+            .then(function (response) {
+                console.log(response.data.accessToken)
+                AsyncStorage.setItem('accessToken', response.data.accessToken);
+                AsyncStorage.setItem('refreshToken', response.data.refreshToken);
+                // navigation.navigate('Main')
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         } catch (error) {
             console.log(error);
         }
@@ -67,6 +67,7 @@ function RegisterScreen() {
                         style={RegisterStyles.registerButton}
                         onPress={() => {
                             loginAPI()
+                            navigation.navigate('Main')
                         }}
                     >
                         <Text style={RegisterStyles.registerButtonText}>

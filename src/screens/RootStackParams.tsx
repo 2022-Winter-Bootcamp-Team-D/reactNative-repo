@@ -7,11 +7,8 @@ export type RootStackParamList = {
         mySite: around
     };
     Reservation: {
-            store_name: string,
-            waiting_order: Number,
-            store_distance: Number,
-            store_detail: String
-            };
+        mySite: around
+        };
     Inquiry: undefined;
     Status: {
             myResponse: waitingReady,

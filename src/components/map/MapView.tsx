@@ -92,6 +92,7 @@ function MapView() {
                 const response = await API.post<MySite>(
                     '/stores/search/',
                     {
+
                         latitude: myLocation.latitude, 
                         longitude: myLocation.longitude
                     }
@@ -167,7 +168,7 @@ function MapView() {
                             onPress={() => {
                             setModalOutput(mySite.store_name);
                             setModalVisible(false);
-                            navigation.navigate('Reservation')
+                            navigation.navigate('Reservation', {mySite: mySite})
                             }}
                         >
                             <View style={mapStyles.storeContainer}>

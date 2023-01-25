@@ -24,12 +24,12 @@ function RegisterScreen() {
         // Register the device with FCM
         await messaging().registerDeviceForRemoteMessages();
         // Get the token
-        const token = await messaging().getToken();
+        const FCMToken = await messaging().getToken();
         // Save the token
-        AsyncStorage.setItem('FCMtoken', token, () => { // 'token'의 변수로 토큰값 저장
+        AsyncStorage.setItem('token', FCMToken, () => { // 'token'의 변수로 토큰값 저장
         });
-        console.log('[FCMtoken]' + token)
-        return (token)
+        console.log('[FCMToken]' + FCMToken)
+        return (FCMToken)
     }
 
     async function loginAPI() {
@@ -37,19 +37,19 @@ function RegisterScreen() {
             const response = await API.post(
                 '/auth/user/signin/',
                 {
-                email: email, 
+                email: email,
                 password: password
                 },
             )
-          .then(function (response) {
-            if (response.data.ACCESS_TOKEN) {
-                AsyncStorage.setItem('access-token', response.data.ACCESS_TOKEN);
-            }
-            navigation.navigate('Main')
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+            .then(function (response) {
+                console.log(response.data.accessToken)
+                AsyncStorage.setItem('accessToken', response.data.accessToken);
+                AsyncStorage.setItem('refreshToken', response.data.refreshToken);
+                navigation.navigate('Main')
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         } catch (error) {
             console.log(error);
         }
@@ -71,6 +71,7 @@ function RegisterScreen() {
                         onPress={() => {
                             FCMToken()
                             loginAPI()
+                            // navigation.navigate('Main')
                         }}
                     >
                         <Text style={LoginStyles.registerButtonText}>

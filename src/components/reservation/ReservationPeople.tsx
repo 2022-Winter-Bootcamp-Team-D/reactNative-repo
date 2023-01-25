@@ -19,7 +19,7 @@ function ReservationPeople({people, setPeople}:Props) {
         <View style={ReservationScreenStyles.reservationPeople}>
             <View style={ReservationScreenStyles.people}>
                 <Text style={ReservationStyles.peopleTitle}>
-                    인원 입력
+                    예약 인원
                 </Text>
                 <TouchableOpacity
                     style={ReservationStyles.calculationButton}

@@ -7,7 +7,7 @@ const ReservationScreenStyles = StyleSheet.create ({
   },
 
   reservationPeople: {
-    marginTop: 20,
+    marginTop: 40,
   },
 
   people: {
