@@ -26,6 +26,14 @@ const mapListStyles = StyleSheet.create ({
         fontSize: 23,
     },
 
+    storeNameText:{
+        marginLeft: 10,
+        width: 130,
+        color: 'black',
+        fontFamily: 'BMHANNA',
+        fontSize: 23,
+    },
+
     waitingText:{
         marginTop: 5,
         marginLeft: 40,

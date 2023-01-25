@@ -46,7 +46,7 @@ type ScreenRouteProp = RouteProp<RootStackParamList,'MapList'>;
                       <Text style={mapListStyles.number}>
                           {e.store_id}
                       </Text>
-                      <Text style={mapStyles.storeNameText}>
+                      <Text style={mapListStyles.storeNameText}>
                           {e.store_name}
                       </Text>
                       <Text style={mapListStyles.waitingText}>
