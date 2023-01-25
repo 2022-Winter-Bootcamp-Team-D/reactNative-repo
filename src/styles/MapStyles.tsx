@@ -63,6 +63,7 @@ const mapStyles = StyleSheet.create ({
 
     storeNameText:{
         marginLeft: 10,
+        width: 130,
         color: 'black',
         fontFamily: 'BMHANNA',
         fontSize: 23,

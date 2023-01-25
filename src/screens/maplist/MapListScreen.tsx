@@ -25,7 +25,6 @@ function MapListScreen() {
             waiting: route.params?.mySite.waiting,
             distance: route.params?.mySite.distance,
             information : route.params?.mySite.information,
-            
         },
         {
             store_id: 2,
@@ -51,12 +50,14 @@ function MapListScreen() {
             </View>
             <View>
                 {storeList.map((e) =>
-                    <View style={mapListScreenStyles.listContainer}>
+                    <View 
+                        style={mapListScreenStyles.listContainer}
+                        key={e.store_id}
+                    >
                         <Collapse>
                             <CollapseHeader>
                                 <View style={mapListStyles.listTitle}>
                                     <Text style={mapListStyles.number}>
-                                        
                                         {e.store_id}
                                     </Text>
                                     <Text style={mapStyles.storeNameText}>
@@ -75,7 +76,6 @@ function MapListScreen() {
                                     {e.information}
                                 </Text>
                                 <TouchableOpacity
-                                    key={e.store_id}
                                     style={mapListStyles.reservationButton}
                                     onPress={() => navigation.navigate('Reservation')}>
                                     <Text style={mapListStyles.reservationText}>

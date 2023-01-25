@@ -20,6 +20,7 @@ const mapListStyles = StyleSheet.create ({
 
     number: {
         marginRight: 20,
+        width: 15,
         color: 'black',
         fontFamily: 'BMHANNA',
         fontSize: 23,
