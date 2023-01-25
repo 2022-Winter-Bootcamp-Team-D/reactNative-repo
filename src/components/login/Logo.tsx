@@ -1,18 +1,18 @@
 import React from "react";
 import {View, Image, Text} from 'react-native';
-import RegisterStyles from '../../styles/RegisterStyles';
-import RegisterScreenStyles from "../../styles/screens/RegisterScreenStyles";
+import LoginStyles from '../../styles/LoginStyles';
+import LoginScreenStyles from "../../styles/screens/LoginScreenStyles";
 
 
 function Logo() {
     return (
-        <View style={RegisterScreenStyles.logo}>
+        <View style={LoginScreenStyles.logo}>
             <Image 
-                style={RegisterStyles.logoImage}
+                style={LoginStyles.logoImage}
                 source={require('../../../assets/images/LogoImage.png')}
                 resizeMode='cover'
             />
-            <Text style={RegisterStyles.logoText}>
+            <Text style={LoginStyles.logoText}>
                 Waiter
             </Text>
         </View>

@@ -2,31 +2,31 @@ import React,{useState} from "react";
 import {View, TouchableOpacity, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackParamList} from '../../screens/RootStackParams';
+import {RootStackParamList} from '../RootStackParams';
 import messaging from '@react-native-firebase/messaging';
 import AsyncStorage from '@react-native-community/async-storage';
-import RegisterStyles from "../../styles/RegisterStyles";
-import Logo from "../../components/register/Logo";
-import RegisterInput from "../../components/register/RegisterInput";
-import RegisterScreenStyles from "../../styles/screens/RegisterScreenStyles";
-import InquiryButton from "../../components/register/SignupButton";
+import LoginStyles from "../../styles/LoginStyles";
+import Logo from "../../components/login/Logo";
+import RegisterInput from "../../components/login/RegisterInput";
+import LoginScreenStyles from "../../styles/screens/LoginScreenStyles";
+import InquiryButton from "../../components/login/SignupButton";
 
-type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
+type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Login'>;
 
 function RegisterScreen() {
     const navigation = useNavigation<ResgisterScreenProp>();
     const [name, setName] = useState('');
     const [phoneNum, setPhoneNum] = useState('');
 
-    async function onAppBootstrap() {
+    async function FCMToken() {
         // Register the device with FCM
         await messaging().registerDeviceForRemoteMessages();
         // Get the token
         const token = await messaging().getToken();
         // Save the token
-        AsyncStorage.setItem('token', token, () => { // 'token'의 변수로 토큰값 저장
+        AsyncStorage.setItem('FCMtoken', token, () => { // 'token'의 변수로 토큰값 저장
         });
-        console.log('[Token]' + token)
+        console.log('[FCMtoken]' + token)
         return (token)
     }
 
@@ -36,23 +36,23 @@ function RegisterScreen() {
     }
 
     return (
-        <View style={RegisterScreenStyles.mainContainer}>
-            <View style={RegisterScreenStyles.registerContainer}>
+        <View style={LoginScreenStyles.mainContainer}>
+            <View style={LoginScreenStyles.registerContainer}>
                 <Logo/>
                 <RegisterInput
                     setName={setName}
                     setPhoneNum={setPhoneNum}
                 />
-                <View style={RegisterScreenStyles.registerButton}>
+                <View style={LoginScreenStyles.registerButton}>
                     <TouchableOpacity
-                        style={RegisterStyles.registerButton}
+                        style={LoginStyles.registerButton}
                         onPress={() => {
-                            onAppBootstrap()
+                            FCMToken()
                             userRegister()
                             navigation.navigate('Main');
                         }}
                     >
-                        <Text style={RegisterStyles.registerButtonText}>
+                        <Text style={LoginStyles.registerButtonText}>
                             로그인
                         </Text>
                     </TouchableOpacity>

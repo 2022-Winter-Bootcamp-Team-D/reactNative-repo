@@ -1,7 +1,7 @@
 
 export type RootStackParamList = {
     Main: undefined;
-    Register: undefined;
+    Login: undefined;
     Map: undefined;
     MapList: {
         mySite: around

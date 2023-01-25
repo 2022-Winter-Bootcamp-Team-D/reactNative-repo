@@ -5,11 +5,11 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../screens/RootStackParams';
 import messaging from '@react-native-firebase/messaging';
 import AsyncStorage from '@react-native-community/async-storage';
-import RegisterStyles from "../../styles/RegisterStyles";
-import Logo from "../../components/register/Logo";
-import RegisterInput from "../../components/register/RegisterInput";
-import RegisterScreenStyles from "../../styles/screens/RegisterScreenStyles";
-import InquiryButton from "../../components/register/SignupButton";
+import RegisterStyles from "../../styles/LoginStyles";
+import Logo from "../../components/login/Logo";
+import RegisterInput from "../../components/login/RegisterInput";
+import RegisterScreenStyles from "../../styles/screens/LoginScreenStyles";
+import InquiryButton from "../../components/login/SignupButton";
 import SignupInput from "../../components/signup/signupInput";
 
 

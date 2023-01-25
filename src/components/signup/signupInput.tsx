@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {View} from 'react-native';
 import { TextInput } from "react-native-gesture-handler";
-import RegisterStyles from '../../styles/RegisterStyles';
+import RegisterStyles from '../../styles/LoginStyles';
 
 interface Props {
     setName: React.Dispatch<React.SetStateAction<string>>;

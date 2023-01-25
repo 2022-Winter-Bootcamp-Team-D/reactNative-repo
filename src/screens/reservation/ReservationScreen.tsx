@@ -8,7 +8,7 @@ import ReservationPeople from "../../components/reservation/ReservationPeople";
 import PasswordInput from "../../components/reservation/PasswordInput";
 import CancelButton from "../../components/reservation/CancelButton";
 import ReservationScreenStyles from "../../styles/screens/ReservationScreenStyles";
-import RegisterStyles from "../../styles/RegisterStyles";
+import RegisterStyles from "../../styles/LoginStyles";
 import API from "../../services/API";
 import AsyncStorage from "@react-native-community/async-storage";
 import reservationStyles from "../../styles/ReservationStyles";
