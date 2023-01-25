@@ -11,6 +11,7 @@ import RegisterInput from "../../components/login/RegisterInput";
 import RegisterScreenStyles from "../../styles/screens/LoginScreenStyles";
 import InquiryButton from "../../components/login/SignupButton";
 import SignupInput from "../../components/signup/signupInput";
+import API from "../../services/API";
 
 
 type SignupScreenProp = StackNavigationProp<RootStackParamList, 'Signup'>;
@@ -18,36 +19,54 @@ type SignupScreenProp = StackNavigationProp<RootStackParamList, 'Signup'>;
 function RegisterScreen() {
     const navigation = useNavigation<SignupScreenProp>();
     const [name, setName] = useState('');
-    const [id, setId] = useState('');
-    const [password, setPassword] = useState('');
-    const [check, setCheck] = useState('');
     const [phoneNum, setPhoneNum] = useState('');
+    const [email, setEamil] = useState('');
+    const [password, setPassword] = useState('');
 
-    function userSignup() {
-        console.log("이름: " + name)
-        console.log("아이디: " + id)
-        console.log("비밀번호: " + password)
-        console.log("비밀번호확인: " + check)
-        console.log("전화번호: " + phoneNum)
-    }
+    async function loginAPI() {
+        try {
+            const response = await API.post(
+                '/auth/user/signin/',
+                {
+                name: name, 
+                phone_num: phoneNum,
+                email: email,
+                password: password
+                },
+            )
+          .then(function (response) {
+            if (response.data.ACCESS_TOKEN) {
+                AsyncStorage.setItem('access-token', response.data.ACCESS_TOKEN);
+            }
+            navigation.navigate('Main')
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <View style={RegisterScreenStyles.mainContainer}>
             <View style={RegisterScreenStyles.signupContainer}>
                 <Logo/>
                 <SignupInput
+                    name={name}
+                    phoneNum={phoneNum}
+                    email={email}
+                    password={password}
                     setName={setName}
-                    setId={setId}
-                    setPassword={setPassword}
-                    setCheck={setCheck}
+                    setEamil={setEamil}
                     setPhoneNum={setPhoneNum}
+                    setPassword={setPassword}
                 />
                 <View style={RegisterScreenStyles.registerButton}>
                     <TouchableOpacity
                         style={RegisterStyles.registerButton}
                         onPress={() => {
-                            userSignup()
-                            navigation.navigate('Main');
+                            loginAPI()
                         }}
                     >
                         <Text style={RegisterStyles.registerButtonText}>

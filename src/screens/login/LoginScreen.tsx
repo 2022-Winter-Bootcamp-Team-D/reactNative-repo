@@ -4,19 +4,21 @@ import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../RootStackParams';
 import messaging from '@react-native-firebase/messaging';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 import AsyncStorage from '@react-native-community/async-storage';
 import LoginStyles from "../../styles/LoginStyles";
 import Logo from "../../components/login/Logo";
 import RegisterInput from "../../components/login/RegisterInput";
 import LoginScreenStyles from "../../styles/screens/LoginScreenStyles";
 import InquiryButton from "../../components/login/SignupButton";
+import API from "../../services/API";
 
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Login'>;
 
 function RegisterScreen() {
     const navigation = useNavigation<ResgisterScreenProp>();
-    const [name, setName] = useState('');
-    const [phoneNum, setPhoneNum] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     async function FCMToken() {
         // Register the device with FCM
@@ -30,26 +32,45 @@ function RegisterScreen() {
         return (token)
     }
 
-    function userRegister(){
-        console.log(name)
-        console.log(phoneNum)
-    }
+    async function loginAPI() {
+        try {
+            const response = await API.post(
+                '/auth/user/signin/',
+                {
+                email: email, 
+                password: password
+                },
+            )
+          .then(function (response) {
+            if (response.data.ACCESS_TOKEN) {
+                AsyncStorage.setItem('access-token', response.data.ACCESS_TOKEN);
+            }
+            navigation.navigate('Main')
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <View style={LoginScreenStyles.mainContainer}>
             <View style={LoginScreenStyles.registerContainer}>
                 <Logo/>
                 <RegisterInput
-                    setName={setName}
-                    setPhoneNum={setPhoneNum}
+                    email={email}
+                    password={password}
+                    setEmail={setEmail}
+                    setPassword={setPassword}
                 />
                 <View style={LoginScreenStyles.registerButton}>
                     <TouchableOpacity
                         style={LoginStyles.registerButton}
                         onPress={() => {
                             FCMToken()
-                            userRegister()
-                            navigation.navigate('Main');
+                            loginAPI()
                         }}
                     >
                         <Text style={LoginStyles.registerButtonText}>

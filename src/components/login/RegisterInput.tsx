@@ -4,23 +4,27 @@ import { TextInput } from "react-native-gesture-handler";
 import LoginStyles from '../../styles/LoginStyles';
 
 interface Props {
-    setName: React.Dispatch<React.SetStateAction<string>>;
-    setPhoneNum: React.Dispatch<React.SetStateAction<string>>;
+    email: string
+    password: string
+    setEmail: React.Dispatch<React.SetStateAction<string>>;
+    setPassword: React.Dispatch<React.SetStateAction<string>>;
 }
 
-function RegisterInput({setName, setPhoneNum}:Props) {
+function RegisterInput({email, password, setEmail, setPassword}:Props) {
 
     return (
         <View>
             <TextInput
                 style={LoginStyles.RegisterInput}
-                placeholder="이름"
-                onChangeText={(name) => {setName(name)}}
+                placeholder="이메일"
+                value={email}
+                onChangeText={(email) => {setEmail(email)}}
             />
             <TextInput 
                 style={LoginStyles.RegisterInput}
-                placeholder="전화번호"
-                onChangeText={(phoneNum) => {setPhoneNum(phoneNum)}}
+                placeholder="비밀번호"
+                value={password}
+                onChangeText={(password) => {setPassword(password)}}
             />
         </View>
     );  
