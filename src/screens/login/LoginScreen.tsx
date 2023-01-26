@@ -37,14 +37,21 @@ function RegisterScreen() {
             const response = await API.post(
                 '/auth/user/signin/',
                 {
-                email: email,
-                password: password
+                email: 'hihi@example.com',
+                password: 'string'
                 },
             )
             .then(function (response) {
-                console.log(response.data.accessToken)
-                AsyncStorage.setItem('accessToken', response.data.accessToken);
-                AsyncStorage.setItem('refreshToken', response.data.refreshToken);
+                // AsyncStorage.getItem('accessToken', response.data.access);
+                // AsyncStorage.getItem('refreshToken', response.data.refresh);
+                var str1 = 'Bearer '
+                var res = str1.concat(response.data.access)
+                AsyncStorage.setItem('accessToken', res);
+                // AsyncStorage.setItem('refreshToken', response.data.refresh);
+                console.log('[access] ' + res)
+                AsyncStorage.getItem('accessToken')
+                console.log(AsyncStorage.getItem('accessToken'))
+                // console.log('refresh' + response.data.refresh)
                 navigation.navigate('Main')
             })
             .catch(function (error) {

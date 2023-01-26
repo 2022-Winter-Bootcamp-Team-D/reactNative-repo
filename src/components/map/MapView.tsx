@@ -6,9 +6,11 @@ import NaverMapView, {Marker} from "react-native-nmap";
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../screens/RootStackParams';
+import AsyncStorage from "@react-native-community/async-storage";
 import geolocation from 'react-native-geolocation-service';
 import mapScreenStyles from "../../styles/screens/MapScreenStyles";
 import API from "../../services/API";
+import axios from "axios";
 
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Map'>;
 
@@ -89,22 +91,20 @@ function MapView() {
 
         async function mapData() {
             try {
-                const response = await API.post<MySite>(
-                    '/stores/search/',
+                const response = await axios.post<MySite>(
+                    'http://15.164.28.246:8000/api/v1/stores/search/',
                     {
-
+                        token: AsyncStorage.getItem('FCMToken'),
                         latitude: myLocation.latitude, 
                         longitude: myLocation.longitude
-                    }
+                    },
+                    { headers : {Authorization: await AsyncStorage.getItem('accessToken')}},
                 )
               .then(function (response) {
-                const MapResponse = response.data
-                console.log(MapResponse)
-                console.log('성공')
+                console.log(success)
               })
               .catch(function (error) {
-                console.log(error);
-                console.log('실패')
+                console.log(error)
               });
             } catch (error) {
                 console.log(error);

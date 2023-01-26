@@ -11,14 +11,13 @@ import API from "../../services/API";
 import AsyncStorage from "@react-native-community/async-storage";
 import reservationStyles from "../../styles/ReservationStyles";
 import mapListStyles from "../../styles/MapListStyles";
+import axios from "axios";
  
 function ReservationScreen() {
     type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Reservation'>;
     type ScreenRouteProp = RouteProp<RootStackParamList,'Reservation'>;
     const route = useRoute<ScreenRouteProp>();
     const navigation = useNavigation<ResgisterScreenProp>();
-    const [name, setName] = useState('');
-    const [phoneNum, setPhoneNum] = useState('');
     const [people, setPeople] = useState(0);
 
     async function getFCMToken() {
@@ -29,17 +28,51 @@ function ReservationScreen() {
         });
     }
 
+    async function getAccessToken() {
+      // 가져오기
+      AsyncStorage.getItem('accessToken', (err, res) => {
+        console.log("[accessToken] " + res);
+        return(res);
+      });
+    }
+
+    async function getRefreshToken() {
+      // 가져오기
+      AsyncStorage.getItem('refreshToken', (err, refreshToken) => {
+        console.log("[refreshToken] " + refreshToken);
+        return(refreshToken);
+      });
+    }
+
     async function postReservationData() {
         try {
-            const response = await API.post(
-                '/waiting/',
+            const response = await axios.post(
+                'http://15.164.28.246:8000/api/v1/waitings/',
                 {
                   store_id: route.params?.mySite.store_id,
                   people: route.params?.mySite.store_id,
-                  token: "token"
-                }
-            )
-          .then(function (response) {
+                  token: AsyncStorage.getItem('FCMToken')
+                },
+                { headers : {Authorization: await AsyncStorage.getItem('accessToken')}},
+                )
+          .then(async function (response) {
+            // if (response.status == 401){
+            //   try{
+            //       const response = await API.post(
+            //           '/auth/user/refresh/',
+            //           {
+            //           refresh: AsyncStorage.getItem('refreshToken')
+            //           },
+            //       )
+            //       .then(async function (response) {
+            //           AsyncStorage.removeItem('accessToken')
+            //           AsyncStorage.setItem('accessToken', response.data.accessToken);
+            //       })
+            //   } catch (error) {
+            //       console.log(error);
+            //   }
+            // }
+            
             const myResponse = response.data
             navigation.navigate('Status', {
               myResponse: myResponse, 
@@ -48,16 +81,11 @@ function ReservationScreen() {
           })
           .catch(function (error) {
             console.log(error);
+            console.log(AsyncStorage.getItem('accessToken'))
           });
         } catch (error) {
             console.log(error);
         }
-    };
-    
-    function userReservation(){
-        console.log("이름: " + name)
-        console.log("전화번호: " + phoneNum)
-        console.log("예약인원: " + people + "명")
     };
 
   return (
@@ -86,8 +114,8 @@ function ReservationScreen() {
         style={reservationStyles.reservationButton}
         onPress={() => {
             getFCMToken()
+            getAccessToken()
             postReservationData()
-            userReservation()
         }}
       >
         <Text style={reservationStyles.reservationButtonText}>

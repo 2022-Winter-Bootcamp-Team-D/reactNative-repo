@@ -26,19 +26,20 @@ function RegisterScreen() {
     async function loginAPI() {
         try {
             const response = await API.post(
-                '/auth/user/signin/',
+                '/auth/user/signup/',
                 {
                 name: name, 
                 phone_num: phoneNum,
                 email: email,
                 password: password
                 },
+                {withCredentials:true, }
             )
             .then(function (response) {
                 console.log(response.data.accessToken)
                 AsyncStorage.setItem('accessToken', response.data.accessToken);
                 AsyncStorage.setItem('refreshToken', response.data.refreshToken);
-                // navigation.navigate('Main')
+                navigation.navigate('Main')
             })
             .catch(function (error) {
                 console.log(error);
@@ -67,7 +68,7 @@ function RegisterScreen() {
                         style={RegisterStyles.registerButton}
                         onPress={() => {
                             loginAPI()
-                            navigation.navigate('Main')
+                            // navigation.navigate('Main')
                         }}
                     >
                         <Text style={RegisterStyles.registerButtonText}>
