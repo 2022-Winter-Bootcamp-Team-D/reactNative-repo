@@ -78,6 +78,8 @@ const Section: React.FC<
   );
 };
 
+// https://superwony.tistory.com/95
+
 //지우면 안돼!!!
 messaging().setBackgroundMessageHandler(async remoteMessage => {
   console.log('[Background Remote Message]', remoteMessage);

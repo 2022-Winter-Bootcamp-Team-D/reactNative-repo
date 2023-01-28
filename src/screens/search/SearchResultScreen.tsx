@@ -1,9 +1,9 @@
 import React from "react";
 import {View, ScrollView, Text, TouchableOpacity} from 'react-native';
 import {RouteProp, useRoute} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../screens/RootStackParams';
-import {useNavigation} from '@react-navigation/native';
 import {Collapse,CollapseHeader, CollapseBody} from 'accordion-collapse-react-native';
 import SearchBar from "../../components/search/SearchBar";
 import mapListStyles from "../../styles/MapListStyles";
@@ -11,10 +11,13 @@ import SearchScreenStyles from "../../styles/screens/SearchScreenStyles";
 import SearchStyles from "../../styles/SearchStyles";
 import mapStyles from "../../styles/MapStyles";
 
+
+type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'SearchResult'>;
+type ScreenRouteProp = RouteProp<RootStackParamList,'SearchResult'>;
+
 function SearchResultScreen() {
-type ScreenRouteProp = RouteProp<RootStackParamList,'MapList'>;
-  // const navigation = useNavigation<ResgisterScreenProp>();
-  // const route = useRoute<ScreenRouteProp>();
+  const navigation = useNavigation<ResgisterScreenProp>();
+  const route = useRoute<ScreenRouteProp>();
   const searchStoreList = [
     {
       store_id: 1,

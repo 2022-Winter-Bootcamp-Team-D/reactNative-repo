@@ -15,7 +15,7 @@ import API from "../../services/API";
 
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Login'>;
 
-function RegisterScreen() {
+function LoginScreen() {
     const navigation = useNavigation<ResgisterScreenProp>();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -47,12 +47,8 @@ function RegisterScreen() {
                 var str1 = 'Bearer '
                 var res = str1.concat(response.data.access)
                 AsyncStorage.setItem('accessToken', res);
-                // AsyncStorage.setItem('refreshToken', response.data.refresh);
-                console.log('[access] ' + res)
-                AsyncStorage.getItem('accessToken')
-                console.log(AsyncStorage.getItem('accessToken'))
-                // console.log('refresh' + response.data.refresh)
                 navigation.navigate('Main')
+                console.log('[access] ' + res)
             })
             .catch(function (error) {
                 console.log(error);
@@ -78,7 +74,6 @@ function RegisterScreen() {
                         onPress={() => {
                             FCMToken()
                             loginAPI()
-                            // navigation.navigate('Main')
                         }}
                     >
                         <Text style={LoginStyles.registerButtonText}>
@@ -92,4 +87,4 @@ function RegisterScreen() {
     );
 };
 
-export default RegisterScreen;
+export default LoginScreen;

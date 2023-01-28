@@ -38,7 +38,7 @@ function RegisterScreen() {
             .then(function (response) {
                 console.log(response.data.accessToken)
                 AsyncStorage.setItem('accessToken', response.data.accessToken);
-                AsyncStorage.setItem('refreshToken', response.data.refreshToken);
+                // AsyncStorage.setItem('refreshToken', response.data.refreshToken);
                 navigation.navigate('Main')
             })
             .catch(function (error) {
