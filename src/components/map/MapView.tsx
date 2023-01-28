@@ -26,7 +26,10 @@ interface MySite {
     waiting: number,        // 현재 웨이팅을 받고 있는지?
     is_waiting: boolean,
     information : string,
+    latitude: number,
+    longitude: number
 }
+
 
 function MapView() {
     const [myLocation, setMyLocation] = useState<M0>({latitude: 0, longitude: 0});
@@ -34,38 +37,31 @@ function MapView() {
     //Output을 State로 받아서 화면에 표출하거나 정보 값으로 활용
     const [modalOutput, setModalOutput] = useState<string>("");
     const navigation = useNavigation<ResgisterScreenProp>();
+    const [storeList, setStoreList] = useState([]);
+    const [myStoreList, setMYStoreList] = useState([]);
+    const [latitude, setLatitude] = useState(0);
+    const [longitude, setLongitude] = useState(0);
+    const [store_id, setStore_id] = useState(0);
+    const [store_name, setStore_name] = useState('');
+    const [distance, setDistance] = useState(0);
+    const [waiting, setWaiting] = useState(0);
+    const [information, setInformation] = useState('');
+    const [is_waiting, setIs_waiting] = useState(true);
 
     const mySite = {
-        store_id: 1,
-        store_name : "트리아농",
-        distance: 528,       // 나와의 떨어진 거리
-        waiting: 3,        // 현재 웨이팅을 받고 있는지?
-        is_waiting: true,
-        information : "안녕",
-        my_position: "성남시 분당구"
+        store_id: store_id,
+        store_name : store_name,
+        distance: distance,
+        waiting: waiting,
+        is_waiting: is_waiting,
+        information : information,
     }
 
     const markers = [
         {
-            latitude: 37.5489,
-		    longitude: 127.1710
+            latitude: latitude,
+		    longitude: longitude 
         },
-        {
-            latitude: 37.5500,
-		    longitude: 127.1710
-        },
-        {
-            latitude: 37.5480,
-		    longitude: 127.1700
-        },
-        {
-            latitude: 37.5487,
-		    longitude: 127.1720
-        },
-        // {
-        //     latitude: ,
-		//     longitude: 
-        // },
     ]
 
     //현재 위치를 추적합니다.
@@ -86,23 +82,35 @@ function MapView() {
 
     // 위치 추적에 실패 했을때 초기값을 넣어줍니다.
         function error() { // 현우네 양꼬치 & 사천훠궈, 현우네 반점
-            setMyLocation({latitude: 37.5488, longitude: 127.1717 }); // 현우네밥집 주소 latitude: 37.5634, longitude: 126.9093 
+            setMyLocation({latitude: 37.5454, longitude: 127.1541 }); // 현우네밥집 주소 latitude: 37.5634, longitude: 126.9093 
         }
 
         async function mapData() {
             try {
-                const response = await axios.post<MySite>(
+                const response = await axios.post(
                     'http://15.164.28.246:8000/api/v1/stores/search/',
                     {
-                        token: AsyncStorage.getItem('FCMToken'),
                         latitude: myLocation.latitude, 
                         longitude: myLocation.longitude
                     },
-                    { headers : {Authorization: await AsyncStorage.getItem('accessToken')}},
+                    { headers : {
+                        Authorization: await AsyncStorage.getItem('accessToken', (err, res) => 
+                        {return(res);})
+                    }},
                 )
-              .then(function (response) {
-                console.log(success)
-              })
+              .then(response => {
+                setStoreList(response.data);
+                setStore_id(storeList["data"][1].store_id);
+                setStore_name(storeList["data"][1].store_name);
+                setDistance(storeList["data"][1].distance);
+                setWaiting(storeList["data"][1].waiting);
+                setIs_waiting(storeList["data"][1].is_waiting);
+                setInformation(storeList["data"][1].information);
+                setLatitude(storeList["data"][1].latitude);
+                setLongitude(storeList["data"][1].longitude);
+                console.log(longitude)
+                }
+              )
               .catch(function (error) {
                 console.log(error)
               });
@@ -113,7 +121,7 @@ function MapView() {
     }, []);
 
     function modal(){
-        setModalOutput(mySite.store_name)
+        setModalOutput(storeList["data"][0].store_name)
         setModalVisible(true)
     }
 
@@ -145,10 +153,10 @@ function MapView() {
                             onCameraChange={(e) => console.log(e.latitude, e.longitude)}
                 >   
                     <View>
-                        {markers.map((e) =>
+                        {markers.map((mark) =>
                             <Marker
-                                key={e.latitude}
-                                coordinate={e} 
+                                key={mark.latitude}
+                                coordinate={mark} 
                                 onClick={() => modal()}
                             />
                         )}

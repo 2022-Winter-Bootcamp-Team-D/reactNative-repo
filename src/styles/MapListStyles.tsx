@@ -19,24 +19,24 @@ const mapListStyles = StyleSheet.create ({
     },
 
     number: {
-        marginRight: 20,
+        marginRight: 10,
         width: 15,
         color: 'black',
         fontFamily: 'BMHANNA',
-        fontSize: 23,
+        fontSize: 20,
     },
 
     storeNameText:{
-        marginLeft: 10,
+        marginLeft: 0,
         width: 130,
         color: 'black',
         fontFamily: 'BMHANNA',
-        fontSize: 23,
+        fontSize: 18,
     },
 
     waitingText:{
         marginTop: 5,
-        marginLeft: 40,
+        marginLeft: 10,
         color: 'black',
         fontFamily: 'BMHANNAAir',
         fontSize: 15,
@@ -44,7 +44,7 @@ const mapListStyles = StyleSheet.create ({
 
     storeDetailText:{
         marginTop: 10,
-        marginLeft: 20,
+        marginLeft: 10,
         marginBottom: 5,
         padding: 8,
         color: 'black',
@@ -54,14 +54,14 @@ const mapListStyles = StyleSheet.create ({
 
     storeDistanceText:{
         marginTop: 5,
-        marginLeft: 40,
+        marginLeft: 30,
         color: 'black',
         fontFamily: 'BMHANNAAir',
         fontSize: 15,
     },
 
     verticalLine: {
-        marginTop: 10,
+        marginTop: 0,
         marginLeft: 20,
         width: '90%',
         height: 3,

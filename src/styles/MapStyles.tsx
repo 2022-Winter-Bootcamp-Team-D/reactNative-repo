@@ -62,7 +62,6 @@ const mapStyles = StyleSheet.create ({
     },
 
     storeNameText:{
-        marginLeft: 10,
         color: 'black',
         fontFamily: 'BMHANNA',
         fontSize: 23,
@@ -70,7 +69,7 @@ const mapStyles = StyleSheet.create ({
 
     storeDetailText:{
         marginTop: 5,
-        marginLeft: 60,
+        marginLeft: 10,
         color: 'black',
         fontFamily: 'BMHANNAAir',
         fontSize: 15,
@@ -78,7 +77,7 @@ const mapStyles = StyleSheet.create ({
 
     storeDistanceText:{
         marginTop: 5,
-        marginLeft: 80,
+        marginLeft: 10,
         color: 'black',
         fontFamily: 'BMHANNAAir',
         fontSize: 15,

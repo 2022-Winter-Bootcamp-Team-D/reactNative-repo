@@ -22,10 +22,6 @@ function SearchScreen() {
   const [myLocation, setMyLocation] = useState<M0>({latitude: 0, longitude: 0});
   const navigation = useNavigation<ResgisterScreenProp>();
 
-  const onPress = () => {{
-    navigation.navigate('SearchResult')
-  }}
-
   async function getFCMToken() {
     // 가져오기
     AsyncStorage.getItem('FCMToken', (err, FCMToken) => {
@@ -56,7 +52,7 @@ function SearchScreen() {
 
     async function mapData() {
         try {
-            const response = await axios.post<MySite>(
+            const response = await axios.post<M0>(
                 'http://15.164.28.246:8000/api/v1/stores/search/',
                 {
                     token: AsyncStorage.getItem('FCMToken'),
@@ -76,29 +72,12 @@ function SearchScreen() {
         } catch (error) {
             console.log(error);
         }
-    };
-}, []);
-  async function loginAPI() {
-    try {
-        const response = await axios.post(
-            'localhost:8000/api/v1/map/?search={word}&lat={latitude}&long={longitude}/',
-            {
-            token: getFCMToken(),
-            search: search,
-            latitude: 123,
-            longitude: 123
-            },
-        )
-        .then(function (response) {
-            onPress()
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-    } catch (error) {
-        console.log(error);
-    }
-};
+        };
+    }, []);
+
+  const onPress = () => {{
+    navigation.navigate('SearchResult')
+  }}
 
   return (
     <View style={SearchScreenStyles.container}>

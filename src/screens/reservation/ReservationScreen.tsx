@@ -47,32 +47,19 @@ function ReservationScreen() {
     async function postReservationData() {
         try {
             const response = await axios.post(
-                'http://15.164.28.246:8000/api/v1/waitings/',
-                {
-                  store_id: route.params?.mySite.store_id,
-                  people: route.params?.mySite.store_id,
-                  token: AsyncStorage.getItem('FCMToken')
-                },
-                { headers : {Authorization: await AsyncStorage.getItem('accessToken')}},
-                )
+              'http://15.164.28.246:8000/api/v1/waitings/',
+              {
+                store_id: route.params?.mySite.store_id,
+                people: route.params?.mySite.store_id,
+                token: AsyncStorage.getItem('FCMToken', (err, FCMToken) => 
+                  {return(FCMToken)})
+              },
+              { headers : {Authorization: 
+                await AsyncStorage.getItem('accessToken', (err, res) => 
+                {return(res)})
+              }},
+            )
           .then(async function (response) {
-            // if (response.status == 401){
-            //   try{
-            //       const response = await API.post(
-            //           '/auth/user/refresh/',
-            //           {
-            //           refresh: AsyncStorage.getItem('refreshToken')
-            //           },
-            //       )
-            //       .then(async function (response) {
-            //           AsyncStorage.removeItem('accessToken')
-            //           AsyncStorage.setItem('accessToken', response.data.accessToken);
-            //       })
-            //   } catch (error) {
-            //       console.log(error);
-            //   }
-            // }
-            
             const myResponse = response.data
             navigation.navigate('Status', {
               myResponse: myResponse, 
@@ -81,7 +68,8 @@ function ReservationScreen() {
           })
           .catch(function (error) {
             console.log(error);
-            console.log(AsyncStorage.getItem('accessToken'))
+            console.log(AsyncStorage.getItem('accessToken', (err, res) => 
+            {return(res);}))
           });
         } catch (error) {
             console.log(error);
@@ -93,7 +81,7 @@ function ReservationScreen() {
        <View style={reservationStyles.selectedStore}>
         <View style={mapListStyles.listTitle}>
             <Text style={reservationStyles.storeNameText}>
-              {route.params?.mySite.store_id}
+              {route.params?.mySite.store_name}
             </Text>
             <Text style={reservationStyles.waitingText}>
               대기 {route.params?.mySite.waiting} 팀
@@ -113,8 +101,6 @@ function ReservationScreen() {
       <TouchableOpacity
         style={reservationStyles.reservationButton}
         onPress={() => {
-            getFCMToken()
-            getAccessToken()
             postReservationData()
         }}
       >

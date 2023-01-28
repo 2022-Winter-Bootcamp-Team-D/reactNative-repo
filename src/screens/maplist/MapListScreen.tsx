@@ -17,7 +17,13 @@ function MapListScreen() {
     type ScreenRouteProp = RouteProp<RootStackParamList,'MapList'>;
     const navigation = useNavigation<ResgisterScreenProp>();
     const route = useRoute<ScreenRouteProp>();
-
+    const [store_id, setStore_id] = useState(0);
+    const [store_name, setStore_name] = useState('');
+    const [distance, setDistance] = useState(0);
+    const [waiting, setWaiting] = useState(0);
+    const [information, setInformation] = useState('');
+    const [is_waiting, setIs_waiting] = useState(true);
+    
     const storeList = [
         {
             store_id: route.params?.mySite.store_id,
@@ -77,7 +83,7 @@ function MapListScreen() {
                                 </Text>
                                 <TouchableOpacity
                                     style={mapListStyles.reservationButton}
-                                    onPress={() => navigation.navigate('Reservation')}>
+                                    onPress={() => navigation.navigate('Reservation', )}>
                                     <Text style={mapListStyles.reservationText}>
                                         예약하기
                                     </Text>

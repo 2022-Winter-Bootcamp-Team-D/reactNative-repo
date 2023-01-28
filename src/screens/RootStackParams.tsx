@@ -34,5 +34,4 @@ type around = {
         waiting: number,
         is_waiting: boolean,
         information : string,
-        my_position: string
 }
