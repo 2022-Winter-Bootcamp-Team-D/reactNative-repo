@@ -38,7 +38,16 @@ function MapView() {
     const [modalOutput, setModalOutput] = useState<string>("");
     const navigation = useNavigation<ResgisterScreenProp>();
     const [storeList, setStoreList] = useState([]);
-    const [myStoreList, setMyStoreList] = useState([]);
+    const [myStoreList, setMyStoreList] = useState([{
+        store_id: 0,
+        store_name : '',
+        distance: 0,       // 나와의 떨어진 거리
+        waiting: 0,        // 현재 웨이팅을 받고 있는지?
+        is_waiting: true,
+        information : '',
+        latitude: 0,
+        longitude: 0
+    }]);
     const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
     const [store_id, setStore_id] = useState(0);
@@ -47,13 +56,6 @@ function MapView() {
     const [waiting, setWaiting] = useState(0);
     const [information, setInformation] = useState('');
     const [is_waiting, setIs_waiting] = useState(true);
-    const [index0, setIndex0] = useState<MySite>();
-    const [index1, setIndex1] = useState<MySite>();
-    const [index2, setIndex2] = useState<MySite>();
-    const [index3, setIndex3] = useState<MySite>();
-    const [index4, setIndex4] = useState<MySite>();
-    const [index5, setIndex5] = useState<MySite>();
-
 
     const mySite = {
         store_id: store_id,
@@ -69,15 +71,6 @@ function MapView() {
             latitude: latitude,
             longitude : longitude
         }
-    ]
-
-    const list = [
-        index0,
-        index1,
-        index2,
-        index3,
-        index4,
-        index5,
     ]
 
     //현재 위치를 추적합니다.
@@ -116,12 +109,8 @@ function MapView() {
               .then(response => {
                 setStoreList(response.data);
                 setMyStoreList(storeList["data"])
-                setIndex0(myStoreList[0])
-                setIndex1(myStoreList[1])
-                setIndex2(myStoreList[2])
-                setIndex3(myStoreList[3])
-                setIndex4(myStoreList[4])
-                setIndex5(myStoreList[5])
+                
+                console.log(myStoreList)
                 }
               )
               .catch(function (error) {
@@ -138,8 +127,6 @@ function MapView() {
         setModalVisible(true)
     }
 
-
-
     // ?는 두가지 타입을 한번에, !는 무조건 타입 지정
     const Point = {latitude: myLocation.latitude, longitude: myLocation.longitude}; 
 
@@ -155,7 +142,7 @@ function MapView() {
             <View style={mapScreenStyles.mapListButton}>
                 <TouchableOpacity 
                     style={mapStyles.mapListButton}
-                    onPress={() => navigation.navigate('MapList', {mySite: mySite})}>
+                    onPress={(e:any) => navigation.navigate('MapList', {mySite: myStoreList[e]})}>
                     <Text style={mapStyles.buttonText}>
                         리스트로 보기
                     </Text>
@@ -168,16 +155,26 @@ function MapView() {
                             onCameraChange={(e) => (e.latitude, e.longitude)}
                 >   
                     <View>
-                        {list.map((mark) =>
+                        {myStoreList&&myStoreList.map((e: any) =>
                             <Marker
-                                key={mark.latitude}
-                                coordinate={mark} 
-                                onClick={() => modal()}
+                                key={e.latitude}
+                                coordinate={e} 
+                                onClick={() => navigation.navigate('Reservation', {mySite: myStoreList[e]})}
+                                caption={{
+                                    text: e.store_name,
+                                    textSize: 15,
+                                    }
+                                }
+                                subCaption={{
+                                    text: e.distance,
+                                    textSize: 15,
+                                    }
+                                }
                             />
                         )}
                     </View>
                 </NaverMapView>
-                <Modal
+                {/* <Modal
                     //isVisible Props에 State 값을 물려주어 On/off control
                     isVisible={modalVisible}
                     //아이폰에서 모달창 동작시 깜박임이 있었는데, useNativeDriver Props를 True로 주니 해결되었다.
@@ -195,17 +192,27 @@ function MapView() {
                             }}
                         >
                             <View style={mapStyles.storeContainer}>
-                                {list.map((mark) =>
-                                <Text style={mapStyles.storeNameText}>
-                                    {list.store_name}
+                                {oneone&&oneone.map((e: any) =>
+                                <Text
+                                    key={e.store_id}
+                                    style={mapStyles.storeNameText}>
+                                    {e.store_id}
                                 </Text>
                                 )}
-                                <Text style={mapStyles.storeDetailText}>
-                                    대기 {mySite.waiting}팀
+                                {oneone&&oneone.map((e: any) =>
+                                <Text
+                                    key={e.store_id} 
+                                    style={mapStyles.storeDetailText}>
+                                    대기 {e.waiting}팀
                                 </Text>
-                                <Text style={mapStyles.storeDistanceText}>
-                                    {mySite.distance}m
+                                )}
+                                {oneone&&oneone.map((e: any) =>
+                                <Text
+                                    key={e.store_id} 
+                                    style={mapStyles.storeDistanceText}>
+                                    {e.distance}m
                                 </Text>
+                                )}
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity
@@ -219,7 +226,7 @@ function MapView() {
                             </Text>
                         </TouchableOpacity>
                     </View>
-                </Modal>
+                </Modal> */}
             </View>
         </View>
     ); 

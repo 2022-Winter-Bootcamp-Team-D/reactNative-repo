@@ -20,30 +20,6 @@ function ReservationScreen() {
     const navigation = useNavigation<ResgisterScreenProp>();
     const [people, setPeople] = useState(0);
 
-    async function getFCMToken() {
-        // 가져오기
-        AsyncStorage.getItem('FCMToken', (err, FCMToken) => {
-            console.log("[FCMToken] " + FCMToken);
-            return(FCMToken);
-        });
-    }
-
-    async function getAccessToken() {
-      // 가져오기
-      AsyncStorage.getItem('accessToken', (err, res) => {
-        console.log("[accessToken] " + res);
-        return(res);
-      });
-    }
-
-    async function getRefreshToken() {
-      // 가져오기
-      AsyncStorage.getItem('refreshToken', (err, refreshToken) => {
-        console.log("[refreshToken] " + refreshToken);
-        return(refreshToken);
-      });
-    }
-
     async function postReservationData() {
         try {
             const response = await axios.post(

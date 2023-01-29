@@ -19,6 +19,15 @@ export type RootStackParamList = {
     Signup: undefined;
 };
 
+type around = {
+    store_id: number,
+    store_name : string,
+    distance: number,
+    waiting: number,
+    is_waiting: boolean,
+    information : string,
+}
+
 type waitingReady = {
         create_at: Date,
         people: number,
@@ -27,11 +36,3 @@ type waitingReady = {
         store_name: string
 };
 
-type around = {
-        store_id: number,
-        store_name : string,
-        distance: number,
-        waiting: number,
-        is_waiting: boolean,
-        information : string,
-}
