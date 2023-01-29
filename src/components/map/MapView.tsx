@@ -41,8 +41,8 @@ function MapView() {
     const [myStoreList, setMyStoreList] = useState([{
         store_id: 0,
         store_name : '',
-        distance: 0,       // 나와의 떨어진 거리
-        waiting: 0,        // 현재 웨이팅을 받고 있는지?
+        distance: 0,
+        waiting: 0,
         is_waiting: true,
         information : '',
         latitude: 0,
@@ -56,15 +56,6 @@ function MapView() {
     const [waiting, setWaiting] = useState(0);
     const [information, setInformation] = useState('');
     const [is_waiting, setIs_waiting] = useState(true);
-
-    const mySite = {
-        store_id: store_id,
-        store_name : store_name,
-        distance: distance,
-        waiting: waiting,
-        is_waiting: is_waiting,
-        information : information,
-    }
 
     const marker = [
         {
@@ -109,8 +100,6 @@ function MapView() {
               .then(response => {
                 setStoreList(response.data);
                 setMyStoreList(storeList["data"])
-                
-                console.log(myStoreList)
                 }
               )
               .catch(function (error) {
@@ -122,10 +111,10 @@ function MapView() {
         };
     }, []);
 
-    function modal(){
-        setModalOutput(mySite.store_name)
-        setModalVisible(true)
-    }
+    // function modal(){
+    //     setModalOutput(mySite.store_name)
+    //     setModalVisible(true)
+    // }
 
     // ?는 두가지 타입을 한번에, !는 무조건 타입 지정
     const Point = {latitude: myLocation.latitude, longitude: myLocation.longitude}; 
@@ -143,6 +132,7 @@ function MapView() {
                 <TouchableOpacity 
                     style={mapStyles.mapListButton}
                     onPress={(e:any) => navigation.navigate('MapList', {mySite: myStoreList[e]})}>
+                    
                     <Text style={mapStyles.buttonText}>
                         리스트로 보기
                     </Text>
@@ -159,7 +149,7 @@ function MapView() {
                             <Marker
                                 key={e.latitude}
                                 coordinate={e} 
-                                onClick={() => navigation.navigate('Reservation', {mySite: myStoreList[e]})}
+                                onClick={() => navigation.navigate('Reservation', {mySite: e})}
                                 caption={{
                                     text: e.store_name,
                                     textSize: 15,
@@ -171,8 +161,11 @@ function MapView() {
                                     }
                                 }
                             />
+                            
                         )}
+                        
                     </View>
+
                 </NaverMapView>
                 {/* <Modal
                     //isVisible Props에 State 값을 물려주어 On/off control

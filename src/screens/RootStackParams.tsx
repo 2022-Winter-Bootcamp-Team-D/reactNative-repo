@@ -20,12 +20,14 @@ export type RootStackParamList = {
 };
 
 type around = {
-    store_id: number,
-    store_name : string,
-    distance: number,
-    waiting: number,
-    is_waiting: boolean,
-    information : string,
+    store_id: number;
+    store_name: string;
+    distance: number;
+    waiting: number;
+    is_waiting: boolean;
+    information: string;
+    latitude: number;
+    longitude: number;
 }
 
 type waitingReady = {
