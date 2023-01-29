@@ -38,7 +38,7 @@ function MapView() {
     const [modalOutput, setModalOutput] = useState<string>("");
     const navigation = useNavigation<ResgisterScreenProp>();
     const [storeList, setStoreList] = useState([]);
-    const [myStoreList, setMYStoreList] = useState([]);
+    const [myStoreList, setMyStoreList] = useState([]);
     const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
     const [store_id, setStore_id] = useState(0);
@@ -47,6 +47,13 @@ function MapView() {
     const [waiting, setWaiting] = useState(0);
     const [information, setInformation] = useState('');
     const [is_waiting, setIs_waiting] = useState(true);
+    const [index0, setIndex0] = useState<MySite>();
+    const [index1, setIndex1] = useState<MySite>();
+    const [index2, setIndex2] = useState<MySite>();
+    const [index3, setIndex3] = useState<MySite>();
+    const [index4, setIndex4] = useState<MySite>();
+    const [index5, setIndex5] = useState<MySite>();
+
 
     const mySite = {
         store_id: store_id,
@@ -57,11 +64,20 @@ function MapView() {
         information : information,
     }
 
-    const markers = [
+    const marker = [
         {
             latitude: latitude,
-		    longitude: longitude 
-        },
+            longitude : longitude
+        }
+    ]
+
+    const list = [
+        index0,
+        index1,
+        index2,
+        index3,
+        index4,
+        index5,
     ]
 
     //현재 위치를 추적합니다.
@@ -73,7 +89,6 @@ function MapView() {
 
   // 위치추적에 성공했을때 위치 값을 넣어줍니다.
         function success(position: any) {
-            console.log (position.coords.latitude, position.coords.longitude)
             setMyLocation({
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
@@ -100,15 +115,13 @@ function MapView() {
                 )
               .then(response => {
                 setStoreList(response.data);
-                setStore_id(storeList["data"][1].store_id);
-                setStore_name(storeList["data"][1].store_name);
-                setDistance(storeList["data"][1].distance);
-                setWaiting(storeList["data"][1].waiting);
-                setIs_waiting(storeList["data"][1].is_waiting);
-                setInformation(storeList["data"][1].information);
-                setLatitude(storeList["data"][1].latitude);
-                setLongitude(storeList["data"][1].longitude);
-                console.log(longitude)
+                setMyStoreList(storeList["data"])
+                setIndex0(myStoreList[0])
+                setIndex1(myStoreList[1])
+                setIndex2(myStoreList[2])
+                setIndex3(myStoreList[3])
+                setIndex4(myStoreList[4])
+                setIndex5(myStoreList[5])
                 }
               )
               .catch(function (error) {
@@ -121,9 +134,11 @@ function MapView() {
     }, []);
 
     function modal(){
-        setModalOutput(storeList["data"][0].store_name)
+        setModalOutput(mySite.store_name)
         setModalVisible(true)
     }
+
+
 
     // ?는 두가지 타입을 한번에, !는 무조건 타입 지정
     const Point = {latitude: myLocation.latitude, longitude: myLocation.longitude}; 
@@ -150,10 +165,10 @@ function MapView() {
                 <NaverMapView style={{width: '100%', height: '100%'}}
                             showsMyLocationButton={true}
                             center={{...Point,zoom: 16}} // ... 은 배열을 풀어준다.
-                            onCameraChange={(e) => console.log(e.latitude, e.longitude)}
+                            onCameraChange={(e) => (e.latitude, e.longitude)}
                 >   
                     <View>
-                        {markers.map((mark) =>
+                        {list.map((mark) =>
                             <Marker
                                 key={mark.latitude}
                                 coordinate={mark} 
@@ -180,9 +195,11 @@ function MapView() {
                             }}
                         >
                             <View style={mapStyles.storeContainer}>
+                                {list.map((mark) =>
                                 <Text style={mapStyles.storeNameText}>
-                                    {mySite.store_name}
+                                    {list.store_name}
                                 </Text>
+                                )}
                                 <Text style={mapStyles.storeDetailText}>
                                     대기 {mySite.waiting}팀
                                 </Text>

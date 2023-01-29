@@ -18,6 +18,7 @@ type ScreenRouteProp = RouteProp<RootStackParamList,'SearchResult'>;
 function SearchResultScreen() {
   const navigation = useNavigation<ResgisterScreenProp>();
   const route = useRoute<ScreenRouteProp>();
+  
   const searchStoreList = [
     {
       store_id: 1,

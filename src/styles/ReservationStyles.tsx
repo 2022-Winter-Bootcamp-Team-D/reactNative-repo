@@ -19,14 +19,14 @@ const reservationStyles = StyleSheet.create ({
   },
 
   waitingText:{
-    marginLeft: 60,
+    marginLeft: 20,
     color: 'black',
     fontFamily: 'BMJUA',
     fontSize: 20,
   },
 
   storeDistanceText:{
-    marginLeft: 80,
+    marginLeft: 10,
     color: 'black',
     fontFamily: 'BMJUA',
     fontSize: 20,
