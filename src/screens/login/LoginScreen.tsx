@@ -36,8 +36,8 @@ function LoginScreen() {
             const response = await API.post(
                 '/auth/user/signin/',
                 {
-                    email: email,
-                    password: password
+                email: email,
+                password: password
                 },
             )
             .then(function (response) {

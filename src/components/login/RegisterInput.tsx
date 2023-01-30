@@ -24,6 +24,7 @@ function RegisterInput({email, password, setEmail, setPassword}:Props) {
                 style={LoginStyles.RegisterInput}
                 placeholder="비밀번호"
                 value={password}
+                secureTextEntry
                 onChangeText={(password) => {setPassword(password)}}
             />
         </View>

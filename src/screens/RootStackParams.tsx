@@ -3,12 +3,10 @@ export type RootStackParamList = {
     Main: undefined;
     Login: undefined;
     Map: undefined;
-    MapList: {
-        mySite: around
-    };
+    MapList: undefined;
     Reservation: {
         mySite: around
-        };
+    };
     ReservationResult: {
         myResponse: waitingReady,
         store_name: string,
@@ -20,7 +18,7 @@ export type RootStackParamList = {
     Inquiry: undefined;
     Status: undefined;
     Search: undefined;
-    SearchResult: undefined;
+    SearchResult: {search: string};
     Signup: undefined;
 };
 

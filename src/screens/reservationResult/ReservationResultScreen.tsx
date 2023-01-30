@@ -38,10 +38,10 @@ function ReservationResultScreen() {
                 { headers : {
                     Authorization: await AsyncStorage.getItem('accessToken', (err, res) => 
                     {return(res);})
-                }},
+                }}
             )
           .then(function (response) {
-            // console.log(response)
+            navigation.navigate('Main')
           })
           .catch(function (error) {
             console.log(error);

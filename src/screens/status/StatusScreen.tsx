@@ -19,73 +19,58 @@ function StatusScreen() {
     const navigation = useNavigation<ResgisterScreenProp>();
     type ScreenRouteProp = RouteProp<RootStackParamList,"Status">;
     const route = useRoute<ScreenRouteProp>();
-    const [myLocation, setMyLocation] = useState<M0>({latitude: 0, longitude: 0});
     const [people, setPeople] = useState(0);
     const [store_name, setStore_name] = useState("");
     const [waiting_id, setWaiting_id] = useState(0);
     const [waiting_order, setWaiting_order] = useState(0);
 
     useEffect(() => {
-        if (geolocation) {
-            geolocation.getCurrentPosition(success, error);
-            getReservationData();
-        }
-
-          // 위치추적에 성공했을때 위치 값을 넣어줍니다.
-        function success(position: any) {
-            setMyLocation({
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-            });
-        }
-
-    // 위치 추적에 실패 했을때 초기값을 넣어줍니다.
-        function error() { // 현우네 양꼬치 & 사천훠궈, 현우네 반점
-            setMyLocation({latitude: 37.5454, longitude: 127.1541 }); // 현우네밥집 주소 latitude: 37.5634, longitude: 126.9093 
-        }
+        getReservationData();
 
         async function getReservationData() {
             try {
                 const response = await axios.get(
                     'http://15.164.28.246:8000/api/v1/waitings/',
-                    { headers : {Authorization: await AsyncStorage.getItem('accessToken', (err, res) => 
-                        {return(res);})}
-                    }
+                    {headers : {
+                        Authorization: await AsyncStorage.getItem('accessToken', (err, res) => 
+                        {return(res);})
+                    }},
                 )
-              .then(function (response) {
-                console.log(response.data)
-                setPeople(response.data.people)
-                setStore_name(response.data.store_name)
-                setWaiting_id(response.data.waiting_id)
-                setWaiting_order(response.data.waiting_order)
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
-            } catch (error) {
-                console.log(error);
+                .then(function (response) {
+                    console.log(response.data)
+                    setPeople(response.data.people)
+                    setStore_name(response.data.store_name)
+                    setWaiting_id(response.data.waiting_id)
+                    setWaiting_order(response.data.waiting_order)
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+                } catch (error) {
+                    console.log(error);
             }
         };
-    }, []);
+        }, []);
 
-    async function patchCancelData() {
-        try {
-            const response = await axios.patch(
-                'http://15.164.28.246:8000/api/v1/waitings/',
-                {headers : {Authorization: await AsyncStorage.getItem('accessToken', (err, res) => 
-                            {return(res);})}
-                }
-            )
-          .then(function (response) {
-            console.log(response)
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-        } catch (error) {
-            console.log(error);
-        }
-    };
+        async function patchCancelData() {
+            try {
+                const response = await axios.patch(
+                    'http://15.164.28.246:8000/api/v1/waitings/',
+                    { headers : {
+                        Authorization: await AsyncStorage.getItem('accessToken', (err, res) => 
+                        {return(res);})
+                    }}
+                )
+                .then(function (response) {
+                    console.log(response)
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+                } catch (error) {
+                    console.log(error);
+            }
+        };
 
     new Intl.DateTimeFormat('kr').format(new Date());
     const TIME_ZONE = 3240 * 10000;

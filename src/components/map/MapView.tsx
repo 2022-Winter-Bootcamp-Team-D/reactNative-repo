@@ -122,16 +122,16 @@ function MapView() {
                     </Text>
                 </View>
             </View>
-            {/* <View style={mapScreenStyles.mapListButton}>
+            <View style={mapScreenStyles.mapListButton}>
                 <TouchableOpacity 
                     style={mapStyles.mapListButton}
-                    onPress={(e:any) => navigation.navigate('MapList', {mySite: e})}>
+                    onPress={() => navigation.navigate('MapList')}>
                     
                     <Text style={mapStyles.buttonText}>
                         리스트로 보기
                     </Text>
                 </TouchableOpacity>
-            </View> */}
+            </View>
             <View style={mapStyles.mapView}>
                 <NaverMapView style={{width: '100%', height: '100%'}}
                             showsMyLocationButton={true}

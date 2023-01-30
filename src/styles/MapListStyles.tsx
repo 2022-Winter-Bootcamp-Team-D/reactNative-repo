@@ -20,7 +20,7 @@ const mapListStyles = StyleSheet.create ({
 
     number: {
         marginRight: 10,
-        width: 15,
+        width: 30,
         color: 'black',
         fontFamily: 'BMHANNA',
         fontSize: 20,
@@ -28,7 +28,7 @@ const mapListStyles = StyleSheet.create ({
 
     storeNameText:{
         marginLeft: 0,
-        width: 130,
+        width: 140,
         color: 'black',
         fontFamily: 'BMHANNA',
         fontSize: 18,
@@ -61,7 +61,7 @@ const mapListStyles = StyleSheet.create ({
     },
 
     verticalLine: {
-        marginTop: 0,
+        marginTop: 10,
         marginLeft: 20,
         width: '90%',
         height: 3,
