@@ -23,6 +23,18 @@ function RegisterScreen() {
     const [email, setEamil] = useState('');
     const [password, setPassword] = useState('');
 
+    async function FCMToken() {
+        // Register the device with FCM
+        await messaging().registerDeviceForRemoteMessages();
+        // Get the token
+        const FCMToken = await messaging().getToken();
+        // Save the token
+        AsyncStorage.setItem('token', FCMToken, () => { // 'token'의 변수로 토큰값 저장
+        });
+        console.log('[FCMToken]' + FCMToken)
+        return (FCMToken)
+    }
+
     async function loginAPI() {
         try {
             const response = await API.post(
@@ -36,10 +48,12 @@ function RegisterScreen() {
                 {withCredentials:true, }
             )
             .then(function (response) {
-                console.log(response.data.accessToken)
-                AsyncStorage.setItem('accessToken', response.data.accessToken);
+                var str1 = 'Bearer '
+                var res = str1.concat(response.data.access)
+                AsyncStorage.setItem('accessToken', res);
                 // AsyncStorage.setItem('refreshToken', response.data.refreshToken);
                 navigation.navigate('Main')
+                console.log('[access] ' + res)
             })
             .catch(function (error) {
                 console.log(error);
@@ -68,6 +82,7 @@ function RegisterScreen() {
                         style={RegisterStyles.registerButton}
                         onPress={() => {
                             loginAPI()
+                            FCMToken()
                             // navigation.navigate('Main')
                         }}
                     >

@@ -41,12 +41,12 @@ function ReservationScreen() {
               {
                 store_id: store_id,
                 people: people,
-                token: AsyncStorage.getItem('FCMToken', (err, FCMToken) => 
-                  {return(FCMToken)})
+                token: await AsyncStorage.getItem('FCMToken', (err, FCMToken) => 
+                  {return(FCMToken);})
               },
-              { headers : {Authorization: 
-                await AsyncStorage.getItem('accessToken', (err, res) => 
-                {return(res)})
+              { headers : {
+                Authorization: await AsyncStorage.getItem('accessToken', (err, res) => 
+                {return(res);})
               }},
             )
           .then(async function (response) {
@@ -58,12 +58,6 @@ function ReservationScreen() {
           })
           .catch(function (error) {
             console.log(error);
-            // navigation.navigate('ReservationResult', {
-            //   store_name: "스윗솔트",
-            //   people: people,
-            //   waiting_order: 6,
-            //   store_name: store_name
-            // })
           });
         } catch (error) {
             console.log(error);

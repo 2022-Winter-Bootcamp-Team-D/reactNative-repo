@@ -26,20 +26,19 @@ function ReservationResultScreen() {
 
     useEffect(() => {
         setStore_name(route.params?.store_name)
-        // setCreate_at(route.params?.myResponse.create_at)
-        setPeople(route.params?.people)
-        setWaiting_id(route.params?.waiting_id)
-        setWaiting_order(route.params?.waiting_order)
-        // setPeople(route.params?.myResponse.people)
-        // setWaiting_id(route.params?.myResponse.waiting_id)
-        // setWaiting_order(route.params?.myResponse.waiting_order)
+        setPeople(route.params?.myResponse.people)
+        setWaiting_id(route.params?.myResponse.waiting_id)
+        setWaiting_order(route.params?.myResponse.waiting_order)
       }, []);
 
     async function patchCancelData() {
         try {
             const response = await axios.patch(
                 'http://15.164.28.246:8000/api/v1/waitings/',
-                { headers : {Authorization: await AsyncStorage.getItem('accessToken')}}
+                { headers : {
+                    Authorization: await AsyncStorage.getItem('accessToken', (err, res) => 
+                    {return(res);})
+                }},
             )
           .then(function (response) {
             // console.log(response)
@@ -57,7 +56,6 @@ function ReservationResultScreen() {
     const d = new Date();
     const date = new Date(+d + TIME_ZONE).toISOString().split('T')[0];
     const time = d.toTimeString().split(' ')[0];
-    console.log(date + ' ' + time);
 
     return (
       <View style={ReservationScreenStyles.container}>

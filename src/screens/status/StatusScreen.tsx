@@ -10,6 +10,7 @@ import StatusListStyles from "../../styles/StatusListStyles";
 import HomeButton from "../../components/status/HomeButton";
 import statusStyles from "../../styles/StatusStyles";
 import axios from "axios";
+import geolocation from 'react-native-geolocation-service';
 import AsyncStorage from "@react-native-community/async-storage";
 
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Status'>;
@@ -18,24 +19,39 @@ function StatusScreen() {
     const navigation = useNavigation<ResgisterScreenProp>();
     type ScreenRouteProp = RouteProp<RootStackParamList,"Status">;
     const route = useRoute<ScreenRouteProp>();
+    const [myLocation, setMyLocation] = useState<M0>({latitude: 0, longitude: 0});
     const [people, setPeople] = useState(0);
     const [store_name, setStore_name] = useState("");
     const [waiting_id, setWaiting_id] = useState(0);
     const [waiting_order, setWaiting_order] = useState(0);
 
     useEffect(() => {
-        // setStore_id(route.params?.mySite.store_id)
-        // setStore_name(route.params?.mySite.store_name)
-        // setWaiting(route.params?.mySite.waiting)
-        // setDistance(route.params?.mySite.distance)
-        // setInformation(route.params?.mySite.information)
+        if (geolocation) {
+            geolocation.getCurrentPosition(success, error);
+            getReservationData();
+        }
+
+          // 위치추적에 성공했을때 위치 값을 넣어줍니다.
+        function success(position: any) {
+            setMyLocation({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            });
+        }
+
+    // 위치 추적에 실패 했을때 초기값을 넣어줍니다.
+        function error() { // 현우네 양꼬치 & 사천훠궈, 현우네 반점
+            setMyLocation({latitude: 37.5454, longitude: 127.1541 }); // 현우네밥집 주소 latitude: 37.5634, longitude: 126.9093 
+        }
+
         async function getReservationData() {
             try {
                 const response = await axios.get(
                     'http://15.164.28.246:8000/api/v1/waitings/',
-                    { headers : {Authorization: await AsyncStorage.getItem('accessToken')}}
+                    { headers : {Authorization: await AsyncStorage.getItem('accessToken', (err, res) => 
+                        {return(res);})}
+                    }
                 )
-              
               .then(function (response) {
                 console.log(response.data)
                 setPeople(response.data.people)
@@ -56,7 +72,9 @@ function StatusScreen() {
         try {
             const response = await axios.patch(
                 'http://15.164.28.246:8000/api/v1/waitings/',
-                { headers : {Authorization: await AsyncStorage.getItem('accessToken')}}
+                {headers : {Authorization: await AsyncStorage.getItem('accessToken', (err, res) => 
+                            {return(res);})}
+                }
             )
           .then(function (response) {
             console.log(response)
@@ -74,7 +92,7 @@ function StatusScreen() {
     const d = new Date();
     const date = new Date(+d + TIME_ZONE).toISOString().split('T')[0];
     const time = d.toTimeString().split(' ')[0];
-    console.log(date + ' ' + time);
+    // console.log(date + ' ' + time);
 
     return (
       <View style={ReservationScreenStyles.container}>

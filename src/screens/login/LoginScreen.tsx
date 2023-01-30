@@ -4,7 +4,6 @@ import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../RootStackParams';
 import messaging from '@react-native-firebase/messaging';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
 import AsyncStorage from '@react-native-community/async-storage';
 import LoginStyles from "../../styles/LoginStyles";
 import Logo from "../../components/login/Logo";
@@ -37,8 +36,8 @@ function LoginScreen() {
             const response = await API.post(
                 '/auth/user/signin/',
                 {
-                email: 'hihi@example.com',
-                password: 'string'
+                    email: email,
+                    password: password
                 },
             )
             .then(function (response) {
