@@ -94,7 +94,6 @@ function MapListScreen() {
                     </View>  
                 )}
             </View>
-            
         </ScrollView>
     );
 };

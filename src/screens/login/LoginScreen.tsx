@@ -42,8 +42,6 @@ function LoginScreen() {
                 },
             )
             .then(function (response) {
-                // AsyncStorage.getItem('accessToken', response.data.access);
-                // AsyncStorage.getItem('refreshToken', response.data.refresh);
                 var str1 = 'Bearer '
                 var res = str1.concat(response.data.access)
                 AsyncStorage.setItem('accessToken', res);

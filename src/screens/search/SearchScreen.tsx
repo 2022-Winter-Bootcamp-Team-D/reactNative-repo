@@ -21,6 +21,17 @@ function SearchScreen() {
   const [search, setSearch] = useState('');
   const [myLocation, setMyLocation] = useState<M0>({latitude: 0, longitude: 0});
   const navigation = useNavigation<ResgisterScreenProp>();
+  const [storeList, setStoreList] = useState([]);
+    const [myStoreList, setMyStoreList] = useState([{
+        store_id: 0,
+        store_name : '',
+        distance: 0,
+        waiting: 0,
+        is_waiting: true,
+        information : '',
+        latitude: 0,
+        longitude: 0
+    }]);
 
   async function getFCMToken() {
     // 가져오기
@@ -52,19 +63,23 @@ function SearchScreen() {
 
     async function mapData() {
         try {
-            const response = await axios.post<M0>(
+            const response = await axios.post(
                 'http://15.164.28.246:8000/api/v1/stores/search/',
                 {
-                    token: AsyncStorage.getItem('FCMToken'),
+                    token: await AsyncStorage.getItem('FCMToken', (err, res) => 
+                            {return(res);}),
+                    search: search,
                     latitude: myLocation.latitude, 
                     longitude: myLocation.longitude
                 },
-                { headers : {Authorization: await AsyncStorage.getItem('accessToken')}},
-            )
+                { headers : {
+                  Authorization: await AsyncStorage.getItem('accessToken', (err, res) => 
+                                {return(res);})
+              }},)
           .then(function (response) {
             console.log(success)
-            const mySite = response.data
-            console.log(mySite)
+            setStoreList(response.data);
+            setMyStoreList(storeList["data"])
           })
           .catch(function (error) {
             console.log(error)
@@ -72,8 +87,7 @@ function SearchScreen() {
         } catch (error) {
             console.log(error);
         }
-        };
-    }, []);
+        }}, []);
 
   const onPress = () => {{
     navigation.navigate('SearchResult')

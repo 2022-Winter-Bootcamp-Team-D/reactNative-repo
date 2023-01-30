@@ -9,11 +9,16 @@ export type RootStackParamList = {
     Reservation: {
         mySite: around
         };
+    ReservationResult: {
+        myResponse: waitingReady,
+        store_name: string,
+        create_at: Date,
+        people: number,
+        waiting_id: number,
+        waiting_order: number,
+    };
     Inquiry: undefined;
-    Status: {
-            myResponse: waitingReady,
-            store_name: string
-            };
+    Status: undefined;
     Search: undefined;
     SearchResult: undefined;
     Signup: undefined;
@@ -35,6 +40,5 @@ type waitingReady = {
         people: number,
         waiting_id: number,
         waiting_order: number,
-        store_name: string
 };
 

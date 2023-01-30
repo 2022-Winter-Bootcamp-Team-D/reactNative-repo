@@ -3,7 +3,7 @@ import {Text, TouchableOpacity, View} from 'react-native';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackParamList} from '../../screens/RootStackParams';
+import {RootStackParamList} from '../RootStackParams';
 import StatusStyles from "../../styles/StatusStyles";
 import ReservationScreenStyles from "../../styles/screens/ReservationScreenStyles";
 import StatusListStyles from "../../styles/StatusListStyles";
@@ -12,45 +12,28 @@ import statusStyles from "../../styles/StatusStyles";
 import axios from "axios";
 import AsyncStorage from "@react-native-community/async-storage";
 
-type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Status'>;
+type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'ReservationResult'>;
 
-function StatusScreen() {
+function ReservationResultScreen() {
     const navigation = useNavigation<ResgisterScreenProp>();
-    type ScreenRouteProp = RouteProp<RootStackParamList,"Status">;
+    type ScreenRouteProp = RouteProp<RootStackParamList,"ReservationResult">;
     const route = useRoute<ScreenRouteProp>();
     const [people, setPeople] = useState(0);
-    const [store_name, setStore_name] = useState("");
+    // const [create_at, setCreate_at] = useState(Date);
+    const [store_name, setStore_name] = useState('');
     const [waiting_id, setWaiting_id] = useState(0);
     const [waiting_order, setWaiting_order] = useState(0);
 
     useEffect(() => {
-        // setStore_id(route.params?.mySite.store_id)
-        // setStore_name(route.params?.mySite.store_name)
-        // setWaiting(route.params?.mySite.waiting)
-        // setDistance(route.params?.mySite.distance)
-        // setInformation(route.params?.mySite.information)
-        async function getReservationData() {
-            try {
-                const response = await axios.get(
-                    'http://15.164.28.246:8000/api/v1/waitings/',
-                    { headers : {Authorization: await AsyncStorage.getItem('accessToken')}}
-                )
-              
-              .then(function (response) {
-                console.log(response.data)
-                setPeople(response.data.people)
-                setStore_name(response.data.store_name)
-                setWaiting_id(response.data.waiting_id)
-                setWaiting_order(response.data.waiting_order)
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
-            } catch (error) {
-                console.log(error);
-            }
-        };
-    }, []);
+        setStore_name(route.params?.store_name)
+        // setCreate_at(route.params?.myResponse.create_at)
+        setPeople(route.params?.people)
+        setWaiting_id(route.params?.waiting_id)
+        setWaiting_order(route.params?.waiting_order)
+        // setPeople(route.params?.myResponse.people)
+        // setWaiting_id(route.params?.myResponse.waiting_id)
+        // setWaiting_order(route.params?.myResponse.waiting_order)
+      }, []);
 
     async function patchCancelData() {
         try {
@@ -59,7 +42,7 @@ function StatusScreen() {
                 { headers : {Authorization: await AsyncStorage.getItem('accessToken')}}
             )
           .then(function (response) {
-            console.log(response)
+            // console.log(response)
           })
           .catch(function (error) {
             console.log(error);
@@ -80,7 +63,7 @@ function StatusScreen() {
       <View style={ReservationScreenStyles.container}>
         <View style={StatusListStyles.titleContainer}>
                 <Text style={StatusListStyles.listTitle}>
-                    대기 현황
+                    웨이팅 완료
                 </Text>
                 <HomeButton/>
             </View>
@@ -126,4 +109,4 @@ function StatusScreen() {
     );
 };
 
-export default StatusScreen;
+export default ReservationResultScreen;

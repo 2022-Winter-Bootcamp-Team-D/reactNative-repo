@@ -50,12 +50,6 @@ function MapView() {
     }]);
     const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
-    const [store_id, setStore_id] = useState(0);
-    const [store_name, setStore_name] = useState('');
-    const [distance, setDistance] = useState(0);
-    const [waiting, setWaiting] = useState(0);
-    const [information, setInformation] = useState('');
-    const [is_waiting, setIs_waiting] = useState(true);
 
     const marker = [
         {
@@ -128,22 +122,22 @@ function MapView() {
                     </Text>
                 </View>
             </View>
-            <View style={mapScreenStyles.mapListButton}>
+            {/* <View style={mapScreenStyles.mapListButton}>
                 <TouchableOpacity 
                     style={mapStyles.mapListButton}
-                    onPress={(e:any) => navigation.navigate('MapList', {mySite: myStoreList[e]})}>
+                    onPress={(e:any) => navigation.navigate('MapList', {mySite: e})}>
                     
                     <Text style={mapStyles.buttonText}>
                         리스트로 보기
                     </Text>
                 </TouchableOpacity>
-            </View>
+            </View> */}
             <View style={mapStyles.mapView}>
                 <NaverMapView style={{width: '100%', height: '100%'}}
                             showsMyLocationButton={true}
                             center={{...Point,zoom: 16}} // ... 은 배열을 풀어준다.
                             onCameraChange={(e) => (e.latitude, e.longitude)}
-                >   
+                >
                     <View>
                         {myStoreList&&myStoreList.map((e: any) =>
                             <Marker
@@ -152,11 +146,6 @@ function MapView() {
                                 onClick={() => navigation.navigate('Reservation', {mySite: e})}
                                 caption={{
                                     text: e.store_name,
-                                    textSize: 15,
-                                    }
-                                }
-                                subCaption={{
-                                    text: e.distance,
                                     textSize: 15,
                                     }
                                 }

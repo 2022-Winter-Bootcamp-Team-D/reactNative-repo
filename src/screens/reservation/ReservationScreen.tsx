@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Text, TouchableOpacity, View} from 'react-native';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import {useNavigation} from '@react-navigation/native';
@@ -26,11 +26,13 @@ function ReservationScreen() {
     const [information, setInformation] = useState('');
     const [is_waiting, setIs_waiting] = useState(true);
 
-    setStore_id(route.params?.mySite.store_id)
-    setStore_name(route.params?.mySite.store_name)
-    setWaiting(route.params?.mySite.waiting)
-    setDistance(route.params?.mySite.distance)
-    setInformation(route.params?.mySite.information)
+    useEffect(() => {
+      setStore_id(route.params?.mySite.store_id)
+      setStore_name(route.params?.mySite.store_name)
+      setWaiting(route.params?.mySite.waiting)
+      setDistance(route.params?.mySite.distance)
+      setInformation(route.params?.mySite.information)
+    }, []);
 
     async function postReservationData() {
         try {
@@ -49,13 +51,19 @@ function ReservationScreen() {
             )
           .then(async function (response) {
             const myResponse = response.data
-            navigation.navigate('Status', {
-              myResponse: myResponse, 
+            navigation.navigate('ReservationResult', {
+              myResponse: myResponse,
               store_name: store_name
             })
           })
           .catch(function (error) {
             console.log(error);
+            // navigation.navigate('ReservationResult', {
+            //   store_name: "스윗솔트",
+            //   people: people,
+            //   waiting_order: 6,
+            //   store_name: store_name
+            // })
           });
         } catch (error) {
             console.log(error);
@@ -73,7 +81,7 @@ function ReservationScreen() {
               대기 {waiting} 팀
             </Text>
             <Text style={reservationStyles.storeDistanceText}>
-              {distance}m
+              {Math.round(distance)}m
             </Text>
           </View>
           <Text style={reservationStyles.storeDetail}>

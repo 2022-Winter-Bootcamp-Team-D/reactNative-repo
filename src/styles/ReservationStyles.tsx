@@ -12,6 +12,7 @@ const reservationStyles = StyleSheet.create ({
   },
 
   storeNameText:{
+    width: "50%",
     marginLeft: -20, 
     color: 'black',
     fontFamily: 'BMJUA',
@@ -26,7 +27,7 @@ const reservationStyles = StyleSheet.create ({
   },
 
   storeDistanceText:{
-    marginLeft: 10,
+    marginLeft: 20,
     color: 'black',
     fontFamily: 'BMJUA',
     fontSize: 20,

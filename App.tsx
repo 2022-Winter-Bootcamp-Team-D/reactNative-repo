@@ -22,7 +22,7 @@ import ReservationScreen from './src/screens/reservation/ReservationScreen';
 import StatusScreen from './src/screens/status/StatusScreen';
 import SearchScreen from './src/screens/status/StatusScreen';
 import SearchResultScreen from './src/screens/search/SearchResultScreen';
-
+import ReservationResultScreen from './src/screens/reservationResult/ReservationResultScreen';
 
   const Stack = createStackNavigator<RootStackParamList>();
 
@@ -119,6 +119,7 @@ function App() {
         <Stack.Screen name="Search" component={SearchScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="SearchResult" component={SearchResultScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="Reservation" component={ReservationScreen} options={{headerShown: false,}}/>
+        <Stack.Screen name="ReservationResult" component={ReservationResultScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="Main" component={MainScreen} options={{headerShown: false,}}/>
       </Stack.Navigator>
     </NavigationContainer>

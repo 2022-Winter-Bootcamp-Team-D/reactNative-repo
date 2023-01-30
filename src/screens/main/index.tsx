@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import MapScreen from '../map/MapScreen';
 import SearchScreen from '../search/SearchScreen';
 import InquiryScreen from '../inquiry/InquiryScreen';
+import StatusScreen from '../status/StatusScreen';
 
 const BottomTab = createBottomTabNavigator<MainBottomTabParamList>();
 
@@ -29,7 +30,7 @@ function MainScreen() {
       />
       <BottomTab.Screen 
         name = '웨이팅' 
-        component = {InquiryScreen} 
+        component = {StatusScreen} 
         options = {{
           headerShown: false,
           tabBarIcon: () => (
