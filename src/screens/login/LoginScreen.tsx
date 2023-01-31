@@ -44,6 +44,7 @@ function LoginScreen() {
                 var str1 = 'Bearer '
                 var res = str1.concat(response.data.access)
                 AsyncStorage.setItem('accessToken', res);
+                FCMToken()
                 navigation.navigate('Main')
                 console.log('[access] ' + res)
             })
@@ -69,7 +70,6 @@ function LoginScreen() {
                     <TouchableOpacity
                         style={LoginStyles.registerButton}
                         onPress={() => {
-                            FCMToken()
                             loginAPI()
                         }}
                     >

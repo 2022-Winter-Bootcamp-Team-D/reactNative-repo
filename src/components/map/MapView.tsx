@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Modal from 'react-native-modal';
-import {View, TouchableOpacity, Text} from 'react-native';
+import { useIsFocused } from '@react-navigation/native';
+import {View, TouchableOpacity, Text, LogBox} from 'react-native';
 import mapStyles from '../../styles/MapStyles';
 import NaverMapView, {Marker} from "react-native-nmap";
 import {useNavigation} from '@react-navigation/native';
@@ -34,7 +35,7 @@ interface MySite {
 function MapView() {
     const [myLocation, setMyLocation] = useState<M0>({latitude: 0, longitude: 0});
     const [modalVisible, setModalVisible] = useState(false);
-    //Output을 State로 받아서 화면에 표출하거나 정보 값으로 활용
+    const isFocused = useIsFocused();
     const [modalOutput, setModalOutput] = useState<string>("");
     const navigation = useNavigation<ResgisterScreenProp>();
     const [storeList, setStoreList] = useState([]);
@@ -48,6 +49,7 @@ function MapView() {
         latitude: 0,
         longitude: 0
     }]);
+    const [newStoreList, setNewStoreList] = useState([]);
     const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
 
@@ -60,6 +62,38 @@ function MapView() {
 
     //현재 위치를 추적합니다.
     useEffect(() => {
+        async function mapData() {
+            try {
+                const response = await axios.post(
+                    'http://15.164.28.246:8000/api/v1/stores/search/',
+                    {
+                        latitude: myLocation.latitude, 
+                        longitude: myLocation.longitude
+                    },
+                    { headers : {
+                        Authorization: await AsyncStorage.getItem('accessToken', (err, res) => 
+                        {return(res);})
+                    }},
+                )
+              .then(response => {
+                setStoreList(response.data);
+                setMyStoreList(storeList["data"])
+                return myStoreList
+                // if (response.status === 500) {
+                //     var str1 = 'Bearer '
+                //     var res = str1.concat(response.data.access)
+                //     response.data.exception = AsyncStorage.setItem('accessToken', res);;
+                // }
+                }
+              )
+              .catch(function (error) {
+                console.log(error)
+              });
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        
         if (geolocation) {
             geolocation.getCurrentPosition(success, error);
             mapData();
@@ -78,39 +112,9 @@ function MapView() {
             setMyLocation({latitude: 37.5454, longitude: 127.1541 }); // 현우네밥집 주소 latitude: 37.5634, longitude: 126.9093 
         }
 
-        async function mapData() {
-            try {
-                const response = await axios.post(
-                    'http://15.164.28.246:8000/api/v1/stores/search/',
-                    {
-                        latitude: myLocation.latitude, 
-                        longitude: myLocation.longitude
-                    },
-                    { headers : {
-                        Authorization: await AsyncStorage.getItem('accessToken', (err, res) => 
-                        {return(res);})
-                    }},
-                )
-              .then(response => {
-                setStoreList(response.data);
-                setMyStoreList(storeList["data"])
-                }
-              )
-              .catch(function (error) {
-                console.log(error)
-              });
-            } catch (error) {
-                console.log(error);
-            }
-        };
-    }, []);
-
-    // function modal(){
-    //     setModalOutput(mySite.store_name)
-    //     setModalVisible(true)
-    // }
-
-    // ?는 두가지 타입을 한번에, !는 무조건 타입 지정
+        
+    }, [isFocused]);
+    LogBox.ignoreAllLogs();
     const Point = {latitude: myLocation.latitude, longitude: myLocation.longitude}; 
 
     return (
@@ -150,65 +154,11 @@ function MapView() {
                                     }
                                 }
                             />
-                            
                         )}
                         
                     </View>
 
                 </NaverMapView>
-                {/* <Modal
-                    //isVisible Props에 State 값을 물려주어 On/off control
-                    isVisible={modalVisible}
-                    //아이폰에서 모달창 동작시 깜박임이 있었는데, useNativeDriver Props를 True로 주니 해결되었다.
-                    useNativeDriver={true}
-                    hideModalContentWhileAnimating={true}
-                    style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-                >
-                    <View>
-                        <TouchableOpacity
-                            style={mapStyles.storeInformation}
-                            onPress={() => {
-                            setModalOutput(mySite.store_name);
-                            setModalVisible(false);
-                            navigation.navigate('Reservation', {mySite: mySite})
-                            }}
-                        >
-                            <View style={mapStyles.storeContainer}>
-                                {oneone&&oneone.map((e: any) =>
-                                <Text
-                                    key={e.store_id}
-                                    style={mapStyles.storeNameText}>
-                                    {e.store_id}
-                                </Text>
-                                )}
-                                {oneone&&oneone.map((e: any) =>
-                                <Text
-                                    key={e.store_id} 
-                                    style={mapStyles.storeDetailText}>
-                                    대기 {e.waiting}팀
-                                </Text>
-                                )}
-                                {oneone&&oneone.map((e: any) =>
-                                <Text
-                                    key={e.store_id} 
-                                    style={mapStyles.storeDistanceText}>
-                                    {e.distance}m
-                                </Text>
-                                )}
-                            </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style={mapStyles.cancel}
-                            onPress={() => {
-                            setModalVisible(false);
-                            }}
-                        >
-                            <Text style={mapStyles.cancelText}>
-                                취소
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                </Modal> */}
             </View>
         </View>
     ); 

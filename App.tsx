@@ -88,7 +88,10 @@ messaging().setBackgroundMessageHandler(async remoteMessage => {
 function App() {
   useEffect(() => {
     const unsubscribe = messaging().onMessage(async remoteMessage => {
-      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+      var json = JSON.stringify(remoteMessage)
+      var obj = JSON.parse(json);
+      var message = (obj.notification.body);
+      Alert.alert('예약알림이 도착했습니다!', message);
     });
   return unsubscribe;
   }, []);

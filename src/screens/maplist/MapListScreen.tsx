@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {View, ScrollView, Text, TouchableOpacity} from 'react-native';
+import {View, ScrollView, Text, TouchableOpacity, LogBox} from 'react-native';
+import { useIsFocused } from '@react-navigation/native';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../screens/RootStackParams';
@@ -23,6 +24,7 @@ function MapListScreen() {
     type ScreenRouteProp = RouteProp<RootStackParamList,'MapList'>;
     const navigation = useNavigation<ResgisterScreenProp>();
     const route = useRoute<ScreenRouteProp>();
+    const isFocused = useIsFocused();
     const [myLocation, setMyLocation] = useState<M0>({latitude: 0, longitude: 0});
     const [storeList, setStoreList] = useState([]);
     const [myStoreList, setMyStoreList] = useState([{
@@ -36,53 +38,55 @@ function MapListScreen() {
         longitude: 0
     }]);
 
-  useEffect(() => {
+    useEffect(() => {
 
-    if (geolocation) {
-        geolocation.getCurrentPosition(success, error);
-        mapData();
-    }
-    
-// 위치추적에 성공했을때 위치 값을 넣어줍니다.
-    function success(position: any) {
-        console.log (position.coords.latitude, position.coords.longitude)
-        setMyLocation({
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
-        });
-    }
-
-// 위치 추적에 실패 했을때 초기값을 넣어줍니다.
-    function error() { // 현우네 양꼬치 & 사천훠궈, 현우네 반점
-        setMyLocation({latitude: 37.5488, longitude: 127.1717 }); // 현우네밥집 주소 latitude: 37.5634, longitude: 126.9093 
-    }
-    
-    async function mapData() {
-        try {
-            const response = await axios.post(
-                'http://15.164.28.246:8000/api/v1/stores/search/',
-                {
-                    token: await AsyncStorage.getItem('FCMToken', (err, res) => 
-                            {return(res);}),
-                    latitude: myLocation.latitude, 
-                    longitude: myLocation.longitude
-                },
-                { headers : {
-                  Authorization: await AsyncStorage.getItem('accessToken', (err, res) => 
-                                {return(res);})
-              }},)
-          .then(function (response) {
-            setStoreList(response.data);
-            setMyStoreList(storeList["data"])
-            console.log(myStoreList)
-          })
-          .catch(function (error) {
-            console.log(error)
-          });
-        } catch (error) {
-            console.log(error);
+        async function mapData() {
+            try {
+                const response = await axios.post(
+                    'http://15.164.28.246:8000/api/v1/stores/search/',
+                    {
+                        token: await AsyncStorage.getItem('FCMToken', (err, res) => 
+                                {return(res);}),
+                        latitude: myLocation.latitude, 
+                        longitude: myLocation.longitude
+                    },
+                    { headers : {
+                    Authorization: await AsyncStorage.getItem('accessToken', (err, res) => 
+                                    {return(res);})
+                }},)
+            .then(function (response) {
+                setStoreList(response.data);
+                setMyStoreList(storeList["data"])
+                return myStoreList
+            })
+            .catch(function (error) {
+                console.log(error)
+            });
+            } catch (error) {
+                console.log(error);
+            }
         }
-        }}, []);
+
+        if (geolocation) {
+            geolocation.getCurrentPosition(success, error);
+            mapData();
+        }
+        
+    // 위치추적에 성공했을때 위치 값을 넣어줍니다.
+        function success(position: any) {
+            console.log (position.coords.latitude, position.coords.longitude)
+            setMyLocation({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            });
+        }
+
+    // 위치 추적에 실패 했을때 초기값을 넣어줍니다.
+        function error() { // 현우네 양꼬치 & 사천훠궈, 현우네 반점
+            setMyLocation({latitude: 37.5488, longitude: 127.1717 }); // 현우네밥집 주소 latitude: 37.5634, longitude: 126.9093 
+        }
+        LogBox.ignoreAllLogs();
+    }, [isFocused]);
 
 
     return (
@@ -100,7 +104,7 @@ function MapListScreen() {
             </View>
             <View>
             {myStoreList&&myStoreList.map((e) =>
-                <View key={e.store_id}>
+                <View key={e.store_name}>
                     <Collapse>
                         <CollapseHeader>
                             <View style={mapListStyles.listTitle}>
