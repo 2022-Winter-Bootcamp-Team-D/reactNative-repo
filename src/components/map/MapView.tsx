@@ -70,10 +70,7 @@ function MapView() {
                         latitude: myLocation.latitude, 
                         longitude: myLocation.longitude
                     },
-                    { headers : {
-                        Authorization: await AsyncStorage.getItem('accessToken', (err, res) => 
-                        {return(res);})
-                    }},
+                    { headers : {Authorization: await AsyncStorage.getItem('accessToken')}},
                 )
               .then(response => {
                 setStoreList(response.data);

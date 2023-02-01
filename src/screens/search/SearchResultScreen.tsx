@@ -63,15 +63,15 @@ function SearchResultScreen() {
 
     async function mapData() {
         try {
-            const response = await axios.post(
-                'http://15.164.28.246:8000/api/v1//map/?search={word}&lat={latitude}&long={longitude}/',
-                {
-                    token: await AsyncStorage.getItem('FCMToken', (err, res) => 
-                            {return(res);}),
-                    search: search,
-                    latitude: myLocation.latitude,
-                    longitude: myLocation.longitude
-                },
+            const response = await axios.get(
+                `http://15.164.28.246:8000/api/v1/stores/searchword/`,
+                // {
+                //     token: await AsyncStorage.getItem('FCMToken', (err, res) => 
+                //             {return(res);}),
+                //     search: search,
+                //     latitude: myLocation.latitude,
+                //     longitude: myLocation.longitude
+                // },
                 { headers : {
                   Authorization: await AsyncStorage.getItem('accessToken', (err, res) => 
                                 {return(res);})

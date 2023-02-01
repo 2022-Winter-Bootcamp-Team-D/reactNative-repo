@@ -22,6 +22,7 @@ function StatusScreen() {
     const [people, setPeople] = useState(0);
     const [store_name, setStore_name] = useState("");
     const [waiting_id, setWaiting_id] = useState(0);
+    const [create_at, setCreate_at] = useState(Date);
     const [waiting_order, setWaiting_order] = useState(0);
 
     useEffect(() => {
@@ -31,15 +32,12 @@ function StatusScreen() {
             try {
                 const response = await axios.get(
                     'http://15.164.28.246:8000/api/v1/waitings/',
-                    {headers : {
-                        Authorization: await AsyncStorage.getItem('accessToken', (err, res) => 
-                        {return(res);})
-                    }},
+                    {headers : {Authorization: await AsyncStorage.getItem('accessToken')}},
                 )
                 .then(function (response) {
-                    console.log(response.data)
                     setPeople(response.data.people)
                     setStore_name(response.data.store_name)
+                    setCreate_at(response.data.create_at)
                     setWaiting_id(response.data.waiting_id)
                     setWaiting_order(response.data.waiting_order)
                 })
@@ -49,23 +47,21 @@ function StatusScreen() {
                 } catch (error) {
                     console.log(error);
             }
-        };
-        }, []);
+        };}, []);
 
         async function patchCancelData() {
             try {
                 const response = await axios.patch(
                     'http://15.164.28.246:8000/api/v1/waitings/',
-                    { headers : {
-                        Authorization: await AsyncStorage.getItem('accessToken', (err, res) => 
-                        {return(res);})
-                    }}
+                    {headers : {Authorization: await AsyncStorage.getItem('accessToken')}}
                 )
                 .then(function (response) {
                     console.log(response)
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    console.log(error.message);
+                    AsyncStorage.getItem('accessToken', (err, res) => 
+                    {console.log(typeof (res))})
                 });
                 } catch (error) {
                     console.log(error);
@@ -74,7 +70,7 @@ function StatusScreen() {
 
     new Intl.DateTimeFormat('kr').format(new Date());
     const TIME_ZONE = 3240 * 10000;
-    const d = new Date();
+    const d = new Date(create_at);
     const date = new Date(+d + TIME_ZONE).toISOString().split('T')[0];
     const time = d.toTimeString().split(' ')[0];
     // console.log(date + ' ' + time);
@@ -85,7 +81,6 @@ function StatusScreen() {
                 <Text style={StatusListStyles.listTitle}>
                     대기 현황
                 </Text>
-                <HomeButton/>
             </View>
             <View style={StatusListStyles.listContainer}>
                 <Text style={StatusListStyles.listContentText}>

@@ -10,10 +10,6 @@ export type RootStackParamList = {
     ReservationResult: {
         myResponse: waitingReady,
         store_name: string,
-        create_at: Date,
-        people: number,
-        waiting_id: number,
-        waiting_order: number,
     };
     Inquiry: undefined;
     Status: undefined;

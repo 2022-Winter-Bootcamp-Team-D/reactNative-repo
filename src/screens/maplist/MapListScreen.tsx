@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {View, ScrollView, Text, TouchableOpacity, LogBox} from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
-import {RouteProp, useRoute} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../screens/RootStackParams';
 import {useNavigation} from '@react-navigation/native';
@@ -21,9 +20,7 @@ interface M0 {
     longitude: number;
 }
 function MapListScreen() {
-    type ScreenRouteProp = RouteProp<RootStackParamList,'MapList'>;
     const navigation = useNavigation<ResgisterScreenProp>();
-    const route = useRoute<ScreenRouteProp>();
     const isFocused = useIsFocused();
     const [myLocation, setMyLocation] = useState<M0>({latitude: 0, longitude: 0});
     const [storeList, setStoreList] = useState([]);
@@ -39,25 +36,19 @@ function MapListScreen() {
     }]);
 
     useEffect(() => {
-
         async function mapData() {
             try {
                 const response = await axios.post(
                     'http://15.164.28.246:8000/api/v1/stores/search/',
                     {
-                        token: await AsyncStorage.getItem('FCMToken', (err, res) => 
-                                {return(res);}),
+                        token: await AsyncStorage.getItem('FCMToken'),
                         latitude: myLocation.latitude, 
                         longitude: myLocation.longitude
                     },
-                    { headers : {
-                    Authorization: await AsyncStorage.getItem('accessToken', (err, res) => 
-                                    {return(res);})
-                }},)
+                    { headers : {Authorization: await AsyncStorage.getItem('accessToken')}},)
             .then(function (response) {
                 setStoreList(response.data);
                 setMyStoreList(storeList["data"])
-                return myStoreList
             })
             .catch(function (error) {
                 console.log(error)
@@ -103,41 +94,41 @@ function MapListScreen() {
                 <MapButton/>
             </View>
             <View>
-            {myStoreList&&myStoreList.map((e) =>
-                <View key={e.store_name}>
-                    <Collapse>
-                        <CollapseHeader>
-                            <View style={mapListStyles.listTitle}>
-                                <Text style={mapListStyles.number}>
-                                    {e.store_id}
+                {myStoreList?.map((e) =>
+                    <View key={e.store_name}>
+                        <Collapse>
+                            <CollapseHeader>
+                                <View style={mapListStyles.listTitle}>
+                                    {/* <Text style={mapListStyles.number}>
+                                        {e.store_id}
+                                    </Text> */}
+                                    <Text style={mapListStyles.storeNameText}>
+                                        {e.store_name}
+                                    </Text>
+                                    <Text style={mapListStyles.waitingText}>
+                                        대기 {e.waiting}팀
+                                    </Text>
+                                    <Text style={mapListStyles.storeDistanceText}>
+                                        {Math.round(e.distance)}m
+                                    </Text>
+                                </View>
+                            </CollapseHeader>
+                            <CollapseBody>
+                                <Text style={mapListStyles.storeDetailText}>
+                                    {e.information}
                                 </Text>
-                                <Text style={mapListStyles.storeNameText}>
-                                    {e.store_name}
-                                </Text>
-                                <Text style={mapListStyles.waitingText}>
-                                    대기 {e.waiting}팀
-                                </Text>
-                                <Text style={mapListStyles.storeDistanceText}>
-                                    {Math.round(e.distance)}m
-                                </Text>
-                            </View>
-                        </CollapseHeader>
-                        <CollapseBody>
-                            <Text style={mapListStyles.storeDetailText}>
-                                {e.information}
-                            </Text>
-                            <TouchableOpacity
-                                style={mapListStyles.reservationButton}
-                                onPress={() => navigation.navigate('Reservation', {mySite: e})}>
-                                <Text style={mapListStyles.reservationText}>
-                                    예약하기
-                                </Text>
-                            </TouchableOpacity>
-                        </CollapseBody>
-                    </Collapse>
-                    <View style={mapListStyles.verticalLine}/> 
-                </View> 
-            )}
+                                <TouchableOpacity
+                                    style={mapListStyles.reservationButton}
+                                    onPress={() => navigation.navigate('Reservation', {mySite: e})}>
+                                    <Text style={mapListStyles.reservationText}>
+                                        예약하기
+                                    </Text>
+                                </TouchableOpacity>
+                            </CollapseBody>
+                        </Collapse>
+                        <View style={mapListStyles.verticalLine}/> 
+                    </View> 
+                )}
             </View>
         </ScrollView>
     );
