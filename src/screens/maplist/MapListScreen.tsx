@@ -74,7 +74,7 @@ function MapListScreen() {
 
     // 위치 추적에 실패 했을때 초기값을 넣어줍니다.
         function error() { // 현우네 양꼬치 & 사천훠궈, 현우네 반점
-            setMyLocation({latitude: 37.5488, longitude: 127.1717 }); // 현우네밥집 주소 latitude: 37.5634, longitude: 126.9093 
+            setMyLocation({latitude: 37.3400342, longitude: 126.7335061 }); // 현우네밥집 주소 latitude: 37.5634, longitude: 126.9093 
         }
         LogBox.ignoreAllLogs();
     }, [isFocused]);
@@ -102,7 +102,9 @@ function MapListScreen() {
                                     {/* <Text style={mapListStyles.number}>
                                         {e.store_id}
                                     </Text> */}
-                                    <Text style={mapListStyles.storeNameText}>
+                                    <Text 
+                                    numberOfLines={1}
+                                    style={mapListStyles.storeNameText}>
                                         {e.store_name}
                                     </Text>
                                     <Text style={mapListStyles.waitingText}>

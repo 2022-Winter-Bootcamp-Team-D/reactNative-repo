@@ -27,16 +27,13 @@ function SearchResultScreen() {
   const navigation = useNavigation<ResgisterScreenProp>();
   const route = useRoute<ScreenRouteProp>();
   const [myLocation, setMyLocation] = useState<M0>({latitude: 0, longitude: 0});
-  const [storeList, setStoreList] = useState([]);
-  const [myStoreList, setMyStoreList] = useState([{
-      store_id: 0,
+//   const [storeList, setStoreList] = useState([]);
+  const [storeList, setStoreList] = useState([{
+      id: 0,
       store_name : '',
       distance: 0,
       waiting: 0,
-      is_waiting: true,
       information : '',
-      latitude: 0,
-      longitude: 0
   }]);
 
   useEffect(() => {
@@ -64,25 +61,18 @@ function SearchResultScreen() {
     async function mapData() {
         try {
             const response = await axios.get(
-                `http://15.164.28.246:8000/api/v1/stores/searchword/`,
-                // {
-                //     token: await AsyncStorage.getItem('FCMToken', (err, res) => 
-                //             {return(res);}),
-                //     search: search,
-                //     latitude: myLocation.latitude,
-                //     longitude: myLocation.longitude
-                // },
-                { headers : {
-                  Authorization: await AsyncStorage.getItem('accessToken', (err, res) => 
-                                {return(res);})
-              }},)
+                `http://15.164.28.246:8000/api/v1/stores/searchword?search=${search}&latitude=${myLocation.latitude}&longitude=${myLocation.longitude}`,
+                { headers : {Authorization: await AsyncStorage.getItem('accessToken')}},
+            )
           .then(function (response) {
             setStoreList(response.data);
-            setMyStoreList(storeList["data"])
-            console.log(myStoreList)
+            // setMyStoreList(storeList["data"])
+            console.log(storeList)
+            console.log(response.data)
           })
           .catch(function (error) {
             console.log(error)
+            console.log(storeList)
           });
         } catch (error) {
             console.log(error);
@@ -95,13 +85,13 @@ function SearchResultScreen() {
         검색
       </Text>
       <SearchBar/>
-      {myStoreList&&myStoreList.map((e) =>
-        <View key={e.store_id}>
+      {storeList&&storeList.map((e) =>
+        <View key={e.id}>
           <Collapse>
               <CollapseHeader>
                   <View style={mapListStyles.listTitle}>
                       <Text style={mapListStyles.number}>
-                          {e.store_id}
+                          {e.id}
                       </Text>
                       <Text style={mapListStyles.storeNameText}>
                           {e.store_name}

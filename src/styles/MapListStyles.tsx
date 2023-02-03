@@ -27,11 +27,13 @@ const mapListStyles = StyleSheet.create ({
     },
 
     storeNameText:{
-        marginLeft: 10,
-        width: 140,
+        marginLeft: 0,
+        width: 180,
+        maxwidth: 200,
         color: 'black',
         fontFamily: 'BMHANNA',
         fontSize: 18,
+        
     },
 
     waitingText:{

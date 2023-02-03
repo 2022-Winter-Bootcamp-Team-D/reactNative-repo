@@ -29,6 +29,14 @@ type around = {
     longitude: number;
 }
 
+type search = {
+    store_id: number;
+    store_name: string;
+    distance: number;
+    waiting: number;
+    information: string;
+}
+
 type waitingReady = {
         create_at: Date,
         people: number,
