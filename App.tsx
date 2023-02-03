@@ -12,7 +12,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import React, {useEffect, type PropsWithChildren} from 'react';
 import {RootStackParamList} from './src/screens/RootStackParams';
-import RegisterScreen from './src/screens/register/RegisterScreen';
+import LoginScreen from './src/screens/login/LoginScreen';
 import SignupScreen from './src/screens/signup/SignupScreen';
 import MainScreen from './src/screens/main';
 import MapScreen from './src/screens/map/MapScreen'
@@ -22,7 +22,7 @@ import ReservationScreen from './src/screens/reservation/ReservationScreen';
 import StatusScreen from './src/screens/status/StatusScreen';
 import SearchScreen from './src/screens/status/StatusScreen';
 import SearchResultScreen from './src/screens/search/SearchResultScreen';
-
+import ReservationResultScreen from './src/screens/reservationResult/ReservationResultScreen';
 
   const Stack = createStackNavigator<RootStackParamList>();
 
@@ -78,6 +78,8 @@ const Section: React.FC<
   );
 };
 
+// https://superwony.tistory.com/95
+
 //지우면 안돼!!!
 messaging().setBackgroundMessageHandler(async remoteMessage => {
   console.log('[Background Remote Message]', remoteMessage);
@@ -86,7 +88,10 @@ messaging().setBackgroundMessageHandler(async remoteMessage => {
 function App() {
   useEffect(() => {
     const unsubscribe = messaging().onMessage(async remoteMessage => {
-      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+      var json = JSON.stringify(remoteMessage)
+      var obj = JSON.parse(json);
+      var message = (obj.notification.body);
+      Alert.alert('예약알림이 도착했습니다!', message);
     });
   return unsubscribe;
   }, []);
@@ -108,7 +113,7 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator> 
-        <Stack.Screen name="Register" component={RegisterScreen} options={{headerShown: false,}}/> 
+        <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false,}}/> 
         <Stack.Screen name="Signup" component={SignupScreen} options={{headerShown: false,}}/> 
         <Stack.Screen name="Inquiry" component={InquiryScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="Map" component={MapScreen} options={{headerShown: false,}}/>
@@ -117,6 +122,7 @@ function App() {
         <Stack.Screen name="Search" component={SearchScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="SearchResult" component={SearchResultScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="Reservation" component={ReservationScreen} options={{headerShown: false,}}/>
+        <Stack.Screen name="ReservationResult" component={ReservationResultScreen} options={{headerShown: false,}}/>
         <Stack.Screen name="Main" component={MainScreen} options={{headerShown: false,}}/>
       </Stack.Navigator>
     </NavigationContainer>

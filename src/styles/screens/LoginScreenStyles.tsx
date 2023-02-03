@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-const RegisterScreenStyles = StyleSheet.create ({
+const LoginScreenStyles = StyleSheet.create ({
   mainContainer: {  //전체 태그를 설정해줘야 하기 때문에 이름을 그냥 container로 설정한 것임
     height: 1000,
     backgroundColor: '#FFFBD9'
@@ -23,4 +23,4 @@ const RegisterScreenStyles = StyleSheet.create ({
 
 });
 
-export default RegisterScreenStyles;
+export default LoginScreenStyles;

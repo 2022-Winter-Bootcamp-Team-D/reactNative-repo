@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 
 const reservationStyles = StyleSheet.create ({
   selectedStore: {
-    marginTop: 60,
+    marginTop: 100,
     marginLeft: 20,
     marginRight: 20,
     alignContent:'center',
@@ -12,6 +12,7 @@ const reservationStyles = StyleSheet.create ({
   },
 
   storeNameText:{
+    width: "50%",
     marginLeft: -20, 
     color: 'black',
     fontFamily: 'BMJUA',
@@ -19,14 +20,14 @@ const reservationStyles = StyleSheet.create ({
   },
 
   waitingText:{
-    marginLeft: 60,
+    marginLeft: 20,
     color: 'black',
     fontFamily: 'BMJUA',
     fontSize: 20,
   },
 
   storeDistanceText:{
-    marginLeft: 80,
+    marginLeft: 20,
     color: 'black',
     fontFamily: 'BMJUA',
     fontSize: 20,
@@ -98,6 +99,25 @@ const reservationStyles = StyleSheet.create ({
     marginBottom: 20,
     borderBottomWidth: 1,
     borderBottomColor: 'black',
+  },
+
+  reservationButton: {
+    marginTop: 80,
+    marginLeft: 60,
+    marginRight: 60,
+    borderEndWidth: 3,
+    borderBottomWidth: 3,
+    borderRadius: 12,
+    borderColor: '#ca8f22',
+    padding: 12,
+    backgroundColor: '#FFC928'
+  },
+
+  reservationButtonText: {
+    textAlign: 'center',
+    color: 'black',
+    fontFamily: 'BMHANNA',
+    fontSize: 20
   },
 
 });

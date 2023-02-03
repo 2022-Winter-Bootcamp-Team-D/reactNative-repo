@@ -1,29 +1,46 @@
 
 export type RootStackParamList = {
     Main: undefined;
-    Register: undefined;
+    Login: undefined;
     Map: undefined;
     MapList: undefined;
     Reservation: {
-            store_name: string,
-            waiting_order: Number,
-            store_distance: Number,
-            store_detail: String
-            };
+        mySite: around
+    };
+    ReservationResult: {
+        myResponse: waitingReady,
+        store_name: string,
+    };
     Inquiry: undefined;
-    Status: {
-            myResponse: waitingReady,
-            store_name: string
-            };
+    Status: undefined;
     Search: undefined;
-    SearchResult: undefined;
+    SearchResult: {search: string};
     Signup: undefined;
 };
+
+type around = {
+    store_id: number;
+    store_name: string;
+    distance: number;
+    waiting: number;
+    is_waiting: boolean;
+    information: string;
+    latitude: number;
+    longitude: number;
+}
+
+type search = {
+    store_id: number;
+    store_name: string;
+    distance: number;
+    waiting: number;
+    information: string;
+}
 
 type waitingReady = {
         create_at: Date,
         people: number,
         waiting_id: number,
         waiting_order: number,
-        store_name: string
-}
+};
+

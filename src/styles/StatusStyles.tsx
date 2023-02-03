@@ -29,7 +29,6 @@ const statusStyles = StyleSheet.create ({
     },
 
     cancelButton: {
-        marginTop: 10,
         marginLeft: 130,
         borderEndWidth: 3,
         borderBottomWidth: 3,

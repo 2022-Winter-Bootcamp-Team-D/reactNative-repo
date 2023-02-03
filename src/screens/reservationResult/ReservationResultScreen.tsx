@@ -3,84 +3,67 @@ import {Text, TouchableOpacity, View} from 'react-native';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackParamList} from '../../screens/RootStackParams';
+import {RootStackParamList} from '../RootStackParams';
 import StatusStyles from "../../styles/StatusStyles";
 import ReservationScreenStyles from "../../styles/screens/ReservationScreenStyles";
 import StatusListStyles from "../../styles/StatusListStyles";
 import HomeButton from "../../components/status/HomeButton";
 import statusStyles from "../../styles/StatusStyles";
 import axios from "axios";
-import geolocation from 'react-native-geolocation-service';
 import AsyncStorage from "@react-native-community/async-storage";
 
-type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Status'>;
+type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'ReservationResult'>;
 
-function StatusScreen() {
+function ReservationResultScreen() {
     const navigation = useNavigation<ResgisterScreenProp>();
-    type ScreenRouteProp = RouteProp<RootStackParamList,"Status">;
+    type ScreenRouteProp = RouteProp<RootStackParamList,"ReservationResult">;
     const route = useRoute<ScreenRouteProp>();
     const [people, setPeople] = useState(0);
-    const [store_name, setStore_name] = useState("");
+    // const [create_at, setCreate_at] = useState(Date);
+    const [store_name, setStore_name] = useState('');
     const [waiting_id, setWaiting_id] = useState(0);
-    const [create_at, setCreate_at] = useState(Date);
     const [waiting_order, setWaiting_order] = useState(0);
 
     useEffect(() => {
-        getReservationData();
+        setStore_name(route.params?.store_name)
+        setPeople(route.params?.myResponse.people)
+        setWaiting_id(route.params?.myResponse.waiting_id)
+        setWaiting_order(route.params?.myResponse.waiting_order)
+      }, []);
 
-        async function getReservationData() {
-            try {
-                const response = await axios.get(
-                    'http://15.164.28.246:8000/api/v1/waitings/',
-                    {headers : {Authorization: await AsyncStorage.getItem('accessToken')}},
-                )
-                .then(function (response) {
-                    setPeople(response.data.people)
-                    setStore_name(response.data.store_name)
-                    setCreate_at(response.data.create_at)
-                    setWaiting_id(response.data.waiting_id)
-                    setWaiting_order(response.data.waiting_order)
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-                } catch (error) {
-                    console.log(error);
-            }
-        };}, []);
-
-        async function patchCancelData() {
-            try {
-                const response = await axios.patch(
-                    'http://15.164.28.246:8000/api/v1/waitings/',
-                    {headers : {Authorization: await AsyncStorage.getItem('accessToken')}}
-                )
-                .then(function (response) {
-                    console.log(response)
-                })
-                .catch(function (error) {
-                    console.log(error.message);
-                    AsyncStorage.getItem('accessToken', (err, res) => 
-                    {console.log(typeof (res))})
-                });
-                } catch (error) {
-                    console.log(error);
-            }
-        };
+    async function patchCancelData() {
+        try {
+            const response = await axios.patch(
+                'http://15.164.28.246:8000/api/v1/waitings/',
+                { headers : {
+                    Authorization: await AsyncStorage.getItem('accessToken', (err, res) => 
+                    {return(res);})
+                }}
+            )
+          .then(function (response) {
+            navigation.navigate('Main')
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     new Intl.DateTimeFormat('kr').format(new Date());
     const TIME_ZONE = 3240 * 10000;
-    const d = new Date(create_at);
+    const d = new Date();
     const date = new Date(+d + TIME_ZONE).toISOString().split('T')[0];
     const time = d.toTimeString().split(' ')[0];
-    // console.log(date + ' ' + time);
 
     return (
       <View style={ReservationScreenStyles.container}>
         <View style={StatusListStyles.titleContainer}>
                 <Text style={StatusListStyles.listTitle}>
-                    대기 현황
+                    웨이팅 완료
                 </Text>
+                <HomeButton/>
             </View>
             <View style={StatusListStyles.listContainer}>
                 <Text style={StatusListStyles.listContentText}>
@@ -124,4 +107,4 @@ function StatusScreen() {
     );
 };
 
-export default StatusScreen;
+export default ReservationResultScreen;

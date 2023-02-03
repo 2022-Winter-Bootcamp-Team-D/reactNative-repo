@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-const RegisterStyles = StyleSheet.create ({
+const LoginStyles = StyleSheet.create ({
   container: {
     height: 1000,
     backgroundColor: '#FFFBD9'
@@ -68,4 +68,4 @@ const RegisterStyles = StyleSheet.create ({
 
 });
 
-export default RegisterStyles;
+export default LoginStyles;

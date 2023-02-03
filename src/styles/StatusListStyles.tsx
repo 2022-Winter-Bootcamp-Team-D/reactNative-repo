@@ -69,7 +69,7 @@ const StatusListStyles = StyleSheet.create ({
     },
 
     ReceiptContainer: {
-        marginTop: 40,
+        marginTop: 20,
         marginLeft: 10,
         marginRight: 10,
         marginBottom: 40,

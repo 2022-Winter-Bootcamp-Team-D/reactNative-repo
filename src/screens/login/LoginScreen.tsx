@@ -2,25 +2,21 @@ import React,{useState} from "react";
 import {View, TouchableOpacity, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackParamList} from '../../screens/RootStackParams';
+import {RootStackParamList} from '../RootStackParams';
 import messaging from '@react-native-firebase/messaging';
 import AsyncStorage from '@react-native-community/async-storage';
-import RegisterStyles from "../../styles/LoginStyles";
+import LoginStyles from "../../styles/LoginStyles";
 import Logo from "../../components/login/Logo";
 import RegisterInput from "../../components/login/RegisterInput";
-import RegisterScreenStyles from "../../styles/screens/LoginScreenStyles";
+import LoginScreenStyles from "../../styles/screens/LoginScreenStyles";
 import InquiryButton from "../../components/login/SignupButton";
-import SignupInput from "../../components/signup/signupInput";
 import API from "../../services/API";
 
+type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Login'>;
 
-type SignupScreenProp = StackNavigationProp<RootStackParamList, 'Signup'>;
-
-function RegisterScreen() {
-    const navigation = useNavigation<SignupScreenProp>();
-    const [name, setName] = useState('');
-    const [phoneNum, setPhoneNum] = useState('');
-    const [email, setEamil] = useState('');
+function LoginScreen() {
+    const navigation = useNavigation<ResgisterScreenProp>();
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     async function FCMToken() {
@@ -38,20 +34,17 @@ function RegisterScreen() {
     async function loginAPI() {
         try {
             const response = await API.post(
-                '/auth/user/signup/',
+                '/auth/user/signin/',
                 {
-                name: name, 
-                phone_num: phoneNum,
                 email: email,
                 password: password
                 },
-                {withCredentials:true, }
             )
             .then(function (response) {
                 var str1 = 'Bearer '
                 var res = str1.concat(response.data.access)
                 AsyncStorage.setItem('accessToken', res);
-                // AsyncStorage.setItem('refreshToken', response.data.refreshToken);
+                FCMToken()
                 navigation.navigate('Main')
                 console.log('[access] ' + res)
             })
@@ -64,36 +57,31 @@ function RegisterScreen() {
     };
 
     return (
-        <View style={RegisterScreenStyles.mainContainer}>
-            <View style={RegisterScreenStyles.signupContainer}>
+        <View style={LoginScreenStyles.mainContainer}>
+            <View style={LoginScreenStyles.registerContainer}>
                 <Logo/>
-                <SignupInput
-                    name={name}
-                    phoneNum={phoneNum}
+                <RegisterInput
                     email={email}
                     password={password}
-                    setName={setName}
-                    setEamil={setEamil}
-                    setPhoneNum={setPhoneNum}
+                    setEmail={setEmail}
                     setPassword={setPassword}
                 />
-                <View style={RegisterScreenStyles.registerButton}>
+                <View style={LoginScreenStyles.registerButton}>
                     <TouchableOpacity
-                        style={RegisterStyles.registerButton}
+                        style={LoginStyles.registerButton}
                         onPress={() => {
                             loginAPI()
-                            FCMToken()
-                            // navigation.navigate('Main')
                         }}
                     >
-                        <Text style={RegisterStyles.registerButtonText}>
-                            웨이팅 하러가기
+                        <Text style={LoginStyles.registerButtonText}>
+                            로그인
                         </Text>
                     </TouchableOpacity>
+                    <InquiryButton/>
                 </View>
             </View>
         </View>
     );
 };
 
-export default RegisterScreen;
+export default LoginScreen;

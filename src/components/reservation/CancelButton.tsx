@@ -3,7 +3,7 @@ import {View, TouchableOpacity, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../screens/RootStackParams';
-import RegisterStyles from '../../styles/RegisterStyles';
+import RegisterStyles from '../../styles/LoginStyles';
 import API from "../../services/API";
 
 type ResgisterScreenProp = StackNavigationProp<RootStackParamList, 'Reservation'>;
